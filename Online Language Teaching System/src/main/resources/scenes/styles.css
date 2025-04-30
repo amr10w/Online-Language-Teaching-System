@@ -1,0 +1,164 @@
+/* Main Styling */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Color Variables */
+* {
+    -fx-primary-color: #3498db;
+    -fx-secondary-color: #2980b9;
+    -fx-light-grey: #f5f5f5;
+    -fx-mid-grey: #e0e0e0;
+    -fx-dark-grey: #7f8c8d;
+    -fx-focus-color: -fx-primary-color;
+}
+
+/* Side Menu Styling */
+.side-menu {
+    -fx-background-color: -fx-primary-color;
+    -fx-padding: 20 10 10 10;
+    -fx-spacing: 10;
+}
+
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.menu-item:hover {
+    -fx-background-color: -fx-secondary-color;
+}
+
+.menu-item-selected {
+    -fx-background-color: white;
+    -fx-text-fill: -fx-primary-color;
+    -fx-font-weight: bold;
+}
+
+/* Logo and Header Styling */
+.app-logo {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.app-name {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.welcome-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-opacity: 0.8;
+}
+
+/* Content Area Styling */
+.content-area {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+    -fx-padding: 20;
+}
+
+.page-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-color;
+    -fx-padding: 0 0 15 0;
+}
+
+/* Form Elements */
+.form-container {
+    -fx-spacing: 15;
+    -fx-alignment: center-left;
+}
+
+.text-field, .password-field, .text-area, .combo-box {
+    -fx-background-color: -fx-light-grey;
+    -fx-background-radius: 5;
+    -fx-border-color: -fx-mid-grey;
+    -fx-border-radius: 5;
+    -fx-padding: 8;
+    -fx-pref-width: 250;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused, .combo-box:focused {
+    -fx-border-color: -fx-primary-color;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-dark-grey;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: -fx-secondary-color;
+}
+
+.button-secondary {
+    -fx-background-color: -fx-dark-grey;
+    -fx-text-fill: white;
+}
+
+.button-secondary:hover {
+    -fx-background-color: derive(-fx-dark-grey, -10%);
+}
+
+/* Dashboard Elements */
+.dashboard-stats {
+    -fx-background-color: -fx-light-grey;
+    -fx-background-radius: 5;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+}
+
+.stat-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-color;
+}
+
+.stat-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-dark-grey;
+}
+
+/* Quiz Elements */
+.quiz-question {
+    -fx-padding: 15;
+    -fx-background-color: -fx-light-grey;
+    -fx-background-radius: 5;
+    -fx-spacing: 10;
+}
+
+.quiz-option {
+    -fx-padding: 10;
+}
+
+/* Animations */
+.menu-item {
+    -fx-transition: -fx-background-color 0.3s;
+}
+
+.button {
+    -fx-transition: -fx-background-color 0.3s;
+}

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="AboutController"
+            stylesheets="styles.css"
+            prefWidth="800" prefHeight="600">
+    
+    <!-- Left Side Menu -->
+    <left>
+        <VBox styleClass="side-menu" prefWidth="200">
+            <!-- App Logo and Name -->
+            <VBox alignment="CENTER" spacing="5">
+                <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+                    <Image url="@logo.png"/>
+                </ImageView>
+                <Label styleClass="app-name" text="LinguaLearn" />
+                <Separator />
+            </VBox>
+            
+            <Padding>
+                <Insets top="20" />
+            </Padding>
+            
+            <!-- Menu Items -->
+            <Button styleClass="menu-item" text="Home" onAction="#navigateToHome" />
+            <Button styleClass="menu-item" text="Login" onAction="#navigateToLogin" />
+            <Button styleClass="menu-item" text="Signup" onAction="#navigateToSignup" />
+            <Button styleClass="menu-item, menu-item-selected" text="About" onAction="#navigateToAbout" />
+            
+            <VBox.vgrow>
+                <Priority fx:constant="ALWAYS" />
+            </VBox.vgrow>
+        </VBox>
+    </left>
+    
+    <!-- Main Content Area -->
+    <center>
+        <StackPane>
+            <ScrollPane fitToWidth="true" styleClass="content-area">
+                <VBox spacing="30" alignment="CENTER">
+                    <padding>
+                        <Insets top="40" right="40" bottom="40" left="40" />
+                    </padding>
+                    
+                    <Label styleClass="page-title" text="About LinguaLearn" />
+                    
+                    <ImageView fitWidth="150" fitHeight="150" preserveRatio="true">
+                        <Image url="@logo.png"/>
+                    </ImageView>
+                    
+                    <Label wrapText="true" textAlignment="CENTER" 
+                           text="LinguaLearn is a comprehensive language learning platform designed to make learning new languages fun, interactive, and effective. Our mission is to connect people around the world through language education." />
+                    
+                    <!-- Team Section -->
+                    <Label styleClass="page-title" text="Our Team" style="-fx-font-size: 20px;" />
+                    
+                    <HBox spacing="30" alignment="CENTER">
+                        <VBox alignment="CENTER" spacing="10" maxWidth="200">
+                            <ImageView fitWidth="100" fitHeight="100" preserveRatio="true">
+                                <Image url="@team1.png"/> <!-- Placeholder for team member photo -->
+                            </ImageView>
+                            <Label text="Team Member 1" style="-fx-font-weight: bold;" />
+                            <Label text="ID: 12345" />
+                            <Label text="Lead Developer" style="-fx-font-style: italic;" />
+                        </VBox>
+                        
+                        <VBox alignment="CENTER" spacing="10" maxWidth="200">
+                            <ImageView fitWidth="100" fitHeight="100" preserveRatio="true">
+                                <Image url="@team2.png"/> <!-- Placeholder for team member photo -->
+                            </ImageView>
+                            <Label text="Team Member 2" style="-fx-font-weight: bold;" />
+                            <Label text="ID: 67890" />
+                            <Label text="UI/UX Designer" style="-fx-font-style: italic;" />
+                        </VBox>
+                        
+                        <VBox alignment="CENTER" spacing="10" maxWidth="200">
+                            <ImageView fitWidth="100" fitHeight="100" preserveRatio="true">
+                                <Image url="@team3.png"/> <!-- Placeholder for team member photo -->
+                            </ImageView>
+                            <Label text="Team Member 3" style="-fx-font-weight: bold;" />
+                            <Label text="ID: 24680" />
+                            <Label text="Content Creator" style="-fx-font-style: italic;" />
+                        </VBox>
+                    </HBox>
+                    
+                    <!-- What We Do Section -->
+                    <Label styleClass="page-title" text="What We Do" style="-fx-font-size: 20px;" />
+                    
+                    <VBox spacing="15">
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
+                                <Image url="@feature1.png"/> <!-- Placeholder for feature icon -->
+                            </ImageView>
+                            <VBox>
+                                <Label text="Interactive Learning" style="-fx-font-weight: bold;" />
+                                <Label text="Our platform provides engaging, interactive lessons that make language learning enjoyable and effective." wrapText="true" />
+                            </VBox>
+                        </HBox>
+                        
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
+                                <Image url="@feature2.png"/> <!-- Placeholder for feature icon -->
+                            </ImageView>
+                            <VBox>
+                                <Label text="Expert Teachers" style="-fx-font-weight: bold;" />
+                                <Label text="Our language courses are designed by experienced teachers who bring real-world context to your learning." wrapText="true" />
+                            </VBox>
+                        </HBox>
+                        
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
+                                <Image url="@feature3.png"/> <!-- Placeholder for feature icon -->
+                            </ImageView>
+                            <VBox>
+                                <Label text="Progress Tracking" style="-fx-font-weight: bold;" />
+                                <Label text="Track your learning journey with detailed progress metrics and achievement badges." wrapText="true" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Contact Info -->
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="Contact us:" />
+                        <Hyperlink text="contact@lingualearn.example" />
+                    </HBox>
+                </VBox>
+            </ScrollPane>
+        </StackPane>
+    </center>
+</BorderPane>
