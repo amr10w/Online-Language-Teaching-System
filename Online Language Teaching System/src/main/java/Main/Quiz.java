@@ -1,0 +1,78 @@
+package Main;
+
+import fileManager.FileManager;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Quiz {
+
+    private String title;
+    private String quizId;
+    private ArrayList<Question> questions;
+    private FileManager fm;
+
+    public Quiz(String filePath)
+    {
+        fm = new FileManager(filePath);
+        questions=new ArrayList<>();
+        loadQuizData();
+    }
+
+    public void loadQuizData()
+    {
+
+        HashMap<String,String> quizData=fm.loadQuiz();
+        if (quizData != null) {
+            this.title=quizData.get("title");
+            this.quizId=quizData.get("id");
+            for(int i=0;i<4;i++) {
+                String qKey = "question" + (i + 1);
+                String qText = quizData.get(qKey);
+                String[] oTexts = new String[4];
+                for (int j = 0; j < 4; j++) {
+                    String oKey = "q" + (i + 1) + "_option" + (j + 1);
+                    oTexts[j] = quizData.get(oKey);
+                }
+
+                String cKey = "q" + (i + 1) + "_correct";
+                String cText = quizData.get(cKey);
+
+                questions.add(new Question(qText, oTexts, cText));
+            }
+
+
+        }
+        else
+        {
+            // Fallback if loading fails
+            this.title = "Default Title";
+            this.quizId = "Default ID";
+            for (int i = 1; i <= 4; i++) {
+                questions.add(new Question(
+                        "Default Question " + i,
+                        new String[]{"Option 1", "Option 2", "Option 3", "Option 4"},
+                        "Option 1"
+                ));
+            }
+        }
+    }
+    public String getTitle()
+    {
+        return title;
+    }
+    public String getQuizId()
+    {
+        return quizId;
+    }
+    public ArrayList<Question> getQuestions()
+    {
+        return questions;
+    }
+
+}
+
+
+
+
+

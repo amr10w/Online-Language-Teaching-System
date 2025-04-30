@@ -7,8 +7,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="SignupController"
-            stylesheets="styles.css"
+            fx:controller="controllers.SignupController"
+            stylesheets="@styles.css"
             prefWidth="800" prefHeight="600">
     
     <!-- Left Side Menu -->
@@ -23,14 +23,14 @@
                 <Separator />
             </VBox>
             
-            <Padding>
+<!--            <Padding>
                 <Insets top="20" />
-            </Padding>
+            </Padding>-->
             
             <!-- Menu Items -->
             <Button styleClass="menu-item" text="Home" onAction="#navigateToHome" />
             <Button styleClass="menu-item" text="Login" onAction="#navigateToLogin" />
-            <Button styleClass="menu-item, menu-item-selected" text="Signup" onAction="#navigateToSignup" />
+<!--            <Button styleClass="menu-item, menu-item-selected" text="Signup" onAction="#navigateToSignup" />-->
             <Button styleClass="menu-item" text="About" onAction="#navigateToAbout" />
             
             <VBox.vgrow>
@@ -86,11 +86,11 @@
                     <ComboBox fx:id="languageComboBox" promptText="Select language" 
                              GridPane.rowIndex="4" GridPane.columnIndex="1">
                         <items>
-                            <FXCollections fx:factory="observableArrayList">
+<!--                            <FXCollections fx:factory="observableArrayList">
                                 <String fx:value="English" />
                                 <String fx:value="German" />
                                 <String fx:value="French" />
-                            </FXCollections>
+                            </FXCollections>-->
                         </items>
                     </ComboBox>
                 </GridPane>

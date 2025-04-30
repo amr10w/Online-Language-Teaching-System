@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600" prefWidth="800" stylesheets="styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AboutController">
+<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AboutController">
     
     <!-- Left Side Menu -->
     <left>
@@ -32,9 +32,9 @@
                 <Separator />
             </VBox>
             
-            <Padding>
+<!--            <Padding>
                 <Insets top="20" />
-            </Padding>
+            </Padding>-->
             
             <!-- Menu Items -->
             <Button onAction="#navigateToHome" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Home" />

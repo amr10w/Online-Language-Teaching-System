@@ -7,8 +7,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="MainSceneController"
-            stylesheets="styles.css"
+            fx:controller="controllers.MainSceneController"
+            stylesheets="@styles.css"
             prefWidth="800" prefHeight="600">
     
     <!-- Left Side Menu -->
@@ -23,9 +23,9 @@
                 <Separator />
             </VBox>
             
-            <Padding>
+<!--            <Padding>
                 <Insets top="20" />
-            </Padding>
+            </Padding>-->
             
             <!-- Menu Items -->
             <Button styleClass="menu-item, menu-item-selected" text="Home" onAction="#navigateToHome" />

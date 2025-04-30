@@ -7,8 +7,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="LoginController"
-            stylesheets="styles.css"
+            fx:controller="controllers.LoginController"
+            stylesheets="@styles.css"
             prefWidth="800" prefHeight="600">
     
     <!-- Left Side Menu -->
@@ -23,13 +23,13 @@
                 <Separator />
             </VBox>
             
-            <Padding>
+<!--            <Padding>
                 <Insets top="20" />
-            </Padding>
+            </Padding>-->
             
             <!-- Menu Items -->
             <Button styleClass="menu-item" text="Home" onAction="#navigateToHome" />
-            <Button styleClass="menu-item, menu-item-selected" text="Login" onAction="#navigateToLogin" />
+<!--            <Button styleClass="menu-item, menu-item-selected" text="Login" onAction="#navigateToLogin" />     some control here-->
             <Button styleClass="menu-item" text="Signup" onAction="#navigateToSignup" />
             <Button styleClass="menu-item" text="About" onAction="#navigateToAbout" />
             

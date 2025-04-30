@@ -7,8 +7,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="TeacherSceneController"
-            stylesheets="styles.css"
+            fx:controller="controllers.TeacherSceneController"
+            stylesheets="@styles.css"
             prefWidth="800" prefHeight="600">
     
     <!-- Top Navigation Bar -->
@@ -56,7 +56,7 @@
                 </VBox>
                 
                 <VBox styleClass="dashboard-stats" alignment="CENTER" HBox.hgrow="ALWAYS">
-                    <Label styleClass="stat-value" fx:id="balanceValue" text="$250" />
+<!--                    <Label styleClass="stat-value" fx:id="balanceValue" text="$250" />   you need to make control here-->      
                     <Label styleClass="stat-label" text="Balance" />
                 </VBox>
             </HBox>

@@ -14,7 +14,7 @@ public class SceneManager {
     }
 
     public void switchToMainScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/login.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
     }
