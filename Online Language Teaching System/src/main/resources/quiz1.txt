@@ -1,0 +1,26 @@
+title:Sample Quiz
+id:Q001
+question1:What is 2+2?
+q1_option1:2
+q1_option2:3
+q1_option3:4
+q1_option4:5
+q1_correct:4
+question2:What is the capital of France?
+q2_option1:Paris
+q2_option2:London
+q2_option3:Berlin
+q2_option4:Madrid
+q2_correct:Paris
+question3:What is the largest planet?
+q3_option1:Earth
+q3_option2:Jupiter
+q3_option3:Mars
+q3_option4:Venus
+q3_correct:Jupiter
+question4:What is H2O?
+q4_option1:Salt
+q4_option2:Water
+q4_option3:Sugar
+q4_option4:Oil
+q4_correct:Water
