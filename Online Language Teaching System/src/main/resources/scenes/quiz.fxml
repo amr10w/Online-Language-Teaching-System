@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="QuizController"
+            stylesheets="styles.css"
+            prefWidth="800" prefHeight="600">
+    
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
+            <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
+                <Image url="@logo.png"/>
+            </ImageView>
+            <Label styleClass="app-name" text="LinguaLearn" />
+            
+            <HBox.hgrow>
+                <Priority fx:constant="ALWAYS" />
+            </HBox.hgrow>
+            
+            <Button text="Back to Dashboard" onAction="#backToDashboard" />
+        </HBox>
+    </top>
+    
+    <!-- Main Content Area -->
+    <center>
+        <StackPane>
+            <!-- Quiz Content -->
+            <ScrollPane fx:id="quizScrollPane" fitToWidth="true" styleClass="content-area">
+                <VBox spacing="25">
+                    <padding>
+                        <Insets top="30" right="40" bottom="30" left="40" />
+                    </padding>
+                    
+                    <Label fx:id="quizTitleLabel" styleClass="page-title" text="Basic Conversation Skills - Quiz" />
+                    
+                    <!-- Question 1 -->
+                    <VBox styleClass="quiz-question">
+                        <Label text="Question 1:" style="-fx-font-weight: bold;" />
+                        <Label text="How do you say 'Hello' formally in German?" wrapText="true" />
+                        
+                        <VBox spacing="10" styleClass="quiz-option">
+                            <RadioButton text="Hallo" toggleGroup="$question1Group" />
+                            <RadioButton text="Guten Tag" toggleGroup="$question1Group" />
+                            <RadioButton text="Tschüss" toggleGroup="$question1Group" />
+                            <RadioButton text="Wie geht's" toggleGroup="$question1Group" />
+                            
+                            <fx:define>
+                                <ToggleGroup fx:id="question1Group" />
+                            </fx:define>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Question 2 -->
+                    <VBox styleClass="quiz-question">
+                        <Label text="Question 2:" style="-fx-font-weight: bold;" />
+                        <Label text="What is the correct response to 'Wie geht es Ihnen?'" wrapText="true" />
+                        
+                        <VBox spacing="10" styleClass="quiz-option">
+                            <RadioButton text="Ja, bitte" toggleGroup="$question2Group" />
+                            <RadioButton text="Auf Wiedersehen" toggleGroup="$question2Group" />
+                            <RadioButton text="Mir geht es gut, danke" toggleGroup="$question2Group" />
+                            <RadioButton text="Ich heiße John" toggleGroup="$question2Group" />
+                            
+                            <fx:define>
+                                <ToggleGroup fx:id="question2Group" />
+                            </fx:define>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Question 3 -->
+                    <VBox styleClass="quiz-question">
+                        <Label text="Question 3:" style="-fx-font-weight: bold;" />
+                        <Label text="Which of the following is a formal way to address someone in German?" wrapText="true" />
+                        
+                        <VBox spacing="10" styleClass="quiz-option">
+                            <RadioButton text="du" toggleGroup="$question3Group" />
+                            <RadioButton text="dich" toggleGroup="$question3Group" />
+                            <RadioButton text="Sie" toggleGroup="$question3Group" />
+                            <RadioButton text="ihr" toggleGroup="$question3Group" />
+                            
+                            <fx:define>
+                                <ToggleGroup fx:id="question3Group" />
+                            </fx:define>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Question 4 -->
+                    <VBox styleClass="quiz-question">
+                        <Label text="Question 4:" style="-fx-font-weight: bold;" />
+                        <Label text="How do you say 'Thank you' in German?" wrapText="true" />
+                        
+                        <VBox spacing="10" styleClass="quiz-option">
+                            <RadioButton text="Bitte" toggleGroup="$question4Group" />
+                            <RadioButton text="Danke" toggleGroup="$question4Group" />
+                            <RadioButton text="Entschuldigung" toggleGroup="$question4Group" />
+                            <RadioButton text="Willkommen" toggleGroup="$question4Group" />
+                            
+                            <fx:define>
+                                <ToggleGroup fx:id="question4Group" />
+                            </fx:define>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Submit Button -->
+                    <HBox spacing="20" alignment="CENTER_RIGHT">
+                        <Button text="Back to Dashboard" styleClass="button-secondary" onAction="#backToDashboard" />
+                        <Button text="Finish Quiz" onAction="#finishQuiz" />
+                    </HBox>
+                </VBox>
+            </ScrollPane>
+            
+            <!-- Results Overlay - Initially Hidden -->
+            <VBox fx:id="resultsOverlay" alignment="CENTER" spacing="20" visible="false"
+                  style="-fx-background-color: rgba(255,255,255,0.95);">
+                <VBox styleClass="content-area" alignment="CENTER" spacing="20" maxWidth="500">
+                    <Label text="Quiz Results" styleClass="page-title" />
+                    
+                    <ImageView fitWidth="100" fitHeight="100" preserveRatio="true">
+                        <Image url="@success.png"/> <!-- Placeholder for result image -->
+                    </ImageView>
+                    
+                    <Label fx:id="scoreLabel" text="Your Score: 4/4" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+                    <Label fx:id="feedbackLabel" text="Excellent! You've mastered this lesson." wrapText="true" textAlignment="CENTER" />
+                    
+                    <HBox spacing="20" alignment="CENTER">
+                        <Button text="Back to Dashboard" styleClass="button-secondary" onAction="#backToDashboard" />
+                        <Button text="Next Lesson" onAction="#goToNextLesson" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

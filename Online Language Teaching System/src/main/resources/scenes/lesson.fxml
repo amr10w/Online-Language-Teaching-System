@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600" prefWidth="800" stylesheets="styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LessonController">
+    
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
+            <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+                <Image url="@logo.png" />
+            </ImageView>
+            <Label styleClass="app-name" text="LinguaLearn" />
+            
+            <Button onAction="#backToDashboard" text="Back to Dashboard" />
+            
+            <HBox.hgrow>
+                <Priority fx:constant="ALWAYS" />
+            </HBox.hgrow>
+        </HBox>
+    </top>
+    
+    <!-- Main Content Area -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="content-area" stylesheets="@styles.css">
+            <VBox spacing="20">
+                <padding>
+                    <Insets bottom="30" left="40" right="40" top="30" />
+                </padding>
+                
+                <Label fx:id="lessonTitleLabel" styleClass="page-title" text="Basic Conversation Skills" />
+                
+                <!-- Lesson Content -->
+                <VBox spacing="20" VBox.vgrow="ALWAYS">
+                    <Label fx:id="lessonContentLabel" text="This is the content of the lesson. It will contain text, examples, and explanations related to the topic of basic conversation skills in the selected language. The content will be comprehensive and designed to help students understand and practice the concepts." wrapText="true" />
+                    
+                    <!-- Example Content - would be dynamically populated -->
+                    <TitledPane expanded="false" stylesheets="@styles.css" text="Example Dialogue">
+                        <VBox spacing="10">
+                            <Label text="Person A: Guten Tag! Wie geht es Ihnen?" />
+                            <Label text="Person B: Mir geht es gut, danke. Und Ihnen?" />
+                            <Label text="Person A: Auch gut, danke." />
+                        </VBox>
+                    </TitledPane>
+                    
+                    <TitledPane expanded="false" text="Vocabulary">
+                        <VBox spacing="10">
+                            <Label text="Guten Tag - Good day/Hello" />
+                            <Label text="Wie geht es Ihnen? - How are you? (formal)" />
+                            <Label text="Mir geht es gut - I am well" />
+                            <Label text="danke - thank you" />
+                            <Label text="Und Ihnen? - And you? (formal)" />
+                            <Label text="Auch gut - Also good" />
+                        </VBox>
+                    </TitledPane>
+                </VBox>
+                
+                <!-- Navigation Buttons -->
+                <HBox alignment="CENTER_RIGHT" spacing="20">
+                    <Button onAction="#backToDashboard" styleClass="button-secondary" text="Back to Dashboard" />
+                    <Button onAction="#goToQuiz" text="Go to Quiz" />
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
