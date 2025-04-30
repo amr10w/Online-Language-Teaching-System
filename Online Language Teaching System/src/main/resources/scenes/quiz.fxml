@@ -45,14 +45,14 @@
                         <Label text="How do you say 'Hello' formally in German?" wrapText="true" />
                         
                         <VBox spacing="10" styleClass="quiz-option">
+                            <fx:define>
+                                <ToggleGroup fx:id="question1Group" />
+                            </fx:define>
                             <RadioButton text="Hallo" toggleGroup="$question1Group" />
                             <RadioButton text="Guten Tag" toggleGroup="$question1Group" />
                             <RadioButton text="Tschüss" toggleGroup="$question1Group" />
                             <RadioButton text="Wie geht's" toggleGroup="$question1Group" />
                             
-                            <fx:define>
-                                <ToggleGroup fx:id="question1Group" />
-                            </fx:define>
                         </VBox>
                     </VBox>
                     
@@ -62,14 +62,14 @@
                         <Label text="What is the correct response to 'Wie geht es Ihnen?'" wrapText="true" />
                         
                         <VBox spacing="10" styleClass="quiz-option">
+                            <fx:define>
+                                <ToggleGroup fx:id="question2Group" />
+                            </fx:define>
                             <RadioButton text="Ja, bitte" toggleGroup="$question2Group" />
                             <RadioButton text="Auf Wiedersehen" toggleGroup="$question2Group" />
                             <RadioButton text="Mir geht es gut, danke" toggleGroup="$question2Group" />
                             <RadioButton text="Ich heiße John" toggleGroup="$question2Group" />
                             
-                            <fx:define>
-                                <ToggleGroup fx:id="question2Group" />
-                            </fx:define>
                         </VBox>
                     </VBox>
                     
@@ -79,14 +79,14 @@
                         <Label text="Which of the following is a formal way to address someone in German?" wrapText="true" />
                         
                         <VBox spacing="10" styleClass="quiz-option">
+                            <fx:define>
+                                <ToggleGroup fx:id="question3Group" />
+                            </fx:define>
                             <RadioButton text="du" toggleGroup="$question3Group" />
                             <RadioButton text="dich" toggleGroup="$question3Group" />
                             <RadioButton text="Sie" toggleGroup="$question3Group" />
                             <RadioButton text="ihr" toggleGroup="$question3Group" />
                             
-                            <fx:define>
-                                <ToggleGroup fx:id="question3Group" />
-                            </fx:define>
                         </VBox>
                     </VBox>
                     
@@ -96,14 +96,14 @@
                         <Label text="How do you say 'Thank you' in German?" wrapText="true" />
                         
                         <VBox spacing="10" styleClass="quiz-option">
+                            <fx:define>
+                                <ToggleGroup fx:id="question4Group" />
+                            </fx:define>
                             <RadioButton text="Bitte" toggleGroup="$question4Group" />
                             <RadioButton text="Danke" toggleGroup="$question4Group" />
                             <RadioButton text="Entschuldigung" toggleGroup="$question4Group" />
                             <RadioButton text="Willkommen" toggleGroup="$question4Group" />
                             
-                            <fx:define>
-                                <ToggleGroup fx:id="question4Group" />
-                            </fx:define>
                         </VBox>
                     </VBox>
                     

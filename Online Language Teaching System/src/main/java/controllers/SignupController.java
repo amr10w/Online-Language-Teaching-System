@@ -7,6 +7,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class SignupController {
     
@@ -28,6 +30,7 @@ public class SignupController {
     @FXML
     private ComboBox<String> languageComboBox;
     
+    
     @FXML
     private void signUp() {
         // Signup logic
@@ -46,5 +49,11 @@ public class SignupController {
     @FXML
     private void navigateToAbout() {
         // Navigation logic
+    }
+    
+    @FXML
+    public void initialize() {
+        ObservableList<String> languages = FXCollections.observableArrayList("English", "German", "French");
+        languageComboBox.setItems(languages);
     }
 }

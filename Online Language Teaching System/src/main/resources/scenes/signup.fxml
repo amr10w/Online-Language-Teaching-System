@@ -23,14 +23,17 @@
                 <Separator />
             </VBox>
             
-<!--            <Padding>
-                <Insets top="20" />
-            </Padding>-->
+            <VBox>
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+            </VBox>
+
             
             <!-- Menu Items -->
             <Button styleClass="menu-item" text="Home" onAction="#navigateToHome" />
             <Button styleClass="menu-item" text="Login" onAction="#navigateToLogin" />
-<!--            <Button styleClass="menu-item, menu-item-selected" text="Signup" onAction="#navigateToSignup" />-->
+<!--            <Button styleClass="menu-item, menu-item-selected" text="Signup" onAction="#navigateToSignup" />     some control here-->
             <Button styleClass="menu-item" text="About" onAction="#navigateToAbout" />
             
             <VBox.vgrow>
@@ -85,13 +88,7 @@
                     <Label text="Language:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
                     <ComboBox fx:id="languageComboBox" promptText="Select language" 
                              GridPane.rowIndex="4" GridPane.columnIndex="1">
-                        <items>
-<!--                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="English" />
-                                <String fx:value="German" />
-                                <String fx:value="French" />
-                            </FXCollections>-->
-                        </items>
+
                     </ComboBox>
                 </GridPane>
                 
