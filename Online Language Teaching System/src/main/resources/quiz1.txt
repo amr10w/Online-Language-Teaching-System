@@ -1,5 +1,6 @@
 title:Sample Quiz
 id:Q001
+level:Beginner
 question1:What is 2+2?
 q1_option1:2
 q1_option2:3

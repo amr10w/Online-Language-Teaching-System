@@ -10,12 +10,14 @@ public class Quiz implements Comparable<Quiz>{
     private String title;
     private String quizId;
     private ArrayList<Question> questions;
+    private ProficiencyLevel proficiencyLevel;
     private FileManager fm;
 
     public Quiz(String filePath)
     {
         fm = new FileManager(filePath);
         questions=new ArrayList<>();
+        proficiencyLevel=new ProficiencyLevel();
         loadQuizData();
     }
 
@@ -26,6 +28,7 @@ public class Quiz implements Comparable<Quiz>{
         if (quizData != null) {
             this.title=quizData.get("title");
             this.quizId=quizData.get("id");
+            this.proficiencyLevel.setLevel(quizData.get("level"));
             for(int i=0;i<4;i++) {
                 String qKey = "question" + (i + 1);
                 String qText = quizData.get(qKey);

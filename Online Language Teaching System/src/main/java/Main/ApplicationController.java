@@ -9,8 +9,11 @@ public class ApplicationController extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.setTitle("Online Language Teaching System");
         try {
-            stage.setTitle("Online Language Teaching System");
+
+            Image icon = new Image(getClass().getResourceAsStream("/images/lovebird.png"));
+            stage.getIcons().add(icon);
         }
         catch (NullPointerException e) {
             System.err.println("Error: Could not load image . Verify the file exists in src/main/resources/images/");
@@ -19,8 +22,8 @@ public class ApplicationController extends Application {
             System.err.println("Error: Invalid image format or corrupted file.");
             System.out.println(e.getMessage());
         }
-        Image icon = new Image(getClass().getResourceAsStream("/images/lovebird.png"));
-        stage.getIcons().add(icon);
+
+
         SceneManager sceneManager = new SceneManager(stage);
         sceneManager.switchToMainScene();
 

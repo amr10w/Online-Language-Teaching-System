@@ -2,14 +2,17 @@ package Main;
 
 import fileManager.FileManager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Lesson implements Comparable<Lesson> {
     private String title;
     private String lessonId;
-    private static int numberOfLessons;
+    private static int numberOfLessons=1020;
     private String content;
-    private FileManager fm;
+    private ProficiencyLevel proficiencyLevel;
+    private ArrayList<String> prerequisiteLessonIds = new ArrayList<>();
+    private final FileManager fm;
 
     public Lesson(String filePath)
     {
@@ -17,9 +20,11 @@ public class Lesson implements Comparable<Lesson> {
         loadFromFile();
     }
 
-    public Lesson(String title, String content, String filePath) {
+    public Lesson(String title, String content,String level, ArrayList<String> prerequisiteLessonIds,String filePath) {
         this.title = title;
         this.content = content;
+        this.proficiencyLevel = new ProficiencyLevel(level);
+        this.prerequisiteLessonIds = new ArrayList<>(prerequisiteLessonIds);
         this.lessonId = String.valueOf(numberOfLessons++);
         this.fm = new FileManager(filePath);
         saveToFile();
@@ -32,10 +37,26 @@ public class Lesson implements Comparable<Lesson> {
             this.title = lessonData.get("title" );
             this.lessonId = lessonData.get("lessonId");
             this.content = lessonData.get("content");
+            String prerequisites = lessonData.get("prerequisites");
+            if(prerequisites.isEmpty())
+            {
+                prerequisites="no prerequisites";
+            }else
+            {
+                String [] prerequisiteIds=prerequisites.split(",");
+                for(String e:prerequisiteIds)
+                {
+                    this.prerequisiteLessonIds.add(e);
+                }
+            }
+
+            this.proficiencyLevel=new ProficiencyLevel(lessonData.get("level"));
         } else {
             this.title = "Default Title";
             this.lessonId = "Default ID";
             this.content = "Default Content";
+            this.proficiencyLevel=new ProficiencyLevel("Beginner");
+
         }
     }
 
@@ -45,6 +66,25 @@ public class Lesson implements Comparable<Lesson> {
         lessonData.put("title",title);
         lessonData.put("lessonId",lessonId);
         lessonData.put("content",content);
+        StringBuilder ids= new StringBuilder();
+        if (prerequisiteLessonIds.isEmpty()) {
+            ids.append("no prerequisites");
+        }
+        else if(prerequisiteLessonIds.get(0).equals("no prerequisites"))
+        {
+            ids.append("no prerequisites");
+        }
+        else
+        {
+            for(String e:prerequisiteLessonIds)
+            {
+                ids.append(e);
+                ids.append(",");
+
+            }
+        }
+        lessonData.put("prerequisite", ids.toString() );
+        lessonData.put("level",proficiencyLevel.getLevel());
         fm.saveLesson(lessonData);
     }
 
@@ -61,6 +101,10 @@ public class Lesson implements Comparable<Lesson> {
 
     public String getContent() {
         return content;
+    }
+
+    public ArrayList<String> getPrerequisiteLessonIds() {
+        return prerequisiteLessonIds;
     }
 
     @Override
