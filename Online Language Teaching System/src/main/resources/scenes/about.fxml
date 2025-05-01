@@ -73,7 +73,7 @@
                             <ImageView fitHeight="100" fitWidth="100" preserveRatio="true">
                                 <Image url="@../images/Hamza_Icon.png" /> <!-- Placeholder for team member photo -->
                             </ImageView>
-                            <Label style="-fx-font-weight: bold;" text="Hamza Eldefrawy" />
+                            <Label style="-fx-font-weight: bold;" text="Hamza Eldafrawy" />
                             <Label text="ID: 2200496" />
                             <Label style="-fx-font-style: italic;" text="Leader" />
                         </VBox>
