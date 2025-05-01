@@ -39,7 +39,7 @@ public class SceneManager {
 }
 
     public void switchToMainScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/teacherScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/quiz.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
     }
