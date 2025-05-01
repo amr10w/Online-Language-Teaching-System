@@ -40,16 +40,3 @@ public abstract class Language
         quizzes.add(quiz);
     }
 }
-/*
-abstract class Language {
-  -lessons: ArrayList<Lesson>
-  -quizzes: ArrayList<Quiz>
-  +getLanguageName(): String {abstract}
-  +getLessons(): ArrayList<Lesson>
-  +getQuizzes(): ArrayList<Quiz>
-  +setLessons(lessons: ArrayList<Lesson>): void
-  +setQuizzes(quizzes: ArrayList<Quiz>): void
-  +addLesson(lesson: Lesson): void
-  +addQuiz(quiz: Quiz): void
-}
- */
