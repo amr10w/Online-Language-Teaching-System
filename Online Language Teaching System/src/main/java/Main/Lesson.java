@@ -4,7 +4,7 @@ import fileManager.FileManager;
 
 import java.util.HashMap;
 
-public class Lesson {
+public class Lesson implements Comparable<Lesson> {
     private String title;
     private String lessonId;
     private static int numberOfLessons;
@@ -61,6 +61,11 @@ public class Lesson {
 
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public int compareTo(Lesson other) {
+        return this.title.compareTo(other.title);
     }
 
 }

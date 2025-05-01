@@ -5,7 +5,7 @@ import fileManager.FileManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Quiz {
+public class Quiz implements Comparable<Quiz>{
 
     private String title;
     private String quizId;
@@ -68,6 +68,11 @@ public class Quiz {
     public ArrayList<Question> getQuestions()
     {
         return questions;
+    }
+
+    @Override
+    public int compareTo(Quiz other) {
+        return this.title.compareTo(other.title);
     }
 
 }
