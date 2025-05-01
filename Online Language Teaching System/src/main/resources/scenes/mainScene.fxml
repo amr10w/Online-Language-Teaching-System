@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.MainSceneController"
-            stylesheets="@styles.css"
-            prefWidth="800" prefHeight="600">
+<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainSceneController">
     
     <!-- Left Side Menu -->
     <left>
-        <VBox styleClass="side-menu" prefWidth="200">
+        <VBox prefWidth="200" styleClass="side-menu">
             <!-- App Logo and Name -->
             <VBox alignment="CENTER" spacing="5">
-                <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
-                    <Image url="@logo.png"/> <!-- Placeholder for actual logo -->
+                <ImageView fitHeight="80" fitWidth="80" preserveRatio="true">
+                    <Image url="@logo.png" /> <!-- Placeholder for actual logo -->
                 </ImageView>
                 <Label styleClass="app-name" text="LinguaLearn" />
                 <Separator />
@@ -28,10 +31,10 @@
             </Padding>-->
             
             <!-- Menu Items -->
-            <Button styleClass="menu-item, menu-item-selected" text="Home" onAction="#navigateToHome" />
-            <Button styleClass="menu-item" text="Login" onAction="#navigateToLogin" />
-            <Button styleClass="menu-item" text="Signup" onAction="#navigateToSignup" />
-            <Button styleClass="menu-item" text="About" onAction="#navigateToAbout" />
+            <Button onAction="#navigateToHome" styleClass="menu-item, menu-item-selected" text="Home" />
+            <Button onAction="#navigateToLogin" styleClass="menu-item" text="Login" />
+            <Button onAction="#navigateToSignup" styleClass="menu-item" text="Signup" />
+            <Button onAction="#navigateToAbout" styleClass="menu-item" text="About" />
             
             <VBox.vgrow>
                 <Priority fx:constant="ALWAYS" />
@@ -44,21 +47,20 @@
         <StackPane>
             <VBox alignment="CENTER" spacing="20" styleClass="content-area">
                 <padding>
-                    <Insets top="40" right="40" bottom="40" left="40" />
+                    <Insets bottom="40" left="40" right="40" top="40" />
                 </padding>
                 
                 <Label styleClass="page-title" text="Welcome to LinguaLearn!" />
                 
-                <ImageView fitWidth="200" fitHeight="200" preserveRatio="true">
-                    <Image url="@welcome.png"/> <!-- Placeholder for welcome image -->
+                <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                    <Image url="@../images/lovebird.png" /> <!-- Placeholder for welcome image -->
                 </ImageView>
                 
-                <Label wrapText="true" textAlignment="CENTER" 
-                       text="Start your language learning journey today! Learn languages in a fun and interactive way with our comprehensive lessons and quizzes." />
+                <Label text="Start your language learning journey today! Learn languages in a fun and interactive way with our comprehensive lessons and quizzes." textAlignment="CENTER" wrapText="true" />
                 
-                <HBox spacing="10" alignment="CENTER">
-                    <Button text="Get Started" onAction="#navigateToSignup" />
-                    <Button text="Learn More" styleClass="button-secondary" onAction="#navigateToAbout" />
+                <HBox alignment="CENTER" spacing="10">
+                    <Button onAction="#navigateToSignup" text="Get Started" />
+                    <Button onAction="#navigateToAbout" styleClass="button-secondary" text="Learn More" />
                 </HBox>
             </VBox>
         </StackPane>
