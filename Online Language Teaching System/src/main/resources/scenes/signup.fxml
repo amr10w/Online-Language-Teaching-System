@@ -31,7 +31,7 @@
                 <ImageView fitHeight="80" fitWidth="80" preserveRatio="true">
                     <Image url="@../images/lovebird.png" />
                 </ImageView>
-                <Label styleClass="app-name" text="LinguaLearn" />
+                <Label styleClass="app-name" style="-fx-text-fill: #000000;" text="LinguaLearn" />
                 <Separator />
             </VBox>
             

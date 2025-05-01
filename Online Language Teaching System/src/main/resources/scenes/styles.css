@@ -50,13 +50,15 @@
                     .app-name {
                         -fx-font-size: 18px;
                         -fx-font-weight: bold;
-                        -fx-text-fill: white;
+                        -fx-fill: #000000;
+                        -fx-wrap-text: false;
                     }
 
                     .welcome-text {
                         -fx-font-size: 16px;
                         -fx-text-fill: white;
                         -fx-opacity: 0.8;
+                        -fx-wrap-text: false;
                     }
 
                     /* Content Area Styling */

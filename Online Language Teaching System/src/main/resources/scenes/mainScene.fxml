@@ -20,9 +20,9 @@
             <!-- App Logo and Name -->
             <VBox alignment="CENTER" spacing="5">
                 <ImageView fitHeight="80" fitWidth="80" preserveRatio="true">
-                    <Image url="@logo.png" /> <!-- Placeholder for actual logo -->
+                    <Image url="@../images/lovebird.png" /> <!-- Placeholder for actual logo -->
                 </ImageView>
-                <Label styleClass="app-name" text="LinguaLearn" />
+                <Label styleClass="app-name" style="-fx-text-fill: #000000;" text="LinguaLearn" />
                 <Separator />
             </VBox>
             
@@ -31,7 +31,7 @@
             </Padding>-->
             
             <!-- Menu Items -->
-            <Button onAction="#navigateToHome" styleClass="menu-item, menu-item-selected" text="Home" />
+            <!--<Button onAction="#navigateToHome" styleClass="menu-item, menu-item-selected" text="Home" />-->
             <Button onAction="#navigateToLogin" styleClass="menu-item" text="Login" />
             <Button onAction="#navigateToSignup" styleClass="menu-item" text="Signup" />
             <Button onAction="#navigateToAbout" styleClass="menu-item" text="About" />
@@ -60,7 +60,7 @@
                 
                 <HBox alignment="CENTER" spacing="10">
                     <Button onAction="#navigateToSignup" text="Get Started" />
-                    <Button onAction="#navigateToAbout" styleClass="button-secondary" text="Learn More" />
+                    <!--<Button onAction="#navigateToAbout" styleClass="button-secondary" text="Learn More" />-->
                 </HBox>
             </VBox>
         </StackPane>

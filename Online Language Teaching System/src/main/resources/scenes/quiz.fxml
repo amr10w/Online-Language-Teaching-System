@@ -15,9 +15,9 @@
     <top>
         <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
             <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
-                <Image url="@logo.png"/>
+                <Image url="@../images/lovebird.png"/>
             </ImageView>
-            <Label styleClass="app-name" text="LinguaLearn" />
+            <Label styleClass="app-name" style="-fx-text-fill: #000000;" text="LinguaLearn" />
             
             <HBox.hgrow>
                 <Priority fx:constant="ALWAYS" />
@@ -109,7 +109,7 @@
                     
                     <!-- Submit Button -->
                     <HBox spacing="20" alignment="CENTER_RIGHT">
-                        <Button text="Back to Dashboard" styleClass="button-secondary" onAction="#backToDashboard" />
+                        <!--<Button text="Back to Dashboard" styleClass="button-secondary" onAction="#backToDashboard" />-->
                         <Button text="Finish Quiz" onAction="#finishQuiz" />
                     </HBox>
                 </VBox>

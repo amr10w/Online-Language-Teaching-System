@@ -20,9 +20,9 @@
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
             <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
-                <Image url="@logo.png" />
+                <Image url="@../images/lovebird.png" />
             </ImageView>
-            <Label styleClass="app-name" text="LinguaLearn" />
+            <Label styleClass="app-name" style="-fx-text-fill: #000000;" text="LinguaLearn" />
             
             <Button onAction="#backToDashboard" text="Back to Dashboard" />
             

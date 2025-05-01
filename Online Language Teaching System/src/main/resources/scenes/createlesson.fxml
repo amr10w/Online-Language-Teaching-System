@@ -21,9 +21,9 @@
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
             <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
-                <Image url="@logo.png" />
+                <Image url="@../images/lovebird.png" />
             </ImageView>
-            <Label styleClass="app-name" stylesheets="@styles.css" text="LinguaLearn" />
+            <Label styleClass="app-name" stylesheets="@styles.css" style="-fx-text-fill: #000000;" text="LinguaLearn" />
             
             <Button onAction="#backToDashboard" text="Back to Dashboard" />
             
@@ -64,7 +64,7 @@
             <!-- Action Buttons -->
             <HBox alignment="CENTER_RIGHT" spacing="20">
                 <Button onAction="#cancel" styleClass="button-secondary" text="Cancel" />
-                <Button onAction="#saveLesson" text="Save" />
+<!--                <Button onAction="#saveLesson" text="Save" />-->
                 <Button onAction="#createQuizForLesson" stylesheets="@styles.css" text="Create Quiz for Lesson" />
             </HBox>
         </VBox>
