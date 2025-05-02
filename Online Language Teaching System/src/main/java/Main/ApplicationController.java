@@ -28,7 +28,8 @@ public class ApplicationController extends Application {
 
         SceneManager sceneManager = new SceneManager(stage);
 
-        //sceneManager.switchToMainScene(7);
+        
+        sceneManager.switchToMainScene();
 
 
 
