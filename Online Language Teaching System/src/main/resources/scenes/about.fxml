@@ -25,7 +25,7 @@
                 <ImageView fitHeight="80" fitWidth="80" preserveRatio="true">
                     <Image url="@../images/lovebird.png" />
                 </ImageView>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="146.0" styleClass="app-name" style="-fx-text-fill: #000000;" text="LinguaLearn" textAlignment="RIGHT" textFill="WHITE">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="146.0" style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Arial Nova" size="53.0" />
                </font></Label>
@@ -84,11 +84,11 @@
                             </ImageView>
                             <Label style="-fx-font-weight: bold;" text="Amr Wahidi" />
                             <Label text="ID: 2200429" />
-                            <Label style="-fx-font-style: italic;" text="UI/UX Designer" />
+                            <Label style="-fx-font-style: italic;" text="Content Creator" />
                         </VBox>
                         <VBox alignment="CENTER" maxWidth="200" spacing="10">
                             <ImageView fitHeight="100" fitWidth="100" preserveRatio="true">
-                                <Image url="@../images/Mostafa_Icon.jpg" /> <!-- Placeholder for team member photo -->
+                                <Image url="@../images/mostafa_icon1.png" /> <!-- Placeholder for team member photo -->
                             </ImageView>
                             <Label style="-fx-font-weight: bold;" text="Mostafa Abdelsattar" />
                             <Label text="ID: 2201092" />
@@ -99,7 +99,7 @@
                         
                         <VBox alignment="CENTER" maxWidth="200" spacing="10">
                             <ImageView fitHeight="100" fitWidth="100" preserveRatio="true">
-                                <Image url="@../images/Person_Icon.jpg" /> <!-- Placeholder for team member photo -->
+                                <Image url="@../images/person_icon.png" /> <!-- Placeholder for team member photo -->
                             </ImageView>
                             <Label style="-fx-font-weight: bold;" text="Ahmed Ezzat" />
                             <Label text="ID: 2201472" />
@@ -108,7 +108,7 @@
                         
                         <VBox alignment="CENTER" maxWidth="200" spacing="10">
                             <ImageView fitHeight="100" fitWidth="100" preserveRatio="true">
-                                <Image url="@../images/Person_Icon.jpg" /> <!-- Placeholder for team member photo -->
+                                <Image url="@../images/person_icon.png" /> <!-- Placeholder for team member photo -->
                             </ImageView>
                             <Label style="-fx-font-weight: bold;" text="Anas Elsaba" />
                             <Label text="ID: 2200325" />

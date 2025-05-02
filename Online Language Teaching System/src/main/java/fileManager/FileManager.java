@@ -85,11 +85,12 @@ public class FileManager {
 
     public HashMap<String, String> loadQuiz() {
         HashMap<String, String> quizData = new HashMap<>();
+
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
-                    String[] parts = line.split(":", 2); // Split on first colon
+                    String[] parts = line.split(":",2); // Split on first colon
                     if (parts.length == 2) {
                         quizData.put(parts[0].trim(), parts[1].trim());
                     }
