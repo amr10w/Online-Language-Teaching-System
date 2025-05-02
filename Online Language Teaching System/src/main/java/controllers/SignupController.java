@@ -9,6 +9,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class SignupController {
     
@@ -31,24 +36,39 @@ public class SignupController {
     private ComboBox<String> languageComboBox;
     
     
+
     @FXML
-    private void signUp() {
-        // Signup logic
-    }
+    private Button navigateToHome;
     
     @FXML
-    private void navigateToHome() {
-        // Navigation logic
+    private void navigateToHome() throws Exception {
+        Stage stage = (Stage) navigateToHome.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/scenes/mainScene.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();         // Navigation logic
     }
+    @FXML
+    private Button navigateToLogin;
     
     @FXML
-    private void navigateToLogin() {
-        // Navigation logic
+    private void navigateToLogin() throws Exception {
+        Stage stage = (Stage) navigateToLogin.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/scenes/login.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();       // Navigation logic
     }
     
+
+    
     @FXML
-    private void navigateToAbout() {
-        // Navigation logic
+    private Button navigateToAbout;
+    
+    @FXML
+    private void navigateToAbout() throws Exception  {
+        Stage stage = (Stage) navigateToAbout.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/scenes/about.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();
     }
     
     @FXML

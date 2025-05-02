@@ -37,10 +37,10 @@
             </Padding>-->
             
             <!-- Menu Items -->
-            <Button onAction="#navigateToHome" styleClass="menu-item" text="Home" />
+            <Button fx:id="navigateToHome" onAction="#navigateToHome" styleClass="menu-item" text="Home" />
 <!--            <Button styleClass="menu-item, menu-item-selected" text="Login" onAction="#navigateToLogin" />     some control here-->
-            <Button onAction="#navigateToSignup" styleClass="menu-item" text="Signup" />
-            <Button onAction="#navigateToAbout" styleClass="menu-item" text="About" />
+            <Button fx:id="navigateToSignup" onAction="#navigateToSignup" styleClass="menu-item" text="Signup" />
+            <Button fx:id="navigateToAbout" onAction="#navigateToAbout" styleClass="menu-item" text="About" />
             
             <VBox.vgrow>
                 <Priority fx:constant="ALWAYS" />
@@ -77,11 +77,11 @@
                </rowConstraints>
                 </GridPane>
                 
-                <Button onAction="#login" text="Login" />
+                <!--<Button onAction="#login" text="Login" />-->
                 
                 <HBox alignment="CENTER" spacing="5">
                     <Label text="Don't have an account?" />
-                    <Hyperlink onAction="#navigateToSignup" text="Sign Up" />
+                    <Hyperlink  onAction="#navigateToSignup" text="Sign Up" />
                 </HBox>
             </VBox>
         </StackPane>

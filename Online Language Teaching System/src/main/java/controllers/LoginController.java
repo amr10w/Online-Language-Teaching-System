@@ -1,11 +1,16 @@
 package controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class LoginController {
     
@@ -16,22 +21,35 @@ public class LoginController {
     private PasswordField passwordField;
     
     @FXML
-    private void login() {
-        // Login logic
+    private Button navigateToHome;
+    
+    @FXML
+    private void navigateToHome() throws Exception {
+        Stage stage = (Stage) navigateToSignup.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/scenes/mainScene.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();         // Navigation logic
     }
     
     @FXML
-    private void navigateToHome() {
-        // Navigation logic
+    private Button navigateToSignup;
+    
+    @FXML
+    private void navigateToSignup() throws Exception {
+        Stage stage = (Stage) navigateToSignup.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/scenes/signup.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();     // Navigation logic
     }
     
     @FXML
-    private void navigateToSignup() {
-        // Navigation logic
-    }
+    private Button navigateToAbout;
     
     @FXML
-    private void navigateToAbout() {
-        // Navigation logic
+    private void navigateToAbout() throws Exception  {
+        Stage stage = (Stage) navigateToAbout.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/scenes/about.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

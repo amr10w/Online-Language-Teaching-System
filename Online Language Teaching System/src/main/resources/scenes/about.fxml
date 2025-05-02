@@ -37,9 +37,9 @@
             </Padding>-->
             
             <!-- Menu Items -->
-            <Button onAction="#navigateToHome" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Home" />
-            <Button onAction="#navigateToLogin" prefHeight="41.0" prefWidth="195.0" styleClass="menu-item" text="Login" />
-            <Button onAction="#navigateToSignup" prefHeight="41.0" prefWidth="182.0" styleClass="menu-item" text="Signup" />
+            <Button fx:id="navigateToHome" onAction="#navigateToHome" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Home" />
+            <Button fx:id="navigateToLogin" onAction="#navigateToLogin" prefHeight="41.0" prefWidth="195.0" styleClass="menu-item" text="Login" />
+            <Button fx:id="navigateToSignup" onAction="#navigateToSignup" prefHeight="41.0" prefWidth="182.0" styleClass="menu-item" text="Signup" />
             <!--<Button onAction="#navigateToAbout" prefHeight="41.0" prefWidth="186.0" styleClass="menu-item, menu-item-selected" text="About" />-->
             
             <VBox.vgrow>
