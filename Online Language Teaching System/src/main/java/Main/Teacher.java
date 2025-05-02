@@ -4,6 +4,10 @@ public class Teacher extends User{
     private double balance;
     private int numberOfCreatedLessons=0;
 
+    Teacher(String name,String email,String password,String ID){
+        super(name,email,password,ID);
+
+    }
 
 
     public void createLesson(){

@@ -21,12 +21,14 @@ public class Quiz implements Comparable<Quiz>{
         loadQuizData();
     }
 
+
     public void loadQuizData()
     {
 
-        HashMap<String,String> quizData=fm.loadQuiz();
+        HashMap<String,String> quizData = fm.loadQuiz();
         if (quizData != null) {
             this.title=quizData.get("title");
+            System.out.println(quizData.get("title"));
             this.quizId=quizData.get("id");
             this.proficiencyLevel.setLevel(quizData.get("level"));
             for(int i=0;i<4;i++) {

@@ -23,4 +23,11 @@ public class LessonController {
     private void backToDashboard() {
         // Dashboard navigation logic
     }
+
+
+    public void setLesson()
+    {
+
+    }
+
 }

@@ -5,6 +5,7 @@ public abstract class   User {
     private String password;
     private String ID;
 
+
     public User(String username, String email, String password, String ID) {
         this.username = username;
         this.email = email;
@@ -12,9 +13,6 @@ public abstract class   User {
         this.ID = ID;
     }
 
-    public User(){
-
-    }
     public String getID() {
         return ID;
     }

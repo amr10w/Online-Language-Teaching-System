@@ -1,8 +1,7 @@
 package Main;
 import java.util.ArrayList;
 
-public class Student extends User implements Progress{
-
+public class Student extends User {
 
 
 
@@ -27,10 +26,10 @@ public class Student extends User implements Progress{
 
         this.language.add(language);
     }
-    public Lesson[] getAvailableLessons(Language language){
+    /*public Lesson[] getAvailableLessons(Language language){
 
         return this.Lesson;
-    }
+    }*/
 
     public ArrayList<Language> getLanguage() {
         return language;
