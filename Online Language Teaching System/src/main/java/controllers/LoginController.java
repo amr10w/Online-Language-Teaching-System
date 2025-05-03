@@ -1,6 +1,6 @@
 package controllers;
 
-import Main.SceneManager;
+import Main.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
-    private SceneManager sceneManager;
+
     @FXML
     private TextField usernameField;
     
@@ -49,6 +49,15 @@ public class LoginController {
     }
     @FXML
     private void navigateToDashboard()  {
-        SceneManager.switchToMainScene(9);
+
+        if(usernameField.getText().isEmpty())
+            AlertMessage.alertMessage("Username is empty","Please enter Username.");
+        else if(passwordField.getText().isEmpty())
+            AlertMessage.alertMessage("Password is empty","Please enter password.");
+
+        LoginManager loginManager=new LoginManager();
+        int status=loginManager.login(usernameField.getText(),passwordField.getText());
+        if(status==1)
+            SceneManager.switchToMainScene(9);
     }
 }

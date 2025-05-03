@@ -25,7 +25,7 @@ public class Quiz implements Comparable<Quiz>{
     public void loadQuizData()
     {
 
-        HashMap<String,String> quizData = fm.loadQuiz();
+        HashMap<String,String> quizData = fm.loadData();
         if (quizData != null) {
             this.title=quizData.get("title");
             System.out.println(quizData.get("title"));

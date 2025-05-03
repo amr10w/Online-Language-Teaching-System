@@ -85,7 +85,7 @@ public class Lesson implements Comparable<Lesson> {
         }
         lessonData.put("prerequisite", ids.toString() );
         lessonData.put("level",proficiencyLevel.getLevel());
-        fm.saveLesson(lessonData);
+        fm.saveData(lessonData);
     }
 
 

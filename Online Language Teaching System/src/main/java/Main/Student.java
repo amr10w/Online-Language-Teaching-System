@@ -12,10 +12,12 @@ public class Student extends User {
 
 
 
-    Student(String name,String email,String password,String ID){
+    public Student(String name,String email,String password,String ID){
         super(name,email,password,ID);
                 numberOfStudents+=1;
     }
+
+
 
 
 

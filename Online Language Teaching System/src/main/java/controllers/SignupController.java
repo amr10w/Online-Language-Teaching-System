@@ -1,6 +1,6 @@
 package controllers;
 
-import Main.SceneManager;
+import Main.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
@@ -61,32 +61,30 @@ public class SignupController {
         SceneManager.switchToMainScene(1);
     }
 
-    private void alertMessage(String header,String message)
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Input Error");
-        alert.setHeaderText(header);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+
 
     @FXML
     private void navigateToDashboard()
     {
 
         if(usernameField.getText().isEmpty())
-            alertMessage("Username is empty","Please enter Username.");
+            AlertMessage.alertMessage("Username is empty","Please enter Username.");
         else if(emailField.getText().isEmpty())
-            alertMessage("Email is empty","Please enter Email.");
+            AlertMessage.alertMessage("Email is empty","Please enter Email.");
         else if(passwordField.getText().isEmpty())
-            alertMessage("Password is empty","Please Enter Correct password.");
+            AlertMessage.alertMessage("Password is empty","Please Enter Correct password.");
         else if (languageComboBox.getValue() == null)
-            alertMessage("No Language Selected","Please select a language.");
-        else if(studentRadio.isSelected()&&!teacherRadio.isSelected())
+            AlertMessage.alertMessage("No Language Selected","Please select a language.");
+        else if(studentRadio.isSelected()&&!teacherRadio.isSelected()) {
+            User user=new Student(usernameField.getText(),emailField.getText(),passwordField.getText(),"1");
+            LoginManager.signup(user);
             SceneManager.switchToMainScene(0);
-        else if(!studentRadio.isSelected()&&teacherRadio.isSelected())
+        }
+        else if(!studentRadio.isSelected()&&teacherRadio.isSelected()) {
+            User user=new Teacher(usernameField.getText(),emailField.getText(),passwordField.getText(),"1");
+            LoginManager.signup(user);
             SceneManager.switchToMainScene(9);
-
+        }
     }
     
     @FXML

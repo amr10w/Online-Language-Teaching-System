@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,13 +16,13 @@ public class FileManager {
     {
         this.filePath=filePath;
     }
-    public void saveLesson(HashMap<String, String> lessonData)
+    public void saveData(HashMap<String, String> Data)
     {
-        try(FileWriter writer =new FileWriter(filePath))
+        try(FileWriter writer =new FileWriter(filePath,true))
         {
-            for(String key : lessonData.keySet())
+            for(String key : Data.keySet())
             {
-                writer.write(lessonData.get(key)+":"+key+"\n");
+                writer.write(key+":"+Data.get(key)+"\n");
             }
 
         } catch (IOException e) {
@@ -83,8 +84,8 @@ public class FileManager {
 
     }
 
-    public HashMap<String, String> loadQuiz() {
-        HashMap<String, String> quizData = new HashMap<>();
+    public void loadUsersData(ArrayList<String> users,ArrayList<String> password) {
+
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -92,13 +93,37 @@ public class FileManager {
                 if (!line.trim().isEmpty()) {
                     String[] parts = line.split(":",2); // Split on first colon
                     if (parts.length == 2) {
-                        quizData.put(parts[0].trim(), parts[1].trim());
+                        if(parts[0].equals("username"))
+                            users.add(parts[1]);
+                        if(parts[0].equals("password"))
+                            password.add(parts[1]);
+
                     }
                 }
             }
-            return quizData;
+
         } catch (IOException e) {
-            System.err.println("Error loading quiz from " + filePath + ": " + e.getMessage());
+            System.out.println("Error loading quiz from " + filePath + ": " + e.getMessage());
+
+        }
+    }
+
+    public HashMap<String, String> loadData() {
+        HashMap<String, String> Data = new HashMap<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    String[] parts = line.split(":",2); // Split on first colon
+                    if (parts.length == 2) {
+                        Data.put(parts[0].trim(), parts[1].trim());
+                    }
+                }
+            }
+            return Data;
+        } catch (IOException e) {
+            System.out.println("Error loading quiz from " + filePath + ": " + e.getMessage());
             return null;
         }
     }
