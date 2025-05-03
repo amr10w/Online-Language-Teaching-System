@@ -43,16 +43,25 @@ public class LoginManager {
         int index=users.indexOf(username);
         if(index==-1)
         {
-            AlertMessage.alertMessage("Username doesn't exist","please try again.");
-            return 0;
+
+            return -1;
         }
         if(!passwords.get(index).equals(password))
         {
-            AlertMessage.alertMessage("Password is wrong","please try again.");
-            return 0;
+
+            return -2;
         }
 
         return 1;
 
+    }
+    public boolean checkUsername(String username)
+    {
+        fm.loadUsersData(users,passwords);
+        if(users.contains(username))
+        {
+            return false;
+        }
+        return true;
     }
 }

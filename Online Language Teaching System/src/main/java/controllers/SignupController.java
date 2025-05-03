@@ -78,14 +78,31 @@ public class SignupController {
         else if(studentRadio.isSelected()&&!teacherRadio.isSelected()) {
             User user=new Student(usernameField.getText(),emailField.getText(),passwordField.getText(),"1");
             LoginManager loginManager=new LoginManager();
-            loginManager.signup(user);
-            SceneManager.switchToMainScene(0);
+            boolean check =loginManager.checkUsername(user.getUsername());
+            if(!check)
+            {
+                AlertMessage.alertMessage("Wrong Username","This username Exist, you can't add same username");
+            }
+            else
+            {
+                loginManager.signup(user);
+                SceneManager.switchToMainScene(0);
+            }
+
         }
         else if(!studentRadio.isSelected()&&teacherRadio.isSelected()) {
             User user=new Teacher(usernameField.getText(),emailField.getText(),passwordField.getText(),"1");
             LoginManager loginManager=new LoginManager();
-            loginManager.signup(user);
-            SceneManager.switchToMainScene(9);
+            boolean check =loginManager.checkUsername(user.getUsername());
+            if(!check)
+            {
+                AlertMessage.alertMessage("Wrong Username","This username Exist, you can't add same username");
+            }
+            else
+            {
+                loginManager.signup(user);
+                SceneManager.switchToMainScene(0);
+            }
         }
     }
     

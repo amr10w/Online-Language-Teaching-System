@@ -50,14 +50,19 @@ public class LoginController {
     @FXML
     private void navigateToDashboard()  {
 
-        if(usernameField.getText().isEmpty())
-            AlertMessage.alertMessage("Username is empty","Please enter Username.");
-        else if(passwordField.getText().isEmpty())
-            AlertMessage.alertMessage("Password is empty","Please enter password.");
-
+        if(usernameField.getText().isEmpty()) {
+            AlertMessage.alertMessage("Username is empty", "Please enter Username.");
+            return;
+        }
+        else if(passwordField.getText().isEmpty()) {
+            AlertMessage.alertMessage("Password is empty", "Please enter password.");
+            return;
+        }
         LoginManager loginManager=new LoginManager();
         int status=loginManager.login(usernameField.getText(),passwordField.getText());
-        if(status==1)
+        if(status==-1) AlertMessage.alertMessage("Username doesn't exist","please try again.");
+        else if(status==-2) AlertMessage.alertMessage("Password is wrong","please try again.");
+        else if(status==1&&!usernameField.getText().isEmpty()&&!passwordField.getText().isEmpty())
             SceneManager.switchToMainScene(9);
     }
 }
