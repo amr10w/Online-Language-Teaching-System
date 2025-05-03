@@ -22,16 +22,18 @@ public class Student extends User {
 
 
     public void startQuiz(){
-        //initially empty
+     //intiallay filepath
+        Quiz("filePath");
+
     }
     public void enrollInLanguage(Language language){
 
         this.language.add(language);
     }
-    /*public Lesson[] getAvailableLessons(Language language){
+    public Lesson[] getAvailableLessons(Language language){
 
-        return this.Lesson;
-    }*/
+        return language.getLessons();
+    }
 
     public ArrayList<Language> getLanguage() {
         return language;
@@ -45,7 +47,7 @@ public class Student extends User {
         return this.progress;
     }
     public double ShowCurriculum(){
-
+    //Not sure about the implementation, please refer to me ASAP.
      return language.size();
     }
 
