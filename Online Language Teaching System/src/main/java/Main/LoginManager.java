@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginManager {
-    private static FileManager fm;
+    private FileManager fm;
 
     private ArrayList<String> users;
     private ArrayList<String> passwords;
@@ -21,7 +21,7 @@ public class LoginManager {
 
     }
 
-    public static void signup(User user)
+    public void signup(User user)
     {
 
         HashMap<String,String> userData=new HashMap<>();

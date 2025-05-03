@@ -77,12 +77,14 @@ public class SignupController {
             AlertMessage.alertMessage("No Language Selected","Please select a language.");
         else if(studentRadio.isSelected()&&!teacherRadio.isSelected()) {
             User user=new Student(usernameField.getText(),emailField.getText(),passwordField.getText(),"1");
-            LoginManager.signup(user);
+            LoginManager loginManager=new LoginManager();
+            loginManager.signup(user);
             SceneManager.switchToMainScene(0);
         }
         else if(!studentRadio.isSelected()&&teacherRadio.isSelected()) {
             User user=new Teacher(usernameField.getText(),emailField.getText(),passwordField.getText(),"1");
-            LoginManager.signup(user);
+            LoginManager loginManager=new LoginManager();
+            loginManager.signup(user);
             SceneManager.switchToMainScene(9);
         }
     }
