@@ -1,5 +1,6 @@
 package controllers;
 
+import Main.SceneManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
-    
+    private SceneManager sceneManager;
     @FXML
     private TextField usernameField;
     
@@ -36,10 +37,7 @@ public class LoginController {
     
     @FXML
     private void navigateToSignup() throws Exception {
-        Stage stage = (Stage) navigateToSignup.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/signup.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();     // Navigation logic
+        sceneManager.switchToMainScene(7);
     }
     
     @FXML

@@ -7,25 +7,25 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneManager {
-    private final Stage stage;
+    private static Stage stage;
     private String[] sceneFiles;
-    private Scene[] scenes=new Scene[9];
+    private  static Scene[] scenes=new Scene[10];
 
     public SceneManager(Stage stage) {
         this.stage=stage;
         this.sceneFiles= new String[]{
-            "StudentScene.fxml",
-            "about.fxml",
-            "createlesson.fxml",
-            "createquiz.fxml",
-            "lesson.fxml",
-            "login.fxml",
-            "mainScene.fxml",
-            "quiz.fxml",
-            "signup.fxml",
-            "teacherScene.fxml"
+                "StudentScene.fxml",
+                "about.fxml",
+                "createlesson.fxml",
+                "createquiz.fxml",
+                "lesson.fxml",
+                "login.fxml",
+                "mainScene.fxml",
+                "quiz.fxml",
+                "signup.fxml",
+                "teacherScene.fxml"
         };
-        for (int i=0;i<9;i++) {
+        for (int i = 0; i < scenes.length; i++) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/" + sceneFiles[i]));
                 Scene scene = new Scene(loader.load());
@@ -36,16 +36,15 @@ public class SceneManager {
                 e.printStackTrace();
             }
         }
+        }
 
 
-    }
+
     
 
 
-    public void switchToMainScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/scenes/mainScene.fxml"));
-        Scene scene = new Scene(loader.load());
-        stage.setScene(scene);
+    public static void switchToMainScene(int i)   {
+        stage.setScene(scenes[i]);
     }
 
 

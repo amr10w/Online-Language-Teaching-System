@@ -8,7 +8,6 @@ import java.io.IOException;
 import javafx.scene.image.Image;
 public class ApplicationController extends Application {
 
-   
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Online Language Teaching System");
@@ -28,8 +27,7 @@ public class ApplicationController extends Application {
 
         SceneManager sceneManager = new SceneManager(stage);
 
-        
-        sceneManager.switchToMainScene();
+        sceneManager.switchToMainScene(1);
 
 
 
