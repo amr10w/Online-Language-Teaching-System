@@ -1,5 +1,6 @@
 package controllers;
 
+import Main.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -17,11 +18,12 @@ public class LessonController {
     @FXML
     private void goToQuiz() {
         // Quiz navigation logic
+        SceneManager.switchToMainScene(7);
     }
     
     @FXML
     private void backToDashboard() {
-        // Dashboard navigation logic
+        SceneManager.switchToMainScene(0);
     }
 
 

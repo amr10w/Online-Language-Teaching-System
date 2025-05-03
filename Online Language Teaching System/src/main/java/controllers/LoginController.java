@@ -23,31 +23,32 @@ public class LoginController {
     
     @FXML
     private Button navigateToHome;
+
+    @FXML
+    private Button login;
     
     @FXML
-    private void navigateToHome() throws Exception {
-        Stage stage = (Stage) navigateToSignup.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/mainScene.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();         // Navigation logic
+    private void navigateToHome()  {
+        SceneManager.switchToMainScene(6);
     }
     
     @FXML
     private Button navigateToSignup;
     
     @FXML
-    private void navigateToSignup() throws Exception {
-        sceneManager.switchToMainScene(7);
+    private void navigateToSignup()  {
+        SceneManager.switchToMainScene(8);
     }
     
     @FXML
     private Button navigateToAbout;
     
     @FXML
-    private void navigateToAbout() throws Exception  {
-        Stage stage = (Stage) navigateToAbout.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/about.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
+    private void navigateToAbout()   {
+        SceneManager.switchToMainScene(1);
+    }
+    @FXML
+    private void navigateToDashboard()  {
+        SceneManager.switchToMainScene(9);
     }
 }

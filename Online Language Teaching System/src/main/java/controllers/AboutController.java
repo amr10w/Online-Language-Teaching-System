@@ -14,21 +14,22 @@ public class AboutController {
     private Button navigateToHome;
     
     @FXML
-    private void navigateToHome() throws Exception {
+    private void navigateToHome()  {
         SceneManager.switchToMainScene(6);
     }
     @FXML
     private Button navigateToLogin;
     
     @FXML
-    private void navigateToLogin() throws Exception {
+    private void navigateToLogin()  {
         SceneManager.switchToMainScene(5);
     }
 
     @FXML
     private Button navigateToSignup;
     @FXML
-    private void navigateToSignup() throws Exception {
+    private void navigateToSignup() {
+        SceneManager.switchToMainScene(8);
     }
  
 }

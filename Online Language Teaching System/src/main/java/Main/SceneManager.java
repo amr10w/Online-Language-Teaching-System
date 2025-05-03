@@ -14,16 +14,16 @@ public class SceneManager {
     public SceneManager(Stage stage) {
         this.stage=stage;
         this.sceneFiles= new String[]{
-                "StudentScene.fxml",
-                "about.fxml",
-                "createlesson.fxml",
-                "createquiz.fxml",
-                "lesson.fxml",
-                "login.fxml",
-                "mainScene.fxml",
-                "quiz.fxml",
-                "signup.fxml",
-                "teacherScene.fxml"
+                "StudentScene.fxml", //0
+                "about.fxml", //1
+                "createlesson.fxml", //2
+                "createquiz.fxml", //3
+                "lesson.fxml",  //4
+                "login.fxml",  //5
+                "mainScene.fxml",  //6
+                "quiz.fxml",  //7
+                "signup.fxml",  //8
+                "teacherScene.fxml"  //9
         };
         for (int i = 0; i < scenes.length; i++) {
             try {

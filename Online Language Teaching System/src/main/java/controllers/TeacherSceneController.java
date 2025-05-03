@@ -1,5 +1,6 @@
 package controllers;
 
+import Main.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -39,6 +40,6 @@ public class TeacherSceneController {
     
     @FXML
     private void logout() {
-        // Logout logic
+        SceneManager.switchToMainScene(6);
     }
 }

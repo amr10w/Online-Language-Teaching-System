@@ -1,18 +1,13 @@
 package controllers;
 
+import Main.SceneManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class SignupController {
@@ -34,7 +29,11 @@ public class SignupController {
     
     @FXML
     private ComboBox<String> languageComboBox;
-    
+
+    @FXML
+    private Button signUp;
+
+
     
 
     @FXML
@@ -42,20 +41,14 @@ public class SignupController {
     
     @FXML
     private void navigateToHome() throws Exception {
-        Stage stage = (Stage) navigateToHome.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/mainScene.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();         // Navigation logic
+        SceneManager.switchToMainScene(6);
     }
     @FXML
     private Button navigateToLogin;
     
     @FXML
     private void navigateToLogin() throws Exception {
-        Stage stage = (Stage) navigateToLogin.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/login.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();       // Navigation logic
+        SceneManager.switchToMainScene(5);
     }
     
 
@@ -65,10 +58,35 @@ public class SignupController {
     
     @FXML
     private void navigateToAbout() throws Exception  {
-        Stage stage = (Stage) navigateToAbout.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/about.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
+        SceneManager.switchToMainScene(1);
+    }
+
+    private void alertMessage(String header,String message)
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Input Error");
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void navigateToDashboard()
+    {
+
+        if(usernameField.getText().isEmpty())
+            alertMessage("Username is empty","Please enter Username.");
+        else if(emailField.getText().isEmpty())
+            alertMessage("Email is empty","Please enter Email.");
+        else if(passwordField.getText().isEmpty())
+            alertMessage("Password is empty","Please Enter Correct password.");
+        else if (languageComboBox.getValue() == null)
+            alertMessage("No Language Selected","Please select a language.");
+        else if(studentRadio.isSelected()&&!teacherRadio.isSelected())
+            SceneManager.switchToMainScene(0);
+        else if(!studentRadio.isSelected()&&teacherRadio.isSelected())
+            SceneManager.switchToMainScene(9);
+
     }
     
     @FXML

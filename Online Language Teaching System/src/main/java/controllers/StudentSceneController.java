@@ -1,5 +1,6 @@
 package controllers;
 
+import Main.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -37,7 +38,7 @@ public class StudentSceneController {
     
     @FXML
     private void startLesson() {
-        // Start lesson logic
+        SceneManager.switchToMainScene(4);
     }
     
     @FXML
@@ -47,6 +48,6 @@ public class StudentSceneController {
     
     @FXML
     private void logout() {
-        // Logout logic
+        SceneManager.switchToMainScene(6);
     }
 }

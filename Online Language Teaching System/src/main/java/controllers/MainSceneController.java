@@ -1,5 +1,6 @@
 package controllers;
 
+import Main.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -19,20 +20,14 @@ public class MainSceneController {
     
     @FXML
     private void navigateToLogin() throws Exception {
-        Stage stage = (Stage) navigateToLogin.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/login.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();       // Navigation logic
+        SceneManager.switchToMainScene(5);   // Navigation logic
     }
     
     @FXML
     private Button navigateToSignup;
     @FXML
     private void navigateToSignup() throws Exception {
-        Stage stage = (Stage) navigateToSignup.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/signup.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();     // Navigation logic
+        SceneManager.switchToMainScene(8);
     }
     
     @FXML
@@ -40,9 +35,6 @@ public class MainSceneController {
     
     @FXML
     private void navigateToAbout() throws Exception  {
-        Stage stage = (Stage) navigateToAbout.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/scenes/about.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
+        SceneManager.switchToMainScene(1);
     }
 }

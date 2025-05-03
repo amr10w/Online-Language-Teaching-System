@@ -67,19 +67,19 @@
                     <!-- Question 2 -->
                     <VBox styleClass="quiz-question">
                         <Label style="-fx-font-weight: bold;" text="Question 2:" />
-                        <Label text="What is the correct response to 'Wie geht es Ihnen?'" wrapText="true" />
+                        <Label fx:id="q2" text="What is the correct response to 'Wie geht es Ihnen?'" wrapText="true" />
                         
                         <VBox spacing="10" styleClass="quiz-option">
                             <fx:define>
                                 <ToggleGroup fx:id="question2Group" />
                             </fx:define>
-                            <RadioButton text="Ja, bitte">
+                            <RadioButton fx:id="Q2O1" text="Ja, bitte">
                         <toggleGroup>
                            <ToggleGroup fx:id="question2Group" />
                         </toggleGroup></RadioButton>
-                            <RadioButton text="Auf Wiedersehen" toggleGroup="$question2Group" />
-                            <RadioButton text="Mir geht es gut, danke" toggleGroup="$question2Group" />
-                            <RadioButton text="Ich heiße John" toggleGroup="$question2Group" />
+                            <RadioButton fx:id="Q2O2" text="Auf Wiedersehen" toggleGroup="$question2Group" />
+                            <RadioButton fx:id="Q2O3" text="Mir geht es gut, danke" toggleGroup="$question2Group" />
+                            <RadioButton fx:id="Q2O4" text="Ich heiße John" toggleGroup="$question2Group" />
                             
                         </VBox>
                     </VBox>
@@ -87,19 +87,19 @@
                     <!-- Question 3 -->
                     <VBox styleClass="quiz-question">
                         <Label style="-fx-font-weight: bold;" text="Question 3:" />
-                        <Label text="Which of the following is a formal way to address someone in German?" wrapText="true" />
+                        <Label fx:id="q3" text="Which of the following is a formal way to address someone in German?" wrapText="true" />
                         
                         <VBox spacing="10" styleClass="quiz-option">
                             <fx:define>
                                 <ToggleGroup fx:id="question3Group" />
                             </fx:define>
-                            <RadioButton text="du">
+                            <RadioButton fx:id="Q3O1" text="du">
                         <toggleGroup>
                            <ToggleGroup fx:id="question3Group" />
                         </toggleGroup></RadioButton>
-                            <RadioButton text="dich" toggleGroup="$question3Group" />
-                            <RadioButton text="Sie" toggleGroup="$question3Group" />
-                            <RadioButton text="ihr" toggleGroup="$question3Group" />
+                            <RadioButton fx:id="Q3O2" text="dich" toggleGroup="$question3Group" />
+                            <RadioButton fx:id="Q3O3" text="Sie" toggleGroup="$question3Group" />
+                            <RadioButton fx:id="Q3O4" text="ihr" toggleGroup="$question3Group" />
                             
                         </VBox>
                     </VBox>
@@ -107,19 +107,19 @@
                     <!-- Question 4 -->
                     <VBox styleClass="quiz-question">
                         <Label style="-fx-font-weight: bold;" text="Question 4:" />
-                        <Label text="How do you say 'Thank you' in German?" wrapText="true" />
+                        <Label fx:id="q4" text="How do you say 'Thank you' in German?" wrapText="true" />
                         
                         <VBox spacing="10" styleClass="quiz-option">
                             <fx:define>
                                 <ToggleGroup fx:id="question4Group" />
                             </fx:define>
-                            <RadioButton text="Bitte">
+                            <RadioButton fx:id="Q4O1" text="Bitte">
                         <toggleGroup>
                            <ToggleGroup fx:id="question4Group" />
                         </toggleGroup></RadioButton>
-                            <RadioButton text="Danke" toggleGroup="$question4Group" />
-                            <RadioButton text="Entschuldigung" toggleGroup="$question4Group" />
-                            <RadioButton text="Willkommen" toggleGroup="$question4Group" />
+                            <RadioButton fx:id="Q4O2" text="Danke" toggleGroup="$question4Group" />
+                            <RadioButton fx:id="Q4O3" text="Entschuldigung" toggleGroup="$question4Group" />
+                            <RadioButton fx:id="Q4O4" text="Willkommen" toggleGroup="$question4Group" />
                             
                         </VBox>
                     </VBox>

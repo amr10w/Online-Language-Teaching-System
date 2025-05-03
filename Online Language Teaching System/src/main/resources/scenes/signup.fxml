@@ -31,7 +31,7 @@
                 <ImageView fitHeight="80" fitWidth="80" preserveRatio="true">
                     <Image url="@../images/lovebird.png" />
                 </ImageView>
-                <Label styleClass="app-name" style="-fx-text-fill: #000000;" text="LinguaLearn" />
+                <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
                 <Separator />
             </VBox>
             
@@ -83,8 +83,8 @@
                     <PasswordField fx:id="passwordField" promptText="Enter password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     
                     <!-- User Type Selection -->
-                    <Label text="User Type:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                    <HBox spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <Label text="User Type:" GridPane.rowIndex="4" />
+                    <HBox spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="4">
                         <RadioButton fx:id="studentRadio" selected="true" text="Student">
                             <toggleGroup>
                                 <ToggleGroup fx:id="userTypeGroup" />
@@ -94,11 +94,12 @@
                     </HBox>
                     
                     <!-- Language Selection -->
-                    <Label text="Language:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                    <ComboBox fx:id="languageComboBox" promptText="Select language" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <Label text="Language:" GridPane.rowIndex="5" />
+                    <ComboBox fx:id="languageComboBox" promptText="Select language" GridPane.columnIndex="1" GridPane.rowIndex="5">
 
                     </ComboBox>
                <rowConstraints>
+                  <RowConstraints />
                   <RowConstraints />
                   <RowConstraints />
                   <RowConstraints />
@@ -113,6 +114,7 @@
                     <Label text="Already have an account?" />
                     <Hyperlink onAction="#navigateToLogin" text="Login" />
                 </HBox>
+            <Button fx:id="signUp" onAction="#navigateToDashboard" text="SignUp" />
             </VBox>
         </StackPane>
     </center>

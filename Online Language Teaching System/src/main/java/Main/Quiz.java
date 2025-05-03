@@ -62,6 +62,12 @@ public class Quiz implements Comparable<Quiz>{
             }
         }
     }
+
+    public static Quiz setQuiz(String file)
+    {
+        return new Quiz(file);
+    }
+
     public String getTitle()
     {
         return title;
