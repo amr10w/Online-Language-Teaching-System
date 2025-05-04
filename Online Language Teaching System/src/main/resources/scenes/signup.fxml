@@ -20,18 +20,23 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
     
     <!-- Left Side Menu -->
     <left>
-        <VBox prefWidth="200" styleClass="side-menu">
+        <VBox prefWidth="200" styleClass="side-menu"  stylesheets="@styles.css">
             <!-- App Logo and Name -->
             <VBox alignment="CENTER" spacing="5">
                 <ImageView fitHeight="80" fitWidth="80" preserveRatio="true">
                     <Image url="@../images/lovebird.png" />
                 </ImageView>
-                <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
+                
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="146.0" style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="Arial Nova" size="53.0" />
+               </font></Label>
                 <Separator />
             </VBox>
             
@@ -43,10 +48,10 @@
 
             
             <!-- Menu Items -->
-            <Button fx:id="navigateToHome" onAction="#navigateToHome" styleClass="menu-item" text="Home" />
-            <Button fx:id="navigateToLogin" onAction="#navigateToLogin" styleClass="menu-item" text="Login" />
+            <Button fx:id="navigateToHome" onAction="#navigateToHome"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="Home" />
+            <Button fx:id="navigateToLogin" onAction="#navigateToLogin"   prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Login" />
 <!--            <Button styleClass="menu-item, menu-item-selected" text="Signup" onAction="#navigateToSignup" />     some control here-->
-            <Button fx:id="navigateToAbout" onAction="#navigateToAbout" styleClass="menu-item" text="About" />
+            <Button fx:id="navigateToAbout" onAction="#navigateToAbout"   prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="About" />
             
             <VBox.vgrow>
                 <Priority fx:constant="ALWAYS" />
@@ -64,9 +69,9 @@
                 
                 <Label styleClass="page-title" text="Create an Account" />
                 
-                <GridPane alignment="CENTER" hgap="15" styleClass="form-container" vgap="15">
+                <GridPane alignment="CENTER" hgap="15" vgap="15">
                     <columnConstraints>
-                        <ColumnConstraints halignment="RIGHT" minWidth="100" prefWidth="150" />
+                        <ColumnConstraints halignment="CENTER" minWidth="100" prefWidth="150" />
                         <ColumnConstraints prefWidth="250" />
                     </columnConstraints>
                     

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.text.Font?>
 <BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainSceneController">
     
     <!-- Left Side Menu -->
@@ -22,19 +22,24 @@
                 <ImageView fitHeight="80" fitWidth="80" preserveRatio="true">
                     <Image url="@../images/lovebird.png" /> <!-- Placeholder for actual logo -->
                 </ImageView>
-                <Label styleClass="app-name" style="-fx-text-fill: #000000;" text="LinguaLearn" />
+                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="146.0" style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" textAlignment="RIGHT" textFill="WHITE">
+                   <font>
+                      <Font name="Arial Nova" size="53.0" />
+                   </font></Label>
                 <Separator />
             </VBox>
             
-<!--            <Padding>
-                <Insets top="20" />
-            </Padding>-->
+            <VBox>
+                <padding>
+                    <Insets bottom="20" left="20" right="20" top="20" />
+                </padding>
+            </VBox>
             
             <!-- Menu Items -->
             <!--<Button onAction="#navigateToHome" styleClass="menu-item, menu-item-selected" text="Home" />-->
-            <Button fx:id="navigateToLogin" onAction="#navigateToLogin" styleClass="menu-item" text="Login" />
-            <Button fx:id="navigateToSignup" onAction="#navigateToSignup" styleClass="menu-item" text="Signup" />
-            <Button fx:id="navigateToAbout" onAction="#navigateToAbout" styleClass="menu-item" text="About" />
+            <Button fx:id="navigateToLogin" onAction="#navigateToLogin"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="Login" />
+            <Button fx:id="navigateToSignup" onAction="#navigateToSignup"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="Signup" />
+            <Button fx:id="navigateToAbout" onAction="#navigateToAbout"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="About" />
             
             <VBox.vgrow>
                 <Priority fx:constant="ALWAYS" />

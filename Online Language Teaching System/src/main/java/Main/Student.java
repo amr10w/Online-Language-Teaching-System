@@ -21,19 +21,19 @@ public class Student extends User {
 
 
 
-    public void startQuiz(){
-     //intiallay filepath
-        Quiz("filePath");
-
-    }
+//    public void startQuiz(){
+//     //intiallay filepath
+//        Quiz("filePath");
+//
+//    }
     public void enrollInLanguage(Language language){
 
         this.language.add(language);
     }
-    public Lesson[] getAvailableLessons(Language language){
-
-        return language.getLessons();
-    }
+//    public Lesson[] getAvailableLessons(Language language){
+//
+//        return language.getLessons();
+//    }
 
     public ArrayList<Language> getLanguage() {
         return language;
