@@ -3,6 +3,7 @@ module Main.onlinelanguageteachingsystem {
     requires javafx.fxml;
     requires javafx.base;
     requires java.desktop;
+    requires javafx.media;
 
 
     opens Main to javafx.fxml;

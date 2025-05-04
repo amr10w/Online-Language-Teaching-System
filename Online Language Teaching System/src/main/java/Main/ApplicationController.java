@@ -2,8 +2,10 @@ package Main;
 
 import controllers.QuizController;
 import javafx.application.Application;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-
+import java.io.File;
 import java.io.IOException;
 import javafx.scene.image.Image;
 public class ApplicationController extends Application {
@@ -33,12 +35,24 @@ public class ApplicationController extends Application {
 
 
 
-
+        playMusic();
         stage.show();
 
 
     }
 
+    private void playMusic() {
+        try {
+            String filePath = getClass().getResource("/audios/welcome.mp3").toExternalForm();
+            Media media = new Media(filePath);
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+//            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loops the audio
+            mediaPlayer.play();
+        } catch (Exception e) {
+            System.err.println("Error playing MP3 file. Ensure the file exists at the specified path.");
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
 
         launch();
