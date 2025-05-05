@@ -23,7 +23,8 @@ public class SceneManager {
                 "mainScene.fxml",  //6
                 "quiz.fxml",  //7
                 "signup.fxml",  //8
-                "teacherScene.fxml"  //9
+                "teacherScene.fxml",  //9
+                "QuizGradeScene.fxml"  //10
         };
 //        for (int i = 0; i < scenes.length; i++) {
 //            try {
@@ -71,7 +72,8 @@ public class SceneManager {
                 "mainScene.fxml",  //6
                 "quiz.fxml",  //7
                 "signup.fxml",  //8
-                "teacherScene.fxml"  //9
+                "teacherScene.fxml",  //9
+                "QuizGradeScene.fxml"  //10
         };
         return sceneFiles[i];
     }

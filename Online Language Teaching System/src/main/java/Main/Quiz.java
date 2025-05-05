@@ -4,6 +4,8 @@ import fileManager.FileManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import Main.Quiz;
+import Main.Question;
 
 public class Quiz implements Comparable<Quiz>{
 
@@ -12,6 +14,8 @@ public class Quiz implements Comparable<Quiz>{
     private ArrayList<Question> questions;
     private ProficiencyLevel proficiencyLevel;
     private FileManager fm;
+    private static int numberOfQuestions =4;
+    private QuizResult result;
 
     public Quiz(String filePath)
     {
@@ -71,6 +75,11 @@ public class Quiz implements Comparable<Quiz>{
     public String getTitle()
     {
         return title;
+    }
+    
+    public static int getNumberOfQuestions()
+    {
+        return numberOfQuestions;
     }
     public String getQuizId()
     {

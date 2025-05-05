@@ -76,6 +76,13 @@ public class QuizController implements Initializable {
     @FXML
     private void finishQuiz() {
         // Quiz completion logic
+        navigateToQuizGradeScene();
+        
+    }
+    private void navigateToQuizGradeScene() {
+        // Navigate to QuizGradeScene
+        SceneManager.switchToMainScene(10);
+
     }
     
     @FXML

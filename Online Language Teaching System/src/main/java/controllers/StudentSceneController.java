@@ -43,7 +43,7 @@ public class StudentSceneController {
     private Label nextLessonTitle;
     
     @FXML
-    private ListView<String> activityListView;
+    private ProgressBar progressBar;
 
     @FXML
     private void startLesson() {
@@ -62,7 +62,6 @@ public class StudentSceneController {
 
 
 
-    @FXML
     public  void setStudentScene(Student student) {
         student = (Student) LoginManager.getSelectedUser();
 
