@@ -2,39 +2,41 @@ package controllers;
 
 import Main.SceneManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.scene.Parent;
-
 
 public class MainSceneController {
-    
+
+    @FXML private Button navigateToLogin;
+    @FXML private Button navigateToSignup;
+    @FXML private Button navigateToAbout;
+    // Button IDs in FXML are navigateToSignup1, navigateToAbout1 - make them match or change FXML
+    @FXML private Button getStartedButton; // Matches navigateToSignup1 in FXML if purpose is signup
+    @FXML private Button learnMoreButton; // Matches navigateToAbout1 in FXML if purpose is about
+
     @FXML
-    private Button navigateToLogin;
-    
-    @FXML
-    private void navigateToLogin() throws Exception {
-        SceneManager.switchToMainScene(5);   // Navigation logic
+    private void navigateToLogin() {
+        SceneManager.switchToScene(SceneManager.LOGIN);
     }
-    
+
     @FXML
-    private Button navigateToSignup;
-    @FXML
-    private void navigateToSignup() throws Exception {
-        SceneManager.switchToMainScene(8);
+    private void navigateToSignup() {
+        SceneManager.switchToScene(SceneManager.SIGNUP);
     }
-    
+
+    // If using the Get Started button for Signup
     @FXML
-    private Button navigateToAbout;
-    
+    private void handleGetStarted() {
+        navigateToSignup();
+    }
+
     @FXML
-    private void navigateToAbout() throws Exception  {
-        SceneManager.switchToMainScene(1);
+    private void navigateToAbout() {
+        SceneManager.switchToScene(SceneManager.ABOUT);
+    }
+
+    // If using the Learn More button for About
+    @FXML
+    private void handleLearnMore() {
+        navigateToAbout();
     }
 }

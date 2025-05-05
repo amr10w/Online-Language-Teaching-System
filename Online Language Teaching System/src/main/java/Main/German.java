@@ -1,20 +1,15 @@
 package Main;
 
-import java.util.ArrayList;
-
+// Removed static lists, these should be instance members in Language
+// or managed by a central service. The Language class already has instance lists.
 public class German extends Language {
-    private static ArrayList<Student> students=new ArrayList<>();
-    private static ArrayList<Teacher> teachers=new ArrayList<>();
+    // private static ArrayList<Student> students=new ArrayList<>(); // Remove static lists here
+    // private static ArrayList<Teacher> teachers=new ArrayList<>(); // Remove static lists here
 
-    public static void addStudents(Student student)
-    {
-        students.add(student);
-    }
+    // // These methods don't belong here, user management is in ApplicationManager
+    // public static void addStudents(Student student) { students.add(student); }
+    // public static void addTeachers(Teacher teacher) { teachers.add(teacher); }
 
-    public static void addTeachers(Teacher teacher)
-    {
-        teachers.add(teacher);
-    }
     @Override
     public String getLanguageName() {
         return "German";
