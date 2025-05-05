@@ -246,20 +246,33 @@ public class LessonController {
 
 
     /** Handles the action of navigating back to the previous dashboard. */
+    // Inside LessonController.java
     @FXML
     private void backToDashboard() {
-        System.out.println("Navigating back to dashboard...");
-        // Navigate back to the appropriate dashboard based on logged-in user type
-        User loggedInUser = LoginManager.getSelectedUser(); // Get current user again for safety
+        User loggedInUser = LoginManager.getSelectedUser(); // Get current user
+
         if (loggedInUser instanceof Student) {
-            SceneManager.switchToScene(SceneManager.STUDENT_DASHBOARD);
-        } else if (loggedInUser instanceof Teacher) {
-            SceneManager.switchToScene(SceneManager.TEACHER_DASHBOARD);
+            Object controller = SceneManager.switchToScene(SceneManager.STUDENT_DASHBOARD);
+            if (controller instanceof StudentSceneController) {
+                // ** RE-SET DATA ON RETURN **
+                ((StudentSceneController) controller).setStudentData((Student) loggedInUser);
+            } else {
+                System.err.println("Error: Could not get StudentSceneController to refresh dashboard.");
+                SceneManager.switchToScene(SceneManager.LOGIN); // Fallback
+            }
+        } else if (loggedInUser instanceof Teacher) { // Could be a teacher previewing?
+            Object controller = SceneManager.switchToScene(SceneManager.TEACHER_DASHBOARD);
+            if (controller instanceof TeacherSceneController) {
+                // ** RE-SET DATA ON RETURN **
+                ((TeacherSceneController) controller).setTeacherData((Teacher) loggedInUser);
+            } else {
+                System.err.println("Error: Could not get TeacherSceneController to refresh dashboard.");
+                SceneManager.switchToScene(SceneManager.LOGIN); // Fallback
+            }
         }
-        else {
-            // Fallback if user type is unknown or not logged in
-            System.err.println("Unknown user type or not logged in, navigating to Login screen.");
-            SceneManager.switchToScene(SceneManager.LOGIN);
+        else { // No logged-in user or unknown type?
+            SceneManager.switchToScene(SceneManager.LOGIN); // Fallback to login
         }
     }
+
 }

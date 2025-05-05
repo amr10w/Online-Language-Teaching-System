@@ -398,16 +398,21 @@ public class CreateQuizController {
 
 
     /** Handles the action of navigating back to the Teacher Dashboard. */
+    // Inside CreateQuizController.java
     @FXML
     private void backToDashboard() {
-        // Ask for confirmation if fields have data? Add similar logic to CreateLessonController.cancel() if desired.
-
+        // Should always be a teacher here
         if (currentTeacher != null) {
-            System.out.println("Navigating back to Teacher Dashboard.");
-            SceneManager.switchToScene(SceneManager.TEACHER_DASHBOARD);
+            Object controller = SceneManager.switchToScene(SceneManager.TEACHER_DASHBOARD);
+            if (controller instanceof TeacherSceneController) {
+                // ** RE-SET DATA ON RETURN **
+                ((TeacherSceneController) controller).setTeacherData(currentTeacher);
+            } else {
+                System.err.println("Error: Could not get TeacherSceneController to refresh dashboard.");
+            }
         } else {
-            // Fallback if teacher data is missing
-            System.err.println("Teacher context missing, navigating to Login screen as fallback.");
+            // Fallback or handle error - maybe go to login?
+            System.err.println("Error: currentTeacher is null in CreateQuizController. Navigating to Login.");
             SceneManager.switchToScene(SceneManager.LOGIN);
         }
     }

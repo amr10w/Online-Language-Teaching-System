@@ -100,7 +100,7 @@
             <VBox fx:id="resultsOverlay" alignment="TOP_CENTER" managed="false" spacing="15.0" style="-fx-background-color: rgba(245, 245, 245, 0.98); -fx-padding: 20;" visible="false">
                 <Label styleClass="page-title" text="Quiz Results" />
                 <ImageView fitHeight="80.0" fitWidth="80.0" preserveRatio="true"> <!-- Adjusted size -->
-                    <Image url="@../images/success.png" /> <!-- Consider different images based on score -->
+                    <Image url="@../images/quiz-icon.png" />
                 </ImageView>
                 <!-- fx:id verified -->
                 <Label fx:id="scoreLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Your Score: X/Y" />
@@ -121,7 +121,7 @@
                     <!-- fx:id and onAction verified -->
                     <Button fx:id="nextLessonButton" onAction="#goToNextLesson" text="Next Lesson" />
                 </HBox>
-                <VBox.margin><Insets top="auto"/></VBox.margin> <!-- Push buttons down -->
+
             </VBox>
         </StackPane>
     </center>

@@ -371,16 +371,32 @@ public class QuizController {
     }
 
     /** Handles the action of navigating back to the appropriate dashboard. */
+    // Inside QuizController.java
     @FXML
     private void backToDashboard() {
-        System.out.println("Navigating back to dashboard from Quiz...");
-        // Navigate back based on user type
-        if (currentStudent != null) {
-            SceneManager.switchToScene(SceneManager.STUDENT_DASHBOARD);
-        } else if (LoginManager.getSelectedUser() instanceof Teacher) { // Check current session user
-            SceneManager.switchToScene(SceneManager.TEACHER_DASHBOARD);
-        } else {
-            SceneManager.switchToScene(SceneManager.LOGIN); // Fallback
+        User loggedInUser = LoginManager.getSelectedUser(); // Get current user
+
+        if (loggedInUser instanceof Student) {
+            Object controller = SceneManager.switchToScene(SceneManager.STUDENT_DASHBOARD);
+            if (controller instanceof StudentSceneController) {
+                // ** RE-SET DATA ON RETURN **
+                ((StudentSceneController) controller).setStudentData((Student) loggedInUser);
+            } else {
+                System.err.println("Error: Could not get StudentSceneController to refresh dashboard.");
+                SceneManager.switchToScene(SceneManager.LOGIN); // Fallback
+            }
+        } else if (loggedInUser instanceof Teacher) { // Should not happen based on quiz flow, but safe check
+            Object controller = SceneManager.switchToScene(SceneManager.TEACHER_DASHBOARD);
+            if (controller instanceof TeacherSceneController) {
+                // ** RE-SET DATA ON RETURN **
+                ((TeacherSceneController) controller).setTeacherData((Teacher) loggedInUser);
+            } else {
+                System.err.println("Error: Could not get TeacherSceneController to refresh dashboard.");
+                SceneManager.switchToScene(SceneManager.LOGIN); // Fallback
+            }
+        }
+        else { // No logged-in user?
+            SceneManager.switchToScene(SceneManager.LOGIN); // Fallback to login
         }
     }
 
