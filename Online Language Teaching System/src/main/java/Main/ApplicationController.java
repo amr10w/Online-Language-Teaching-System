@@ -7,11 +7,12 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.scene.image.Image;
 public class ApplicationController extends Application {
-
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage)  {
         stage.setTitle("Online Language Teaching System");
         try {
 
@@ -25,6 +26,8 @@ public class ApplicationController extends Application {
             System.err.println("Error: Invalid image format or corrupted file.");
             System.out.println(e.getMessage());
         }
+
+        ApplicationManager am=new ApplicationManager();
 
 
         SceneManager sceneManager = new SceneManager(stage);

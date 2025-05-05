@@ -1,12 +1,14 @@
 package Main;
 public class Teacher extends User{
-    private Language language;
+    private String language;
     private double balance;
     private int numberOfCreatedLessons=0;
 //    private ArrayList<Question> questions = new ArrayList<>();
 
-    public Teacher(String name, String email, String password, String ID){
+    public Teacher(String name, String email, String password, String ID,String language){
+
         super(name,email,password,ID);
+        this.language = language;
 
     }
 
@@ -25,8 +27,8 @@ public class Teacher extends User{
     public void editQuiz(Quiz quiz){
 //the editQuiz method is not found in the Quiz class, waiting until it get implemented...
     }
-    public String getLanguage(){
-        return this.language.getLanguageName();
+    public String getLanguage() {
+        return language;
     }
     public double getBalance(){
         return this.balance;
@@ -34,6 +36,13 @@ public class Teacher extends User{
 
     public int getNumberOfCreatedLessons() {
         return numberOfCreatedLessons;
+    }
+
+
+    @Override
+    public String toString()
+    {
+        return "Teacher: "+ getUsername()+" "+getPassword()+" "+getID()+" "+getEmail()+" "+getLanguage();
     }
 
 

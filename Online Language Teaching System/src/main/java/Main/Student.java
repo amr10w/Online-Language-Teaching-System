@@ -1,55 +1,40 @@
 package Main;
-import java.util.ArrayList;
+
+import fileManager.FileManager;
+import java.util.HashMap;
 
 public class Student extends User {
 
+    private String language;
+    private static int numberOfStudents = 0;
+    private double progress = 0;
 
+    public Student(String name, String email, String password, String ID, String language) {
+        super(name, email, password, ID);
+        this.language = language != null ? language : "";
+        numberOfStudents += 1;
 
-    private static int numberOfStudents=0;
-    //we make it static to be shared over all objects
-    private double progress=0;
-    ArrayList<Language> language = new ArrayList<>();
-
-
-
-    public Student(String name,String email,String password,String ID){
-        super(name,email,password,ID);
-                numberOfStudents+=1;
     }
 
-
-
-
-
-//    public void startQuiz(){
-//     //intiallay filepath
-//        Quiz("filePath");
-//
-//    }
-    public void enrollInLanguage(Language language){
-
-        this.language.add(language);
-    }
-//    public Lesson[] getAvailableLessons(Language language){
-//
-//        return language.getLessons();
-//    }
-
-    public ArrayList<Language> getLanguage() {
+    public String getLanguage() {
         return language;
     }
 
-    public void updateProgress(){
-        this.progress+=1;
+    public void updateProgress() {
+        this.progress += 1;
 
     }
-    public double getProgress(){
-        return this.progress;
-    }
-    public double ShowCurriculum(){
-    //Not sure about the implementation, please refer to me ASAP.
-     return language.size();
+
+    public double getProgress() {
+        return progress;
     }
 
+
+
+    @Override
+    public String toString()
+    {
+        return "Student: "+ getUsername()+" "+getPassword()+" "+getID()+" "+getEmail()+" "+getLanguage();
+    }
 
 }

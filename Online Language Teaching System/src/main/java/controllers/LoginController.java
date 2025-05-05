@@ -62,7 +62,16 @@ public class LoginController {
         int status=loginManager.login(usernameField.getText(),passwordField.getText());
         if(status==-1) AlertMessage.alertMessage("Username doesn't exist","please try again.");
         else if(status==-2) AlertMessage.alertMessage("Password is wrong","please try again.");
-        else if(status==1&&!usernameField.getText().isEmpty()&&!passwordField.getText().isEmpty())
-            SceneManager.switchToMainScene(9);
+        else if(!usernameField.getText().isEmpty()&&!passwordField.getText().isEmpty())
+        {
+            if(status==1){
+                Object controller = SceneManager.switchToMainScene(0);
+                if (controller instanceof StudentSceneController) {
+                    ((StudentSceneController) controller).setStudentScene((Student) LoginManager.getSelectedUser());
+                }
+            }
+            else if(status==2)   SceneManager.switchToMainScene(9);
+        }
+
     }
 }

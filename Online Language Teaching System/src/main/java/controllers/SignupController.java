@@ -76,7 +76,7 @@ public class SignupController {
         else if (languageComboBox.getValue() == null)
             AlertMessage.alertMessage("No Language Selected","Please select a language.");
         else if(studentRadio.isSelected()&&!teacherRadio.isSelected()) {
-            User user=new Student(usernameField.getText(),emailField.getText(),passwordField.getText(),"1");
+            User user=new Student(usernameField.getText(),emailField.getText(),passwordField.getText(),"1",languageComboBox.getValue());
             LoginManager loginManager=new LoginManager();
             boolean check =loginManager.checkUsername(user.getUsername());
             if(!check)
@@ -91,7 +91,7 @@ public class SignupController {
 
         }
         else if(!studentRadio.isSelected()&&teacherRadio.isSelected()) {
-            User user=new Teacher(usernameField.getText(),emailField.getText(),passwordField.getText(),"1");
+            User user=new Teacher(usernameField.getText(),emailField.getText(),passwordField.getText(),"1",languageComboBox.getValue());
             LoginManager loginManager=new LoginManager();
             boolean check =loginManager.checkUsername(user.getUsername());
             if(!check)
@@ -101,7 +101,7 @@ public class SignupController {
             else
             {
                 loginManager.signup(user);
-                SceneManager.switchToMainScene(0);
+                SceneManager.switchToMainScene(9);
             }
         }
     }

@@ -129,4 +129,26 @@ public class FileManager {
         }
     }
 
+    public HashMap<String, ArrayList<String>> loadStudentData() {
+        HashMap<String, ArrayList<String>> data = new HashMap<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    String[] parts = line.split(":", 2);
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim();
+                        data.computeIfAbsent(key, k -> new ArrayList<>()).add(value);
+                    }
+                }
+            }
+            return data;
+        } catch (IOException e) {
+            System.out.println("Error loading data from " + filePath + ": " + e.getMessage());
+            return null;
+        }
+    }
 }
+
+
