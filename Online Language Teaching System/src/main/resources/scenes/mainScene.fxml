@@ -12,60 +12,38 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainSceneController">
-    
-    <!-- Left Side Menu -->
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainSceneController">
     <left>
-        <VBox prefWidth="200" styleClass="side-menu">
-            <!-- App Logo and Name -->
-            <VBox alignment="CENTER" spacing="5">
-                <ImageView fitHeight="80" fitWidth="80" preserveRatio="true">
-                    <Image url="@../images/lovebird.png" /> <!-- Placeholder for actual logo -->
+        <VBox prefWidth="200.0" styleClass="side-menu">
+            <VBox alignment="CENTER" spacing="5.0">
+                <ImageView fitHeight="80.0" fitWidth="80.0" preserveRatio="true">
+                    <Image url="@../images/lovebird.png" />
                 </ImageView>
-                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="146.0" style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" textAlignment="RIGHT" textFill="WHITE">
-                   <font>
-                      <Font name="Arial Nova" size="53.0" />
-                   </font></Label>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="146.0" style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" textAlignment="RIGHT" textFill="WHITE">
+                    <font><Font name="Arial Nova" size="53.0" /></font></Label>
                 <Separator />
             </VBox>
-            
-            <VBox>
-                <padding>
-                    <Insets bottom="20" left="20" right="20" top="20" />
-                </padding>
-            </VBox>
-            
-            <!-- Menu Items -->
-            <!--<Button onAction="#navigateToHome" styleClass="menu-item, menu-item-selected" text="Home" />-->
+            <VBox><padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding></VBox>
+            <Button disable="true" styleClass="menu-item, menu-item-selected" text="Home" />
             <Button fx:id="navigateToLogin" onAction="#navigateToLogin"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="Login" />
             <Button fx:id="navigateToSignup" onAction="#navigateToSignup"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="Signup" />
             <Button fx:id="navigateToAbout" onAction="#navigateToAbout"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="About" />
-            
-            <VBox.vgrow>
-                <Priority fx:constant="ALWAYS" />
-            </VBox.vgrow>
+            <VBox VBox.vgrow="ALWAYS" />
         </VBox>
     </left>
-    
-    <!-- Main Content Area -->
     <center>
         <StackPane>
-            <VBox alignment="CENTER" spacing="20" styleClass="content-area">
-                <padding>
-                    <Insets bottom="40" left="40" right="40" top="40" />
-                </padding>
-                
+            <VBox alignment="CENTER" spacing="20.0" styleClass="content-area">
+                <padding><Insets bottom="40.0" left="40.0" right="40.0" top="40.0" /></padding>
                 <Label styleClass="page-title" text="Welcome to LinguaLearn!" />
-                
-                <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
-                    <Image url="@../images/lovebird.png" /> <!-- Placeholder for welcome image -->
+                <ImageView fitHeight="200.0" fitWidth="200.0" preserveRatio="true">
+                    <Image url="@../images/lovebird.png" />
                 </ImageView>
-                
                 <Label text="Start your language learning journey today! Learn languages in a fun and interactive way with our comprehensive lessons and quizzes." textAlignment="CENTER" wrapText="true" />
-                
-                <HBox alignment="CENTER" spacing="10">
-                    <Button fx:id="navigateToSignup" onAction="#navigateToSignup" text="Get Started" />
-                    <Button fx:id="navigateToAbout" onAction="#navigateToAbout" styleClass="button-secondary" text="Learn More" />
+                <HBox alignment="CENTER" spacing="10.0">
+                    <Button fx:id="getStartedButton" onAction="#handleGetStarted" text="Get Started" />
+                    <Button fx:id="learnMoreButton" onAction="#handleLearnMore" styleClass="button-secondary" text="Learn More" />
                 </HBox>
             </VBox>
         </StackPane>

@@ -14,139 +14,71 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuizController">
-    
-    <!-- Top Navigation Bar -->
+<BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuizController">
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
-            <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+        <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
+            <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
                 <Image url="@../images/lovebird.png" />
             </ImageView>
             <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
-            
-            <Button onAction="#backToDashboard" text="Back to Dashboard" />
-            
-            <HBox.hgrow>
-                <Priority fx:constant="ALWAYS" />
-            </HBox.hgrow>
+            <Button fx:id="backToDashboardButton" onAction="#backToDashboard" text="Back to Dashboard" />
+            <HBox HBox.hgrow="ALWAYS" />
         </HBox>
     </top>
-    
-    <!-- Main Content Area -->
     <center>
         <StackPane>
             <!-- Quiz Content -->
             <ScrollPane fx:id="quizScrollPane" fitToWidth="true" styleClass="content-area">
-                <VBox spacing="25">
-                    <padding>
-                        <Insets bottom="30" left="40" right="40" top="30" />
-                    </padding>
-                    
-                    <Label fx:id="quizTitleLabel" styleClass="page-title" text="Basic Conversation Skills - Quiz" />
-                    
+                <VBox spacing="25.0">
+                    <padding><Insets bottom="30.0" left="40.0" right="40.0" top="30.0" /></padding>
+                    <Label fx:id="quizTitleLabel" styleClass="page-title" text="Quiz Title Loading..." />
                     <!-- Question 1 -->
-                    <VBox styleClass="quiz-question">
-                        <Label style="-fx-font-weight: bold;" text="Question 1:" />
-                        <Label fx:id="q1" text="How do you say 'Hello' formally in German?" wrapText="true" />
-                        
-                        <VBox spacing="10" styleClass="quiz-option">
-                            <fx:define>
-                                <ToggleGroup fx:id="question1Group" />
-                            </fx:define>
-                            <RadioButton fx:id="Q1O1" text="Hallo">
-                        <toggleGroup>
-                           <ToggleGroup fx:id="question1Group" />
-                        </toggleGroup></RadioButton>
-                            <RadioButton fx:id="Q1O2" text="Guten Tag" toggleGroup="$question1Group" />
-                            <RadioButton fx:id="Q1O3" text="Tschüss" toggleGroup="$question1Group" />
-                            <RadioButton fx:id="Q1O4" text="Wie geht's" toggleGroup="$question1Group" />
-                            
+                    <VBox fx:id="question1Box" styleClass="quiz-question">
+                        <Label style="-fx-font-weight: bold;" text="Question 1:" /><Label fx:id="q1" text="Loading question 1..." wrapText="true" />
+                        <VBox spacing="10.0" styleClass="quiz-option">
+                            <!-- Define ToggleGroup here -->
+                            <fx:define><ToggleGroup fx:id="question1Group" /></fx:define>
+                            <RadioButton fx:id="Q1O1" text="Option A" toggleGroup="$question1Group" /><RadioButton fx:id="Q1O2" text="Option B" toggleGroup="$question1Group" /><RadioButton fx:id="Q1O3" text="Option C" toggleGroup="$question1Group" /><RadioButton fx:id="Q1O4" text="Option D" toggleGroup="$question1Group" />
                         </VBox>
                     </VBox>
-                    
                     <!-- Question 2 -->
-                    <VBox styleClass="quiz-question">
-                        <Label style="-fx-font-weight: bold;" text="Question 2:" />
-                        <Label fx:id="q2" text="What is the correct response to 'Wie geht es Ihnen?'" wrapText="true" />
-                        
-                        <VBox spacing="10" styleClass="quiz-option">
-                            <fx:define>
-                                <ToggleGroup fx:id="question2Group" />
-                            </fx:define>
-                            <RadioButton fx:id="Q2O1" text="Ja, bitte">
-                        <toggleGroup>
-                           <ToggleGroup fx:id="question2Group" />
-                        </toggleGroup></RadioButton>
-                            <RadioButton fx:id="Q2O2" text="Auf Wiedersehen" toggleGroup="$question2Group" />
-                            <RadioButton fx:id="Q2O3" text="Mir geht es gut, danke" toggleGroup="$question2Group" />
-                            <RadioButton fx:id="Q2O4" text="Ich heiße John" toggleGroup="$question2Group" />
-                            
+                    <VBox fx:id="question2Box" styleClass="quiz-question">
+                        <Label style="-fx-font-weight: bold;" text="Question 2:" /><Label fx:id="q2" text="Loading question 2..." wrapText="true" />
+                        <VBox spacing="10.0" styleClass="quiz-option">
+                            <fx:define><ToggleGroup fx:id="question2Group" /></fx:define>
+                            <RadioButton fx:id="Q2O1" text="Option A" toggleGroup="$question2Group" /><RadioButton fx:id="Q2O2" text="Option B" toggleGroup="$question2Group" /><RadioButton fx:id="Q2O3" text="Option C" toggleGroup="$question2Group" /><RadioButton fx:id="Q2O4" text="Option D" toggleGroup="$question2Group" />
                         </VBox>
                     </VBox>
-                    
                     <!-- Question 3 -->
-                    <VBox styleClass="quiz-question">
-                        <Label style="-fx-font-weight: bold;" text="Question 3:" />
-                        <Label fx:id="q3" text="Which of the following is a formal way to address someone in German?" wrapText="true" />
-                        
-                        <VBox spacing="10" styleClass="quiz-option">
-                            <fx:define>
-                                <ToggleGroup fx:id="question3Group" />
-                            </fx:define>
-                            <RadioButton fx:id="Q3O1" text="du">
-                        <toggleGroup>
-                           <ToggleGroup fx:id="question3Group" />
-                        </toggleGroup></RadioButton>
-                            <RadioButton fx:id="Q3O2" text="dich" toggleGroup="$question3Group" />
-                            <RadioButton fx:id="Q3O3" text="Sie" toggleGroup="$question3Group" />
-                            <RadioButton fx:id="Q3O4" text="ihr" toggleGroup="$question3Group" />
-                            
+                    <VBox fx:id="question3Box" styleClass="quiz-question">
+                        <Label style="-fx-font-weight: bold;" text="Question 3:" /><Label fx:id="q3" text="Loading question 3..." wrapText="true" />
+                        <VBox spacing="10.0" styleClass="quiz-option">
+                            <fx:define><ToggleGroup fx:id="question3Group" /></fx:define>
+                            <RadioButton fx:id="Q3O1" text="Option A" toggleGroup="$question3Group" /><RadioButton fx:id="Q3O2" text="Option B" toggleGroup="$question3Group" /><RadioButton fx:id="Q3O3" text="Option C" toggleGroup="$question3Group" /><RadioButton fx:id="Q3O4" text="Option D" toggleGroup="$question3Group" />
                         </VBox>
                     </VBox>
-                    
                     <!-- Question 4 -->
-                    <VBox styleClass="quiz-question">
-                        <Label style="-fx-font-weight: bold;" text="Question 4:" />
-                        <Label fx:id="q4" text="How do you say 'Thank you' in German?" wrapText="true" />
-                        
-                        <VBox spacing="10" styleClass="quiz-option">
-                            <fx:define>
-                                <ToggleGroup fx:id="question4Group" />
-                            </fx:define>
-                            <RadioButton fx:id="Q4O1" text="Bitte">
-                        <toggleGroup>
-                           <ToggleGroup fx:id="question4Group" />
-                        </toggleGroup></RadioButton>
-                            <RadioButton fx:id="Q4O2" text="Danke" toggleGroup="$question4Group" />
-                            <RadioButton fx:id="Q4O3" text="Entschuldigung" toggleGroup="$question4Group" />
-                            <RadioButton fx:id="Q4O4" text="Willkommen" toggleGroup="$question4Group" />
-                            
+                    <VBox fx:id="question4Box" styleClass="quiz-question">
+                        <Label style="-fx-font-weight: bold;" text="Question 4:" /><Label fx:id="q4" text="Loading question 4..." wrapText="true" />
+                        <VBox spacing="10.0" styleClass="quiz-option">
+                            <fx:define><ToggleGroup fx:id="question4Group" /></fx:define>
+                            <RadioButton fx:id="Q4O1" text="Option A" toggleGroup="$question4Group" /><RadioButton fx:id="Q4O2" text="Option B" toggleGroup="$question4Group" /><RadioButton fx:id="Q4O3" text="Option C" toggleGroup="$question4Group" /><RadioButton fx:id="Q4O4" text="Option D" toggleGroup="$question4Group" />
                         </VBox>
                     </VBox>
-                    
-                    <!-- Submit Button -->
-                    <HBox alignment="CENTER_RIGHT" spacing="20">
-                        <!--<Button text="Back to Dashboard" styleClass="button-secondary" onAction="#backToDashboard" />-->
-                        <Button onAction="#finishQuiz" text="Finish Quiz" />
-                    </HBox>
+                    <HBox alignment="CENTER_RIGHT" spacing="20.0"><Button fx:id="finishQuizButton" onAction="#finishQuiz" text="Finish Quiz" /></HBox>
                 </VBox>
             </ScrollPane>
-            
-            <!-- Results Overlay - Initially Hidden -->
-            <VBox fx:id="resultsOverlay" alignment="CENTER" spacing="20" style="-fx-background-color: rgba(255,255,255,0.95);" visible="false">
-                <VBox alignment="CENTER" maxWidth="500" spacing="20" styleClass="content-area">
+            <!-- Results Overlay -->
+            <VBox fx:id="resultsOverlay" alignment="CENTER" managed="false" spacing="20.0" style="-fx-background-color: rgba(255,255,255,0.95);" visible="false">
+                <VBox alignment="CENTER" maxWidth="500.0" spacing="20.0" styleClass="content-area">
                     <Label styleClass="page-title" text="Quiz Results" />
-                    
-                    <ImageView fitHeight="100" fitWidth="100" preserveRatio="true">
-                        <Image url="@success.png" /> <!-- Placeholder for result image -->
+                    <ImageView fitHeight="100.0" fitWidth="100.0" preserveRatio="true">
+                        <Image url="@../images/success.png" />
                     </ImageView>
-                    
-                    <Label fx:id="scoreLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Your Score: 4/4" />
-                    <Label fx:id="feedbackLabel" text="Excellent! You've mastered this lesson." textAlignment="CENTER" wrapText="true" />
-                    
-                    <HBox alignment="CENTER" spacing="20">
+                    <Label fx:id="scoreLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Your Score: X/Y" /><Label fx:id="feedbackLabel" text="Feedback loading..." textAlignment="CENTER" wrapText="true" />
+                    <HBox alignment="CENTER" spacing="20.0">
                         <Button onAction="#backToDashboard" styleClass="button-secondary" text="Back to Dashboard" />
-                        <Button onAction="#goToNextLesson" text="Next Lesson" />
+                        <Button fx:id="nextLessonButton" onAction="#goToNextLesson" text="Next Lesson" />
                     </HBox>
                 </VBox>
             </VBox>

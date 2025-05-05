@@ -3,95 +3,74 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.ProgressBar?>
 
-<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentSceneController">
-    
-<!-- Top Navigation Bar -->
-<top>
-    <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
-        <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
-            <Image url="@../images/lovebird.png" />
-        </ImageView>
-        <Label styleClass="app-name" text="LinguaLearn" style="-fx-text-fill: #000000;" />
-
-        <HBox alignment="CENTER" spacing="5">
-            <Label styleClass="welcome-text" text="Welcome," style="-fx-text-fill: #000000;" />
-            <Label fx:id="studentNameLabel" styleClass="welcome-text" text="John Doe" style="-fx-text-fill: #000000;" />
-            <Label styleClass="welcome-text" text="| Learning:" style="-fx-text-fill: #000000;" />
-            <Label fx:id="languageLabel" styleClass="welcome-text" text="German" style="-fx-text-fill: #000000;" />
+<BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentSceneController">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
+            <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
+                <Image url="@../images/lovebird.png" />
+            </ImageView>
+            <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" spacing="5.0">
+                <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Welcome," />
+                <Label fx:id="studentNameLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Student Name" />
+                <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="| Learning:" />
+                <Label fx:id="languageLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Language" />
+            </HBox>
+            <Button onAction="#logout" text="Logout">
+                <HBox.margin><Insets left="20.0" /></HBox.margin>
+            </Button>
         </HBox>
-
-        <Button onAction="#logout" prefHeight="26.0" prefWidth="83.0" text="Logout" >
-            <HBox.margin>
-               <Insets left="200.0" />
-            </HBox.margin>
-        </Button>
-
-        <HBox.hgrow>
-            <Priority fx:constant="ALWAYS" />
-        </HBox.hgrow>
-    </HBox>
-</top>
-
-    <!-- Main Content Area -->
+    </top>
     <center>
-        <VBox spacing="30" styleClass="content-area" stylesheets="@styles.css">
-            <padding>
-                <Insets bottom="30" left="40" right="40" top="30" />
-            </padding>
-            
+        <VBox spacing="30.0" styleClass="content-area" stylesheets="@styles.css">
+            <padding><Insets bottom="30.0" left="40.0" right="40.0" top="30.0" /></padding>
             <Label styleClass="page-title" text="Student Dashboard" />
-            
-            <!-- Stats Section -->
-            <HBox alignment="CENTER" spacing="20">
+            <HBox alignment="CENTER" spacing="20.0">
                 <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
-                    <Label fx:id="progressValue" styleClass="stat-value" text="65%" />
-                    <ProgressBar fx:id="progressBar" prefWidth="200" progress="0.65" />
+                    <Label fx:id="progressValue" styleClass="stat-value" text="0%" />
+                    <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0" />
                     <Label styleClass="stat-label" text="Progress" />
                 </VBox>
-                
                 <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
-                    <Label fx:id="pointsValue" styleClass="stat-value" text="750" />
+                    <Label fx:id="pointsValue" styleClass="stat-value" text="0" />
                     <Label styleClass="stat-label" text="Points" />
                 </VBox>
-                
                 <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
-                    <Label fx:id="rankValue" styleClass="stat-value" text="Intermediate" />
+                    <Label fx:id="rankValue" styleClass="stat-value" text="Rank" />
                     <Label styleClass="stat-label" text="Rank" />
                 </VBox>
             </HBox>
-            
-            <!-- Lessons Section -->
-            <VBox spacing="15">
+            <VBox spacing="15.0">
                 <Label style="-fx-font-size: 18px;" styleClass="page-title" text="Continue Learning" />
-                
-                <HBox spacing="20">
-                    <VBox alignment="CENTER" prefHeight="150" prefWidth="250" styleClass="dashboard-stats" VBox.vgrow="ALWAYS">
+                <HBox spacing="20.0">
+                    <VBox alignment="CENTER" prefHeight="150.0" prefWidth="250.0" styleClass="dashboard-stats" HBox.hgrow="NEVER">
                         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Current Lesson" />
-                        <Label fx:id="currentLessonTitle" text="Lesson Title" textAlignment="CENTER" wrapText="true" />
-                        <Separator />
+                        <Label fx:id="currentLessonTitle" text="Select a Lesson" textAlignment="CENTER" wrapText="true" />
+                        <Separator prefWidth="200.0" />
                         <Button onAction="#startLesson" text="Start Lesson" />
+                        <padding><Insets bottom="10.0" top="10.0" /></padding>
                     </VBox>
-                    
-                    <VBox alignment="CENTER" prefHeight="150" prefWidth="250" styleClass="dashboard-stats" VBox.vgrow="ALWAYS">
-                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Curriculum " />
-                        <Label fx:id="nextLessonTitle" text="Language Name" textAlignment="CENTER" wrapText="true" />
-                        <Separator />
-                        <Button disable="true" onAction="#previewNextLesson" style="-fx-opacity: 0.7;" text="Preview" />
+                    <VBox alignment="TOP_CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Curriculum" />
+                        <Label fx:id="nextLessonTitle" text="Available Lessons" textAlignment="CENTER" wrapText="true" />
+                        <Separator prefWidth="400.0" />
+                        <ListView fx:id="lessonsListView" prefHeight="200.0" VBox.vgrow="ALWAYS" />
+                        <padding><Insets bottom="10.0" top="10.0" /></padding>
                     </VBox>
                 </HBox>
             </VBox>
-            
-            <!-- Recent Activity Section -->
-            <VBox spacing="15" />
         </VBox>
     </center>
 </BorderPane>

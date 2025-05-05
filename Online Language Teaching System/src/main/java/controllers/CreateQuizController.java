@@ -2,101 +2,116 @@ package controllers;
 
 import Main.*; // Import necessary classes
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.*; // Import ToggleGroup etc.
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CreateQuizController {
 
-    @FXML private Label lessonTitleLabel; // To show which lesson this quiz is for (optional)
-
-    // --- Question 1 UI Elements ---
-    @FXML private TextField question1Field;
-    @FXML private TextField q1OptionAField;
-    @FXML private TextField q1OptionBField;
-    @FXML private TextField q1OptionCField;
-    @FXML private TextField q1OptionDField;
-    @FXML private ToggleGroup correctAnswer1Group; // Make sure fx:id matches in FXML
-    @FXML private RadioButton q1OptionACorrect; // Need fx:id on RadioButtons if using ToggleGroup lookup
-    @FXML private RadioButton q1OptionBCorrect;
-    @FXML private RadioButton q1OptionCCorrect;
-    @FXML private RadioButton q1OptionDCorrect;
-
-    // --- Question 2 UI Elements ---
-    @FXML private TextField question2Field;
-    @FXML private TextField q2OptionAField;
-    @FXML private TextField q2OptionBField;
-    @FXML private TextField q2OptionCField;
-    @FXML private TextField q2OptionDField;
-    @FXML private ToggleGroup correctAnswer2Group;
-    @FXML private RadioButton q2OptionACorrect;
-    @FXML private RadioButton q2OptionBCorrect;
-    @FXML private RadioButton q2OptionCCorrect;
-    @FXML private RadioButton q2OptionDCorrect;
-
-    // --- Question 3 UI Elements ---
-    @FXML private TextField question3Field;
-    @FXML private TextField q3OptionAField;
-    @FXML private TextField q3OptionBField;
-    @FXML private TextField q3OptionCField;
-    @FXML private TextField q3OptionDField;
-    @FXML private ToggleGroup correctAnswer3Group;
-    @FXML private RadioButton q3OptionACorrect;
-    @FXML private RadioButton q3OptionBCorrect;
-    @FXML private RadioButton q3OptionCCorrect;
-    @FXML private RadioButton q3OptionDCorrect;
-
-    // --- Question 4 UI Elements ---
-    @FXML private TextField question4Field;
-    @FXML private TextField q4OptionAField;
-    @FXML private TextField q4OptionBField;
-    @FXML private TextField q4OptionCField;
-    @FXML private TextField q4OptionDField;
-    @FXML private ToggleGroup correctAnswer4Group;
-    @FXML private RadioButton q4OptionACorrect;
-    @FXML private RadioButton q4OptionBCorrect;
-    @FXML private RadioButton q4OptionCCorrect;
-    @FXML private RadioButton q4OptionDCorrect;
-
-    // Add ComboBox for proficiency level if not tied to a lesson
-    @FXML private TextField quizTitleField; // Need a field for the Quiz title
-
-
+    // --- Teacher/Lesson Context ---
     private Teacher currentTeacher;
-    private String associatedLessonId; // Store the ID of the lesson this quiz belongs to
+    private String associatedLessonId;
 
-    @FXML
-    public void initialize() {
-        // Get the logged-in teacher
-        User loggedInUser = LoginManager.getSelectedUser();
-        if (loggedInUser instanceof Teacher) {
-            this.currentTeacher = (Teacher) loggedInUser;
-        } else {
-            AlertMessage.showError("Access Denied", "Only teachers can create quizzes.");
-            // Disable fields
-            disableAllFields();
-            return;
-        }
-        // TODO: Receive associatedLessonId if passed from another controller
-        // For now, assume it's null or set manually
-        this.associatedLessonId = null; // Example: "L1020"
-        if(this.associatedLessonId != null) {
-            lessonTitleLabel.setText("Quiz for Lesson: " + associatedLessonId); // Update label
-        } else {
-            lessonTitleLabel.setText("Create Standalone Quiz");
-        }
-    }
+    // --- UI Elements ---
+    @FXML private Label associatedLessonLabel;
+    @FXML private TextField quizTitleField;
 
-    // Method to be called from another controller to pass data
+    // Question 1 Fields
+    @FXML private TextField q1Text;
+    @FXML private TextField q1OptA;
+    @FXML private TextField q1OptB;
+    @FXML private TextField q1OptC;
+    @FXML private TextField q1OptD;
+    @FXML private RadioButton q1CorrectA;
+    @FXML private RadioButton q1CorrectB;
+    @FXML private RadioButton q1CorrectC;
+    @FXML private RadioButton q1CorrectD;
+    private ToggleGroup correctAnswerGroup1;
+
+    // Question 2 Fields
+    @FXML private TextField q2Text;
+    @FXML private TextField q2OptA;
+    @FXML private TextField q2OptB;
+    @FXML private TextField q2OptC;
+    @FXML private TextField q2OptD;
+    @FXML private RadioButton q2CorrectA;
+    @FXML private RadioButton q2CorrectB;
+    @FXML private RadioButton q2CorrectC;
+    @FXML private RadioButton q2CorrectD;
+    private ToggleGroup correctAnswerGroup2;
+
+    // Question 3 Fields
+    @FXML private TextField q3Text;
+    @FXML private TextField q3OptA;
+    @FXML private TextField q3OptB;
+    @FXML private TextField q3OptC;
+    @FXML private TextField q3OptD;
+    @FXML private RadioButton q3CorrectA;
+    @FXML private RadioButton q3CorrectB;
+    @FXML private RadioButton q3CorrectC;
+    @FXML private RadioButton q3CorrectD;
+    private ToggleGroup correctAnswerGroup3;
+
+    // Question 4 Fields
+    @FXML private TextField q4Text;
+    @FXML private TextField q4OptA;
+    @FXML private TextField q4OptB;
+    @FXML private TextField q4OptC;
+    @FXML private TextField q4OptD;
+    @FXML private RadioButton q4CorrectA;
+    @FXML private RadioButton q4CorrectB;
+    @FXML private RadioButton q4CorrectC;
+    @FXML private RadioButton q4CorrectD;
+    private ToggleGroup correctAnswerGroup4;
+
+
+    // Method called by TeacherSceneController to pass context
     public void setQuizContext(Teacher teacher, String lessonId) {
         this.currentTeacher = teacher;
         this.associatedLessonId = lessonId;
-        if(this.associatedLessonId != null) {
-            // Optionally load lesson title to display
-            lessonTitleLabel.setText("Quiz for Lesson: " + associatedLessonId);
+
+        if (lessonId != null) {
+            associatedLessonLabel.setText("Quiz for Lesson ID: " + lessonId);
         } else {
-            lessonTitleLabel.setText("Create Standalone Quiz");
+            associatedLessonLabel.setText("Creating Standalone Quiz");
         }
+        initializeToggleGroups(); // Ensure groups are set after context is received
+    }
+
+    // Called automatically after FXML fields are injected
+    @FXML
+    public void initialize() {
+        initializeToggleGroups(); // Initialize groups when the FXML is loaded
+    }
+
+    private void initializeToggleGroups() {
+        // Prevent NullPointerException if called before FXML injection
+        if (q1CorrectA == null) return;
+
+        if (correctAnswerGroup1 == null) correctAnswerGroup1 = new ToggleGroup();
+        q1CorrectA.setToggleGroup(correctAnswerGroup1);
+        q1CorrectB.setToggleGroup(correctAnswerGroup1);
+        q1CorrectC.setToggleGroup(correctAnswerGroup1);
+        q1CorrectD.setToggleGroup(correctAnswerGroup1);
+
+        if (correctAnswerGroup2 == null) correctAnswerGroup2 = new ToggleGroup();
+        q2CorrectA.setToggleGroup(correctAnswerGroup2);
+        q2CorrectB.setToggleGroup(correctAnswerGroup2);
+        q2CorrectC.setToggleGroup(correctAnswerGroup2);
+        q2CorrectD.setToggleGroup(correctAnswerGroup2);
+
+        if (correctAnswerGroup3 == null) correctAnswerGroup3 = new ToggleGroup();
+        q3CorrectA.setToggleGroup(correctAnswerGroup3);
+        q3CorrectB.setToggleGroup(correctAnswerGroup3);
+        q3CorrectC.setToggleGroup(correctAnswerGroup3);
+        q3CorrectD.setToggleGroup(correctAnswerGroup3);
+
+        if (correctAnswerGroup4 == null) correctAnswerGroup4 = new ToggleGroup();
+        q4CorrectA.setToggleGroup(correctAnswerGroup4);
+        q4CorrectB.setToggleGroup(correctAnswerGroup4);
+        q4CorrectC.setToggleGroup(correctAnswerGroup4);
+        q4CorrectD.setToggleGroup(correctAnswerGroup4);
     }
 
     @FXML
@@ -106,153 +121,118 @@ public class CreateQuizController {
             return;
         }
 
-        List<Question> questions = new ArrayList<>();
-        String quizTitle = quizTitleField.getText().trim(); // Get quiz title
-        // Get proficiency level (e.g., from a ComboBox or based on lesson)
-        String proficiencyLevel = "Beginner"; // Placeholder
-
+        String quizTitle = quizTitleField.getText().trim();
         if (quizTitle.isEmpty()) {
-            AlertMessage.showWarning("Input Required", "Please enter a quiz title.");
+            AlertMessage.showWarning("Input Required", "Please enter a Quiz Title.");
+            quizTitleField.requestFocus();
             return;
         }
 
+        List<Question> questions = new ArrayList<>();
+        boolean valid = true;
+
+        valid &= addQuestionToList(questions, q1Text, q1OptA, q1OptB, q1OptC, q1OptD, correctAnswerGroup1, 1);
+        valid &= addQuestionToList(questions, q2Text, q2OptA, q2OptB, q2OptC, q2OptD, correctAnswerGroup2, 2);
+        valid &= addQuestionToList(questions, q3Text, q3OptA, q3OptB, q3OptC, q3OptD, correctAnswerGroup3, 3);
+        valid &= addQuestionToList(questions, q4Text, q4OptA, q4OptB, q4OptC, q4OptD, correctAnswerGroup4, 4);
+
+        if (!valid) {
+            return;
+        }
+        if (questions.size() < 4) {
+            AlertMessage.showWarning("Incomplete Quiz", "Please ensure all 4 questions are filled out correctly.");
+            return;
+        }
 
         try {
-            // --- Process Question 1 ---
-            Question q1 = processQuestion(question1Field, q1OptionAField, q1OptionBField, q1OptionCField, q1OptionDField, correctAnswer1Group);
-            if (q1 != null) questions.add(q1);
-            else return; // Stop if processing failed
-
-            // --- Process Question 2 ---
-            Question q2 = processQuestion(question2Field, q2OptionAField, q2OptionBField, q2OptionCField, q2OptionDField, correctAnswer2Group);
-            if (q2 != null) questions.add(q2);
-            else return;
-
-            // --- Process Question 3 ---
-            Question q3 = processQuestion(question3Field, q3OptionAField, q3OptionBField, q3OptionCField, q3OptionDField, correctAnswer3Group);
-            if (q3 != null) questions.add(q3);
-            else return;
-
-            // --- Process Question 4 ---
-            Question q4 = processQuestion(question4Field, q4OptionAField, q4OptionBField, q4OptionCField, q4OptionDField, correctAnswer4Group);
-            if (q4 != null) questions.add(q4);
-            else return;
-
-
-            if(questions.size() < 4) { // Or check based on how many are required
-                AlertMessage.showWarning("Incomplete Quiz", "Please complete all required questions before saving.");
-                return;
-            }
-
-            // Create the Quiz object (constructor handles saving)
-            Quiz newQuiz = new Quiz(quizTitle, proficiencyLevel, questions, associatedLessonId, currentTeacher.getID());
-
-            if (newQuiz.getFilePath() != null && !newQuiz.getFilePath().isEmpty()) {
-                // Update teacher's list
-                currentTeacher.addCreatedQuiz(newQuiz.getQuizId());
-                // TODO: Persist teacher's updated list
-
-                AlertMessage.showInformation("Quiz Saved", "Quiz '" + newQuiz.getTitle() + "' (ID: " + newQuiz.getQuizId() + ") created successfully.");
-                // Optionally clear fields or navigate back
-                clearAllFields();
-                // backToDashboard();
+            Quiz newQuiz = new Quiz(quizTitle, questions, currentTeacher.getID(), associatedLessonId);
+            if (newQuiz.getQuizId() != null && !newQuiz.getQuizId().equals("Q_DEFAULT")) {
+                AlertMessage.showInformation("Quiz Saved", "Quiz '" + newQuiz.getTitle() + "' (ID: " + newQuiz.getQuizId() + ") saved successfully.");
+                clearFields();
             } else {
-                AlertMessage.showError("Save Error", "Failed to save the quiz. Check logs.");
+                AlertMessage.showError("Save Error", "Failed to save the quiz. Check logs or Quiz constructor.");
             }
-
-
         } catch (IllegalArgumentException e) {
-            AlertMessage.showError("Invalid Input", "Error creating question/quiz: " + e.getMessage());
+            AlertMessage.showError("Invalid Input", "Error creating quiz: " + e.getMessage());
         } catch (Exception e) {
-            AlertMessage.showError("Unexpected Error", "An error occurred while saving the quiz: " + e.getMessage());
+            AlertMessage.showError("Unexpected Error", "An unexpected error occurred while saving the quiz: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    // Helper to process UI elements for a single question
-    private Question processQuestion(TextField qField, TextField oA, TextField oB, TextField oC, TextField oD, ToggleGroup correctGroup) {
-        String qText = qField.getText().trim();
-        String optA = oA.getText().trim();
-        String optB = oB.getText().trim();
-        String optC = oC.getText().trim();
-        String optD = oD.getText().trim();
-
-        // Basic validation for the current question
-        if (qText.isEmpty() || optA.isEmpty() || optB.isEmpty() || optC.isEmpty() || optD.isEmpty()) {
-            AlertMessage.showWarning("Incomplete Question", "Please fill in the question text and all four options for: " + qField.getPromptText()); // Use prompt text or ID to identify
-            return null; // Indicate failure
+    private boolean addQuestionToList(List<Question> list, TextField qText,
+                                      TextField optA, TextField optB, TextField optC, TextField optD,
+                                      ToggleGroup group, int questionNumber) {
+        // Ensure ToggleGroup exists before using it
+        if (group == null) {
+            AlertMessage.showError("Internal Error", "ToggleGroup not initialized for Question " + questionNumber);
+            return false;
         }
 
-        RadioButton selectedCorrect = (RadioButton) correctGroup.getSelectedToggle();
-        if (selectedCorrect == null) {
-            AlertMessage.showWarning("Missing Correct Answer", "Please select the correct answer for question: " + qText.substring(0, Math.min(qText.length(), 20)) + "...");
-            return null; // Indicate failure
+        String questionText = qText.getText().trim();
+        String optionA = optA.getText().trim();
+        String optionB = optB.getText().trim();
+        String optionC = optC.getText().trim();
+        String optionD = optD.getText().trim();
+
+        if (questionText.isEmpty() || optionA.isEmpty() || optionB.isEmpty() || optionC.isEmpty() || optionD.isEmpty()) {
+            AlertMessage.showWarning("Input Required", "Please fill in the question and all four options for Question " + questionNumber + ".");
+            qText.requestFocus();
+            return false;
         }
 
-        // Determine the text of the correct answer based on which RadioButton was selected
-        String correctAnswerText = "";
-        // IMPORTANT: Assumes fx:id matches the variable names qXOptionYCorrect
-        // This is fragile. A better way is to set UserData on the RadioButton in FXML or code.
-        // Example using UserData (set userData="A" in FXML for q1OptionACorrect etc.):
-        // String correctLetter = (String) selectedCorrect.getUserData();
-        // switch (correctLetter) {
-        //    case "A": correctAnswerText = optA; break; ...
-        // }
+        RadioButton selectedRadio = (RadioButton) group.getSelectedToggle();
+        if (selectedRadio == null) {
+            AlertMessage.showWarning("Input Required", "Please select the correct answer for Question " + questionNumber + ".");
+            return false;
+        }
 
-        // --- Current Less Robust Way (Relies on fx:id mapping) ---
-        if (selectedCorrect == q1OptionACorrect || selectedCorrect == q2OptionACorrect || selectedCorrect == q3OptionACorrect || selectedCorrect == q4OptionACorrect) correctAnswerText = optA;
-        else if (selectedCorrect == q1OptionBCorrect || selectedCorrect == q2OptionBCorrect || selectedCorrect == q3OptionBCorrect || selectedCorrect == q4OptionBCorrect) correctAnswerText = optB;
-        else if (selectedCorrect == q1OptionCCorrect || selectedCorrect == q2OptionCCorrect || selectedCorrect == q3OptionCCorrect || selectedCorrect == q4OptionCCorrect) correctAnswerText = optC;
-        else if (selectedCorrect == q1OptionDCorrect || selectedCorrect == q2OptionDCorrect || selectedCorrect == q3OptionDCorrect || selectedCorrect == q4OptionDCorrect) correctAnswerText = optD;
+        String correctAnswer = "";
+        if (selectedRadio.equals(q1CorrectA) || selectedRadio.equals(q2CorrectA) || selectedRadio.equals(q3CorrectA) || selectedRadio.equals(q4CorrectA)) correctAnswer = optionA;
+        else if (selectedRadio.equals(q1CorrectB) || selectedRadio.equals(q2CorrectB) || selectedRadio.equals(q3CorrectB) || selectedRadio.equals(q4CorrectB)) correctAnswer = optionB;
+        else if (selectedRadio.equals(q1CorrectC) || selectedRadio.equals(q2CorrectC) || selectedRadio.equals(q3CorrectC) || selectedRadio.equals(q4CorrectC)) correctAnswer = optionC;
+        else if (selectedRadio.equals(q1CorrectD) || selectedRadio.equals(q2CorrectD) || selectedRadio.equals(q3CorrectD) || selectedRadio.equals(q4CorrectD)) correctAnswer = optionD;
         else {
-            AlertMessage.showError("Internal Error", "Could not determine correct answer text. Check RadioButton fx:ids.");
-            return null;
+            AlertMessage.showError("Internal Error", "Could not determine correct answer for Question " + questionNumber + ".");
+            return false;
         }
-        // --- End Less Robust Way ---
 
 
-        String[] options = {optA, optB, optC, optD};
-
+        String[] options = {optionA, optionB, optionC, optionD};
         try {
-            return new Question(qText, options, correctAnswerText);
+            list.add(new Question(questionText, options, correctAnswer));
+            return true;
         } catch (IllegalArgumentException e) {
-            // Catch specific errors from Question constructor if needed
-            throw e; // Re-throw to be caught by saveQuiz
+            AlertMessage.showError("Validation Error", "Question " + questionNumber + ": " + e.getMessage());
+            return false;
         }
+    }
+
+    private void clearFields() {
+        quizTitleField.clear();
+
+        q1Text.clear(); q1OptA.clear(); q1OptB.clear(); q1OptC.clear(); q1OptD.clear();
+        if (correctAnswerGroup1 != null && correctAnswerGroup1.getSelectedToggle() != null) correctAnswerGroup1.getSelectedToggle().setSelected(false);
+
+        q2Text.clear(); q2OptA.clear(); q2OptB.clear(); q2OptC.clear(); q2OptD.clear();
+        if (correctAnswerGroup2 != null && correctAnswerGroup2.getSelectedToggle() != null) correctAnswerGroup2.getSelectedToggle().setSelected(false);
+
+        q3Text.clear(); q3OptA.clear(); q3OptB.clear(); q3OptC.clear(); q3OptD.clear();
+        if (correctAnswerGroup3 != null && correctAnswerGroup3.getSelectedToggle() != null) correctAnswerGroup3.getSelectedToggle().setSelected(false);
+
+        q4Text.clear(); q4OptA.clear(); q4OptB.clear(); q4OptC.clear(); q4OptD.clear();
+        if (correctAnswerGroup4 != null && correctAnswerGroup4.getSelectedToggle() != null) correctAnswerGroup4.getSelectedToggle().setSelected(false);
+
+        associatedLessonLabel.setText("Create Quiz"); // Reset label
     }
 
 
     @FXML
     private void backToDashboard() {
-        // Navigate back to the appropriate dashboard
         if (currentTeacher != null) {
             SceneManager.switchToScene(SceneManager.TEACHER_DASHBOARD);
         } else {
             SceneManager.switchToScene(SceneManager.LOGIN);
         }
-    }
-
-    private void disableAllFields() {
-        // Disable text fields
-        quizTitleField.setDisable(true);
-        question1Field.setDisable(true); q1OptionAField.setDisable(true); q1OptionBField.setDisable(true); q1OptionCField.setDisable(true); q1OptionDField.setDisable(true);
-        question2Field.setDisable(true); q2OptionAField.setDisable(true); q2OptionBField.setDisable(true); q2OptionCField.setDisable(true); q2OptionDField.setDisable(true);
-        question3Field.setDisable(true); q3OptionAField.setDisable(true); q3OptionBField.setDisable(true); q3OptionCField.setDisable(true); q3OptionDField.setDisable(true);
-        question4Field.setDisable(true); q4OptionAField.setDisable(true); q4OptionBField.setDisable(true); q4OptionCField.setDisable(true); q4OptionDField.setDisable(true);
-        // Disable radio buttons
-        q1OptionACorrect.setDisable(true); q1OptionBCorrect.setDisable(true); q1OptionCCorrect.setDisable(true); q1OptionDCorrect.setDisable(true);
-        q2OptionACorrect.setDisable(true); q2OptionBCorrect.setDisable(true); q2OptionCCorrect.setDisable(true); q2OptionDCorrect.setDisable(true);
-        q3OptionACorrect.setDisable(true); q3OptionBCorrect.setDisable(true); q3OptionCCorrect.setDisable(true); q3OptionDCorrect.setDisable(true);
-        q4OptionACorrect.setDisable(true); q4OptionBCorrect.setDisable(true); q4OptionCCorrect.setDisable(true); q4OptionDCorrect.setDisable(true);
-        // Disable buttons
-        // saveButton.setDisable(true); // Assuming a save button exists
-    }
-
-    private void clearAllFields() {
-        quizTitleField.clear();
-        question1Field.clear(); q1OptionAField.clear(); q1OptionBField.clear(); q1OptionCField.clear(); q1OptionDField.clear(); if(correctAnswer1Group.getSelectedToggle() != null) correctAnswer1Group.getSelectedToggle().setSelected(false);
-        question2Field.clear(); q2OptionAField.clear(); q2OptionBField.clear(); q2OptionCField.clear(); q2OptionDField.clear(); if(correctAnswer2Group.getSelectedToggle() != null) correctAnswer2Group.getSelectedToggle().setSelected(false);
-        question3Field.clear(); q3OptionAField.clear(); q3OptionBField.clear(); q3OptionCField.clear(); q3OptionDField.clear(); if(correctAnswer3Group.getSelectedToggle() != null) correctAnswer3Group.getSelectedToggle().setSelected(false);
-        question4Field.clear(); q4OptionAField.clear(); q4OptionBField.clear(); q4OptionCField.clear(); q4OptionDField.clear(); if(correctAnswer4Group.getSelectedToggle() != null) correctAnswer4Group.getSelectedToggle().setSelected(false);
     }
 }

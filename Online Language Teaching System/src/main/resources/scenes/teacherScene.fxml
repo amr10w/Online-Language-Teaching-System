@@ -1,110 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.TeacherSceneController"
-            stylesheets="@styles.css"
-            prefWidth="800" prefHeight="600">
-    
-    <!-- Top Navigation Bar -->
+<BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherSceneController">
     <top>
-        <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
-            <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
-                <Image url="@../images/lovebird.png"/>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
+            <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
+                <!-- Using relative path -->
+                <Image url="@../images/lovebird.png" />
             </ImageView>
-            <Label styleClass="app-name" style="-fx-text-fill: #000000;" text="LinguaLearn" />
-            
-            <HBox.hgrow>
-                <Priority fx:constant="ALWAYS" />
-            </HBox.hgrow>
-            
-            <HBox alignment="CENTER" spacing="5">
-                <Label styleClass="welcome-text" style="-fx-text-fill: #000000;" text="Welcome," />
-                <Label fx:id="teacherNameLabel" styleClass="welcome-text"  style="-fx-text-fill: #000000;" text="Prof. Smith" />
-                <Label styleClass="welcome-text" style="-fx-text-fill: #000000;" text="| Teaching:" />
-                <Label fx:id="languageLabel" styleClass="welcome-text" style="-fx-text-fill: #000000;" text="German" />
+            <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" spacing="5.0">
+                <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Welcome," />
+                <!-- fx:id matches controller -->
+                <Label fx:id="teacherNameLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Teacher Name" />
+                <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="| Teaching:" />
+                <!-- fx:id matches controller -->
+                <Label fx:id="languageLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Language" />
             </HBox>
-            
-            <Button text="Logout" onAction="#logout" >
-                <HBox.margin>
-                   <Insets left="200.0" />
-                </HBox.margin>
+            <!-- onAction matches controller -->
+            <Button onAction="#logout" text="Logout">
+                <HBox.margin><Insets left="20.0" /></HBox.margin>
             </Button>
         </HBox>
     </top>
-    
-    <!-- Main Content Area -->
     <center>
-        <VBox spacing="30" styleClass="content-area">
-            <padding>
-                <Insets top="30" right="40" bottom="30" left="40" />
-            </padding>
-            
+        <VBox spacing="30.0" styleClass="content-area">
+            <padding><Insets bottom="30.0" left="40.0" right="40.0" top="30.0" /></padding>
             <Label styleClass="page-title" text="Teacher Dashboard" />
-            
             <!-- Stats Section -->
-            <HBox spacing="20" alignment="CENTER">
-                <VBox styleClass="dashboard-stats" alignment="CENTER" HBox.hgrow="ALWAYS">
-                    <Label styleClass="stat-value" fx:id="lessonsCreatedValue" text="12" />
+            <HBox alignment="CENTER" spacing="20.0">
+                <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
+                    <!-- fx:id matches controller -->
+                    <Label fx:id="lessonsCreatedValue" styleClass="stat-value" text="0" />
                     <Label styleClass="stat-label" text="Lessons Created" />
                 </VBox>
-                
-                <VBox styleClass="dashboard-stats" alignment="CENTER" HBox.hgrow="ALWAYS">
-                    <Label styleClass="stat-value" fx:id="studentsValue" text="45" />
+                <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
+                    <!-- fx:id matches controller -->
+                    <Label fx:id="studentsValue" styleClass="stat-value" text="0" />
                     <Label styleClass="stat-label" text="Total Students" />
                 </VBox>
-                
-                <VBox styleClass="dashboard-stats" alignment="CENTER" HBox.hgrow="ALWAYS">
-<!--                    <Label styleClass="stat-value" fx:id="balanceValue" text="$250" />   you need to make control here-->      
+                <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
+                    <!-- fx:id matches controller -->
+                    <Label fx:id="balanceValue" styleClass="stat-value" text="$0.00" />
                     <Label styleClass="stat-label" text="Balance" />
                 </VBox>
             </HBox>
-            
             <!-- Actions Section -->
-            <VBox spacing="15">
-                <Label styleClass="page-title" text="Teacher Actions" style="-fx-font-size: 18px;" />
-                
-                <HBox spacing="20">
-                    <VBox styleClass="dashboard-stats" prefWidth="250" prefHeight="150" 
-                          alignment="CENTER" VBox.vgrow="ALWAYS">
-                        <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
-                            <Image url="@lesson-icon.png"/> <!-- Placeholder for icon -->
+            <VBox spacing="15.0">
+                <Label style="-fx-font-size: 18px;" styleClass="page-title" text="Teacher Actions" />
+                <HBox spacing="20.0">
+                    <!-- Create Lesson Box -->
+                    <VBox alignment="CENTER" prefHeight="150.0" prefWidth="250.0" styleClass="dashboard-stats" VBox.vgrow="NEVER">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
+                            <!-- Using relative path -->
+                            <Image url="@../images/lesson-icon.png" />
                         </ImageView>
-                        <Label text="Create New Lesson" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
-                        <Label text="Add a new lesson to your course" wrapText="true" textAlignment="CENTER" />
-                        <Separator />
-                        <Button text="Create Lesson" onAction="#createLesson" />
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Create New Lesson" />
+                        <Label text="Add a new lesson to your course" textAlignment="CENTER" wrapText="true" />
+                        <Separator prefWidth="200.0" />
+                        <!-- onAction matches controller -->
+                        <Button onAction="#createLesson" text="Create Lesson" />
+                        <padding><Insets bottom="10.0" top="10.0" /></padding>
                     </VBox>
-                    
-<!--                    <VBox styleClass="dashboard-stats" prefWidth="250" prefHeight="150"
-                          alignment="CENTER" VBox.vgrow="ALWAYS">
-                        <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
-                            <Image url="@quiz-icon.png"/>  Placeholder for icon 
+                    <!-- Create Quiz Box -->
+                    <VBox alignment="CENTER" prefHeight="150.0" prefWidth="250.0" styleClass="dashboard-stats" VBox.vgrow="NEVER">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
+                            <!-- Using relative path -->
+                            <Image url="@../images/quiz-icon.png" />
                         </ImageView>
-                        <Label text="Create New Quiz" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
-                        <Label text="Add a quiz to an existing lesson" wrapText="true" textAlignment="CENTER" />
-                        <Separator />
-                        <Button text="Create Quiz" onAction="#createQuiz" />
-                    </VBox>-->
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Create New Quiz" />
+                        <Label text="Add a quiz (associates if lesson selected below)" textAlignment="CENTER" wrapText="true" />
+                        <Separator prefWidth="200.0" />
+                        <!-- onAction matches controller -->
+                        <Button onAction="#createQuiz" text="Create Quiz" />
+                        <padding><Insets bottom="10.0" top="10.0" /></padding>
+                    </VBox>
                 </HBox>
             </VBox>
-            
             <!-- Recent Lessons Section -->
-            <VBox spacing="15">
+            <VBox spacing="15.0" VBox.vgrow="ALWAYS">
                 <Label styleClass="page-title" text="Your Lessons" style="-fx-font-size: 18px;" />
-                
-                <TableView fx:id="lessonsTableView" prefHeight="200">
+                <!-- fx:id matches controller -->
+                <TableView fx:id="lessonsTableView" prefHeight="200.0" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn text="Lesson Title" prefWidth="250" />
-                        <TableColumn text="Date Created" prefWidth="150" />
-                        <TableColumn text="Students Completed" prefWidth="150" />
-                        <TableColumn text="Average Score" prefWidth="100" />
+                        <!-- fx:id matches controller -->
+                        <TableColumn fx:id="lessonTitleCol" prefWidth="350.0" text="Lesson Title" />
+                        <!-- fx:id matches controller -->
+                        <TableColumn fx:id="lessonIdCol" prefWidth="150.0" text="Lesson ID" />
+                        <!-- fx:id matches controller -->
+                        <TableColumn fx:id="lessonLevelCol" prefWidth="100.0" text="Level" />
                     </columns>
+                    <!-- REMOVED cellValueFactory and columnResizePolicy from FXML -->
                 </TableView>
             </VBox>
         </VBox>

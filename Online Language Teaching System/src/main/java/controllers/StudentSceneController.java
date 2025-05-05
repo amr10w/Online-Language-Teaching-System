@@ -40,7 +40,7 @@ public class StudentSceneController {
         rankValue.setText("Beginner");
         currentLessonTitle.setText("Select a lesson");
         nextLessonTitle.setText("Available Lessons"); // Changed label text
-       /lessonsListView.setPlaceholder(new Label("Loading lessons..."));
+       lessonsListView.setPlaceholder(new Label("Loading lessons..."));
 
         // Add listener to ListView selection
         lessonsListView.getSelectionModel().selectedItemProperty().addListener(
