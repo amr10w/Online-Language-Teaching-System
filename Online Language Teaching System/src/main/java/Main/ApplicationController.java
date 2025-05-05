@@ -43,13 +43,13 @@ public class ApplicationController extends Application {
 
 
     }
-
+    private MediaPlayer mediaPlayer;
     private void playMusic() {
         try {
             String filePath = getClass().getResource("/audios/welcome.mp3").toExternalForm();
             Media media = new Media(filePath);
-            MediaPlayer mediaPlayer = new MediaPlayer(media);
-//            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loops the audio
+            mediaPlayer = new MediaPlayer(media);
+//          mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loops the audio
             mediaPlayer.play();
         } catch (Exception e) {
             System.err.println("Error playing MP3 file. Ensure the file exists at the specified path.");
