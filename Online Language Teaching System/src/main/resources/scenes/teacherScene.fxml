@@ -14,97 +14,124 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
+<!-- Controller: controllers.TeacherSceneController -->
 <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherSceneController">
+
+    <!-- Top Navigation Bar -->
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
-            <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
-                <!-- Using relative path -->
-                <Image url="@../images/lovebird.png" />
+            <!-- ImageView for app logo - fx:id="teacherImageView" is optional here if only default is used -->
+            <ImageView fx:id="teacherImageView" fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
+                <image><Image url="@../images/lovebird.png"/></image> <!-- Using app logo -->
             </ImageView>
             <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
-            <Region HBox.hgrow="ALWAYS" />
-            <HBox alignment="CENTER" spacing="5.0">
+
+            <Region HBox.hgrow="ALWAYS" /> <!-- Use Region for spacer -->
+
+            <HBox alignment="CENTER_RIGHT" spacing="5.0"> <!-- Align this group right -->
                 <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Welcome," />
-                <!-- fx:id matches controller -->
+                <!-- fx:id needed by controller -->
                 <Label fx:id="teacherNameLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Teacher Name" />
                 <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="| Teaching:" />
-                <!-- fx:id matches controller -->
+                <!-- fx:id needed by controller -->
                 <Label fx:id="languageLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Language" />
             </HBox>
-            <!-- onAction matches controller -->
-            <Button onAction="#logout" text="Logout">
-                <HBox.margin><Insets left="20.0" /></HBox.margin>
+
+            <!-- fx:id needed by controller, onAction verified -->
+            <Button fx:id="logoutButton" onAction="#logout" text="Logout">
+                <HBox.margin>
+                    <Insets left="20.0" /> <!-- Adjusted margin -->
+                </HBox.margin>
             </Button>
         </HBox>
     </top>
+
+    <!-- Main Content Area -->
     <center>
-        <VBox spacing="30.0" styleClass="content-area">
-            <padding><Insets bottom="30.0" left="40.0" right="40.0" top="30.0" /></padding>
+        <VBox spacing="25.0" styleClass="content-area"> <!-- Adjusted spacing -->
+            <padding>
+                <Insets bottom="30.0" left="40.0" right="40.0" top="25.0" />
+            </padding>
+
             <Label styleClass="page-title" text="Teacher Dashboard" />
+
             <!-- Stats Section -->
-            <HBox alignment="CENTER" spacing="20.0">
-                <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
-                    <!-- fx:id matches controller -->
+            <HBox alignment="CENTER" spacing="30.0"> <!-- Adjusted spacing -->
+                <!-- Lessons Created -->
+                <VBox styleClass="dashboard-stats" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <!-- fx:id needed by controller -->
                     <Label fx:id="lessonsCreatedValue" styleClass="stat-value" text="0" />
                     <Label styleClass="stat-label" text="Lessons Created" />
                 </VBox>
-                <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
-                    <!-- fx:id matches controller -->
+
+                <!-- Total Students -->
+                <VBox styleClass="dashboard-stats" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <!-- fx:id needed by controller -->
                     <Label fx:id="studentsValue" styleClass="stat-value" text="0" />
                     <Label styleClass="stat-label" text="Total Students" />
                 </VBox>
-                <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
-                    <!-- fx:id matches controller -->
-                    <Label fx:id="balanceValue" styleClass="stat-value" text="$0.00" />
+
+                <!-- Balance -->
+                <VBox styleClass="dashboard-stats" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <!-- fx:id needed by controller -->
+                    <Label fx:id="balanceValue" styleClass="stat-value" text="0.00" /> <!-- Placeholder text -->
                     <Label styleClass="stat-label" text="Balance" />
                 </VBox>
             </HBox>
+
             <!-- Actions Section -->
             <VBox spacing="15.0">
-                <Label style="-fx-font-size: 18px;" styleClass="page-title" text="Teacher Actions" />
+                <Label styleClass="page-title" style="-fx-font-size: 18px;" text="Teacher Actions" />
+
                 <HBox spacing="20.0">
-                    <!-- Create Lesson Box -->
-                    <VBox alignment="CENTER" prefHeight="150.0" prefWidth="250.0" styleClass="dashboard-stats" VBox.vgrow="NEVER">
-                        <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
-                            <!-- Using relative path -->
-                            <Image url="@../images/lesson-icon.png" />
+                    <!-- Create Lesson Card -->
+                    <VBox styleClass="dashboard-stats" prefWidth="250" prefHeight="180" alignment="CENTER" spacing="8"> <!-- Added spacing -->
+                        <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                        <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
+                            <!-- Use a generic lesson icon -->
+                            <Image url="@../images/lesson_icon.png"/> <!-- Ensure this image exists -->
                         </ImageView>
-                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Create New Lesson" />
-                        <Label text="Add a new lesson to your course" textAlignment="CENTER" wrapText="true" />
-                        <Separator prefWidth="200.0" />
-                        <!-- onAction matches controller -->
-                        <Button onAction="#createLesson" text="Create Lesson" />
-                        <padding><Insets bottom="10.0" top="10.0" /></padding>
+                        <Label text="Create New Lesson" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                        <Label text="Design and add a new lesson to your language curriculum." wrapText="true" textAlignment="CENTER" style="-fx-opacity: 0.7;"/>
+                        <Separator prefWidth="200"/>
+                        <!-- Button triggers controller action, no fx:id needed on button itself -->
+                        <Button text="Create Lesson" onAction="#createLesson" />
                     </VBox>
-                    <!-- Create Quiz Box -->
-                    <VBox alignment="CENTER" prefHeight="150.0" prefWidth="250.0" styleClass="dashboard-stats" VBox.vgrow="NEVER">
-                        <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true">
-                            <!-- Using relative path -->
-                            <Image url="@../images/quiz-icon.png" />
+
+                    <!-- Create Quiz Card -->
+                    <VBox styleClass="dashboard-stats" prefWidth="250" prefHeight="180" alignment="CENTER" spacing="8">
+                        <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                        <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
+                            <!-- Use a generic quiz icon -->
+                            <Image url="@../images/quiz_icon.png"/> <!-- Ensure this image exists -->
                         </ImageView>
-                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Create New Quiz" />
-                        <Label text="Add a quiz (associates if lesson selected below)" textAlignment="CENTER" wrapText="true" />
-                        <Separator prefWidth="200.0" />
-                        <!-- onAction matches controller -->
-                        <Button onAction="#createQuiz" text="Create Quiz" />
-                        <padding><Insets bottom="10.0" top="10.0" /></padding>
+                        <Label text="Create New Quiz" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                        <Label text="Create a quiz, optionally linking it to one of your lessons." wrapText="true" textAlignment="CENTER" style="-fx-opacity: 0.7;"/>
+                        <Separator prefWidth="200"/>
+                        <!-- Button triggers controller action -->
+                        <Button text="Create Quiz" onAction="#createQuiz" />
                     </VBox>
                 </HBox>
             </VBox>
-            <!-- Recent Lessons Section -->
-            <VBox spacing="15.0" VBox.vgrow="ALWAYS">
-                <Label styleClass="page-title" text="Your Lessons" style="-fx-font-size: 18px;" />
-                <!-- fx:id matches controller -->
+
+            <!-- Your Lessons Section -->
+            <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                <Label styleClass="page-title" style="-fx-font-size: 18px;" text="Your Lessons" />
+
+                <!-- fx:id needed by controller -->
                 <TableView fx:id="lessonsTableView" prefHeight="200.0" VBox.vgrow="ALWAYS">
                     <columns>
-                        <!-- fx:id matches controller -->
-                        <TableColumn fx:id="lessonTitleCol" prefWidth="350.0" text="Lesson Title" />
-                        <!-- fx:id matches controller -->
-                        <TableColumn fx:id="lessonIdCol" prefWidth="150.0" text="Lesson ID" />
-                        <!-- fx:id matches controller -->
-                        <TableColumn fx:id="lessonLevelCol" prefWidth="100.0" text="Level" />
+                        <!-- fx:id needed by controller for each column -->
+                        <TableColumn fx:id="lessonTitleCol" text="Lesson Title" prefWidth="300.0"/>
+                        <TableColumn fx:id="lessonIdCol" text="Lesson ID" prefWidth="120.0"/>
+                        <TableColumn fx:id="lessonLevelCol" text="Level" prefWidth="100.0"/>
+                        <!-- Remove columns not defined in the controller -->
+                        <!-- <TableColumn text="Date Created" prefWidth="150" /> -->
+                        <!-- <TableColumn text="Students Completed" prefWidth="150" /> -->
+                        <!-- <TableColumn text="Average Score" prefWidth="100" /> -->
                     </columns>
-                    <!-- REMOVED cellValueFactory and columnResizePolicy from FXML -->
+                    <!-- Set Column Resize Policy -->
+                    <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
                 </TableView>
             </VBox>
         </VBox>

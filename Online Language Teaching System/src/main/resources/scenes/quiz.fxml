@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<!-- Controller: controllers.QuizController -->
 <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuizController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
@@ -21,66 +22,106 @@
                 <Image url="@../images/lovebird.png" />
             </ImageView>
             <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
+            <Label fx:id="quizTitleLabel" style="-fx-text-fill: #000000; -fx-font-style: italic; -fx-padding: 0 0 0 10;" text="Quiz Title Loading..." />
+            <HBox HBox.hgrow="ALWAYS" /> <!-- Spacer -->
+            <!-- fx:id and onAction verified -->
             <Button fx:id="backToDashboardButton" onAction="#backToDashboard" text="Back to Dashboard" />
-            <HBox HBox.hgrow="ALWAYS" />
         </HBox>
     </top>
     <center>
         <StackPane>
-            <!-- Quiz Content -->
+            <!-- Quiz Content Area -->
             <ScrollPane fx:id="quizScrollPane" fitToWidth="true" styleClass="content-area">
-                <VBox spacing="25.0">
-                    <padding><Insets bottom="30.0" left="40.0" right="40.0" top="30.0" /></padding>
-                    <Label fx:id="quizTitleLabel" styleClass="page-title" text="Quiz Title Loading..." />
+                <VBox spacing="20.0"> <!-- Reduced spacing between questions -->
+                    <padding><Insets bottom="30.0" left="40.0" right="40.0" top="20.0" /></padding>
+                    <!-- Title is now in the top HBox -->
+
                     <!-- Question 1 -->
-                    <VBox fx:id="question1Box" styleClass="quiz-question">
-                        <Label style="-fx-font-weight: bold;" text="Question 1:" /><Label fx:id="q1" text="Loading question 1..." wrapText="true" />
-                        <VBox spacing="10.0" styleClass="quiz-option">
+                    <VBox fx:id="question1Box" styleClass="quiz-question" spacing="5">
+                        <Label fx:id="q1" style="-fx-font-weight: bold;" text="1. Loading question 1..." wrapText="true" />
+                        <VBox spacing="8.0" styleClass="quiz-options" style="-fx-padding: 5 0 0 15;"> <!-- Padding for options -->
                             <!-- Define ToggleGroup here -->
                             <fx:define><ToggleGroup fx:id="question1Group" /></fx:define>
-                            <RadioButton fx:id="Q1O1" text="Option A" toggleGroup="$question1Group" /><RadioButton fx:id="Q1O2" text="Option B" toggleGroup="$question1Group" /><RadioButton fx:id="Q1O3" text="Option C" toggleGroup="$question1Group" /><RadioButton fx:id="Q1O4" text="Option D" toggleGroup="$question1Group" />
+                            <RadioButton fx:id="Q1O1" text="Option A" toggleGroup="$question1Group" />
+                            <RadioButton fx:id="Q1O2" text="Option B" toggleGroup="$question1Group" />
+                            <RadioButton fx:id="Q1O3" text="Option C" toggleGroup="$question1Group" />
+                            <RadioButton fx:id="Q1O4" text="Option D" toggleGroup="$question1Group" />
                         </VBox>
                     </VBox>
+
                     <!-- Question 2 -->
-                    <VBox fx:id="question2Box" styleClass="quiz-question">
-                        <Label style="-fx-font-weight: bold;" text="Question 2:" /><Label fx:id="q2" text="Loading question 2..." wrapText="true" />
-                        <VBox spacing="10.0" styleClass="quiz-option">
+                    <VBox fx:id="question2Box" styleClass="quiz-question" spacing="5">
+                        <Label fx:id="q2" style="-fx-font-weight: bold;" text="2. Loading question 2..." wrapText="true" />
+                        <VBox spacing="8.0" styleClass="quiz-options" style="-fx-padding: 5 0 0 15;">
                             <fx:define><ToggleGroup fx:id="question2Group" /></fx:define>
-                            <RadioButton fx:id="Q2O1" text="Option A" toggleGroup="$question2Group" /><RadioButton fx:id="Q2O2" text="Option B" toggleGroup="$question2Group" /><RadioButton fx:id="Q2O3" text="Option C" toggleGroup="$question2Group" /><RadioButton fx:id="Q2O4" text="Option D" toggleGroup="$question2Group" />
+                            <RadioButton fx:id="Q2O1" text="Option A" toggleGroup="$question2Group" />
+                            <RadioButton fx:id="Q2O2" text="Option B" toggleGroup="$question2Group" />
+                            <RadioButton fx:id="Q2O3" text="Option C" toggleGroup="$question2Group" />
+                            <RadioButton fx:id="Q2O4" text="Option D" toggleGroup="$question2Group" />
                         </VBox>
                     </VBox>
+
                     <!-- Question 3 -->
-                    <VBox fx:id="question3Box" styleClass="quiz-question">
-                        <Label style="-fx-font-weight: bold;" text="Question 3:" /><Label fx:id="q3" text="Loading question 3..." wrapText="true" />
-                        <VBox spacing="10.0" styleClass="quiz-option">
+                    <VBox fx:id="question3Box" styleClass="quiz-question" spacing="5">
+                        <Label fx:id="q3" style="-fx-font-weight: bold;" text="3. Loading question 3..." wrapText="true" />
+                        <VBox spacing="8.0" styleClass="quiz-options" style="-fx-padding: 5 0 0 15;">
                             <fx:define><ToggleGroup fx:id="question3Group" /></fx:define>
-                            <RadioButton fx:id="Q3O1" text="Option A" toggleGroup="$question3Group" /><RadioButton fx:id="Q3O2" text="Option B" toggleGroup="$question3Group" /><RadioButton fx:id="Q3O3" text="Option C" toggleGroup="$question3Group" /><RadioButton fx:id="Q3O4" text="Option D" toggleGroup="$question3Group" />
+                            <RadioButton fx:id="Q3O1" text="Option A" toggleGroup="$question3Group" />
+                            <RadioButton fx:id="Q3O2" text="Option B" toggleGroup="$question3Group" />
+                            <RadioButton fx:id="Q3O3" text="Option C" toggleGroup="$question3Group" />
+                            <RadioButton fx:id="Q3O4" text="Option D" toggleGroup="$question3Group" />
                         </VBox>
                     </VBox>
+
                     <!-- Question 4 -->
-                    <VBox fx:id="question4Box" styleClass="quiz-question">
-                        <Label style="-fx-font-weight: bold;" text="Question 4:" /><Label fx:id="q4" text="Loading question 4..." wrapText="true" />
-                        <VBox spacing="10.0" styleClass="quiz-option">
+                    <VBox fx:id="question4Box" styleClass="quiz-question" spacing="5">
+                        <Label fx:id="q4" style="-fx-font-weight: bold;" text="4. Loading question 4..." wrapText="true" />
+                        <VBox spacing="8.0" styleClass="quiz-options" style="-fx-padding: 5 0 0 15;">
                             <fx:define><ToggleGroup fx:id="question4Group" /></fx:define>
-                            <RadioButton fx:id="Q4O1" text="Option A" toggleGroup="$question4Group" /><RadioButton fx:id="Q4O2" text="Option B" toggleGroup="$question4Group" /><RadioButton fx:id="Q4O3" text="Option C" toggleGroup="$question4Group" /><RadioButton fx:id="Q4O4" text="Option D" toggleGroup="$question4Group" />
+                            <RadioButton fx:id="Q4O1" text="Option A" toggleGroup="$question4Group" />
+                            <RadioButton fx:id="Q4O2" text="Option B" toggleGroup="$question4Group" />
+                            <RadioButton fx:id="Q4O3" text="Option C" toggleGroup="$question4Group" />
+                            <RadioButton fx:id="Q4O4" text="Option D" toggleGroup="$question4Group" />
                         </VBox>
                     </VBox>
-                    <HBox alignment="CENTER_RIGHT" spacing="20.0"><Button fx:id="finishQuizButton" onAction="#finishQuiz" text="Finish Quiz" /></HBox>
-                </VBox>
-            </ScrollPane>
-            <!-- Results Overlay -->
-            <VBox fx:id="resultsOverlay" alignment="CENTER" managed="false" spacing="20.0" style="-fx-background-color: rgba(255,255,255,0.95);" visible="false">
-                <VBox alignment="CENTER" maxWidth="500.0" spacing="20.0" styleClass="content-area">
-                    <Label styleClass="page-title" text="Quiz Results" />
-                    <ImageView fitHeight="100.0" fitWidth="100.0" preserveRatio="true">
-                        <Image url="@../images/success.png" />
-                    </ImageView>
-                    <Label fx:id="scoreLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Your Score: X/Y" /><Label fx:id="feedbackLabel" text="Feedback loading..." textAlignment="CENTER" wrapText="true" />
-                    <HBox alignment="CENTER" spacing="20.0">
-                        <Button onAction="#backToDashboard" styleClass="button-secondary" text="Back to Dashboard" />
-                        <Button fx:id="nextLessonButton" onAction="#goToNextLesson" text="Next Lesson" />
+
+                    <VBox.margin><Insets top="15.0"/></VBox.margin>
+
+                    <!-- Finish Button -->
+                    <HBox alignment="CENTER"> <!-- Centered finish button -->
+                        <!-- fx:id and onAction verified -->
+                        <Button fx:id="finishQuizButton" onAction="#finishQuiz" text="Finish Quiz" style="-fx-font-size: 14px;"/>
                     </HBox>
                 </VBox>
+            </ScrollPane>
+
+            <!-- Results Overlay -->
+            <!-- fx:id verified -->
+            <VBox fx:id="resultsOverlay" alignment="TOP_CENTER" managed="false" spacing="15.0" style="-fx-background-color: rgba(245, 245, 245, 0.98); -fx-padding: 20;" visible="false">
+                <Label styleClass="page-title" text="Quiz Results" />
+                <ImageView fitHeight="80.0" fitWidth="80.0" preserveRatio="true"> <!-- Adjusted size -->
+                    <Image url="@../images/success.png" /> <!-- Consider different images based on score -->
+                </ImageView>
+                <!-- fx:id verified -->
+                <Label fx:id="scoreLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Your Score: X/Y" />
+                <!-- fx:id verified -->
+                <Label fx:id="feedbackLabel" style="-fx-font-size: 16px; -fx-font-style: italic;" text="Feedback loading..." textAlignment="CENTER" wrapText="true" maxWidth="500"/>
+
+                <!-- ScrollPane for detailed feedback -->
+                <ScrollPane fitToWidth="true" prefHeight="300.0" vbarPolicy="AS_NEEDED" hbarPolicy="NEVER">
+                    <!-- fx:id verified -->
+                    <VBox fx:id="feedbackDetailsBox" spacing="10.0">
+                        <!-- Detailed feedback added here by controller -->
+                    </VBox>
+                </ScrollPane>
+
+                <HBox alignment="CENTER" spacing="20.0" style="-fx-padding: 15 0 0 0;">
+                    <!-- Back button moved here from top bar for results view -->
+                    <Button onAction="#backToDashboard" styleClass="button-secondary" text="Back to Dashboard" />
+                    <!-- fx:id and onAction verified -->
+                    <Button fx:id="nextLessonButton" onAction="#goToNextLesson" text="Next Lesson" />
+                </HBox>
+                <VBox.margin><Insets top="auto"/></VBox.margin> <!-- Push buttons down -->
             </VBox>
         </StackPane>
     </center>

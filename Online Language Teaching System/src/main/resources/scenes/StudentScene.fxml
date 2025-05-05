@@ -14,6 +14,8 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
+<!-- Controller: controllers.StudentSceneController -->
+<!-- Changed ListView type to Main.Lesson -->
 <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentSceneController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
@@ -21,53 +23,71 @@
                 <Image url="@../images/lovebird.png" />
             </ImageView>
             <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
-            <Region HBox.hgrow="ALWAYS" />
-            <HBox alignment="CENTER" spacing="5.0">
+            <Region HBox.hgrow="ALWAYS" /> <!-- Spacer -->
+            <HBox alignment="CENTER_RIGHT" spacing="5.0"> <!-- Align welcome text right -->
                 <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Welcome," />
+                <!-- fx:id verified -->
                 <Label fx:id="studentNameLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Student Name" />
-                <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="| Learning:" />
+                <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text=" | Learning:" />
+                <!-- fx:id verified -->
                 <Label fx:id="languageLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Language" />
             </HBox>
+            <!-- onAction verified -->
             <Button onAction="#logout" text="Logout">
                 <HBox.margin><Insets left="20.0" /></HBox.margin>
             </Button>
         </HBox>
     </top>
     <center>
-        <VBox spacing="30.0" styleClass="content-area" stylesheets="@styles.css">
-            <padding><Insets bottom="30.0" left="40.0" right="40.0" top="30.0" /></padding>
+        <VBox spacing="25.0" styleClass="content-area" stylesheets="@styles.css"> <!-- Adjusted spacing -->
+            <padding><Insets bottom="30.0" left="40.0" right="40.0" top="25.0" /></padding> <!-- Adjusted padding -->
             <Label styleClass="page-title" text="Student Dashboard" />
-            <HBox alignment="CENTER" spacing="20.0">
+
+            <!-- Stats Bar -->
+            <HBox alignment="CENTER" spacing="30.0"> <!-- Increased spacing -->
+                <!-- Progress -->
                 <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
+                    <!-- fx:id verified -->
                     <Label fx:id="progressValue" styleClass="stat-value" text="0%" />
-                    <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0" />
-                    <Label styleClass="stat-label" text="Progress" />
+                    <!-- fx:id verified -->
+                    <ProgressBar fx:id="progressBar" prefWidth="180.0" progress="0.0" /> <!-- Adjusted width -->
+                    <Label styleClass="stat-label" text="Overall Progress" />
                 </VBox>
+                <!-- Points -->
                 <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
+                    <!-- fx:id verified -->
                     <Label fx:id="pointsValue" styleClass="stat-value" text="0" />
-                    <Label styleClass="stat-label" text="Points" />
+                    <Label styleClass="stat-label" text="Points Earned" />
                 </VBox>
+                <!-- Rank -->
                 <VBox alignment="CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
+                    <!-- fx:id verified -->
                     <Label fx:id="rankValue" styleClass="stat-value" text="Rank" />
-                    <Label styleClass="stat-label" text="Rank" />
+                    <Label styleClass="stat-label" text="Current Rank" />
                 </VBox>
             </HBox>
+
+            <!-- Learning Section -->
             <VBox spacing="15.0">
-                <Label style="-fx-font-size: 18px;" styleClass="page-title" text="Continue Learning" />
+                <Label style="-fx-font-size: 18px;" styleClass="page-title" text="Your Learning Path" />
                 <HBox spacing="20.0">
-                    <VBox alignment="CENTER" prefHeight="150.0" prefWidth="250.0" styleClass="dashboard-stats" HBox.hgrow="NEVER">
-                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Current Lesson" />
-                        <Label fx:id="currentLessonTitle" text="Select a Lesson" textAlignment="CENTER" wrapText="true" />
+                    <!-- Current/Selected Lesson Box -->
+                    <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="250.0" spacing="10.0" styleClass="dashboard-stats" HBox.hgrow="NEVER">
+                        <padding><Insets top="15.0" bottom="15.0" left="10.0" right="10.0" /></padding>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Selected Lesson" />
+                        <!-- fx:id verified -->
+                        <Label fx:id="currentLessonTitle" text="Select a Lesson from the list" textAlignment="CENTER" wrapText="true" minHeight="40"/>
                         <Separator prefWidth="200.0" />
-                        <Button onAction="#startLesson" text="Start Lesson" />
-                        <padding><Insets bottom="10.0" top="10.0" /></padding>
+                        <!-- fx:id and onAction verified -->
+                        <Button fx:id="startLessonButton" onAction="#startLesson" text="Start Lesson" disable="true"/> <!-- Initially disabled -->
                     </VBox>
-                    <VBox alignment="TOP_CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS">
-                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Curriculum" />
-                        <Label fx:id="nextLessonTitle" text="Available Lessons" textAlignment="CENTER" wrapText="true" />
-                        <Separator prefWidth="400.0" />
+                    <!-- Curriculum / Lesson List Box -->
+                    <VBox alignment="TOP_CENTER" styleClass="dashboard-stats" HBox.hgrow="ALWAYS" spacing="5.0">
+                        <padding><Insets top="15.0" bottom="15.0" left="10.0" right="10.0" /></padding>
+                        <!-- fx:id verified -->
+                        <Label fx:id="nextLessonTitle" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Available Lessons" />
+                        <!-- fx:id verified - Type parameter usually not needed in FXML -->
                         <ListView fx:id="lessonsListView" prefHeight="200.0" VBox.vgrow="ALWAYS" />
-                        <padding><Insets bottom="10.0" top="10.0" /></padding>
                     </VBox>
                 </HBox>
             </VBox>

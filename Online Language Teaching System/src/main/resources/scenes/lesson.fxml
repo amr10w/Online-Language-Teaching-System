@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<!-- Removed Text import as it's added programmatically -->
 
+<!-- Controller: controllers.LessonController -->
 <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LessonController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
@@ -19,22 +20,33 @@
                 <Image url="@../images/lovebird.png" />
             </ImageView>
             <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
+            <HBox HBox.hgrow="ALWAYS" /> <!-- Spacer -->
+            <!-- fx:id and onAction verified -->
             <Button fx:id="backToDashboardButton" onAction="#backToDashboard" text="Back to Dashboard" />
-            <HBox HBox.hgrow="ALWAYS" />
         </HBox>
     </top>
     <center>
         <VBox spacing="20.0" styleClass="content-area" stylesheets="@styles.css">
             <padding><Insets bottom="30.0" left="40.0" right="40.0" top="30.0" /></padding>
+            <!-- fx:id verified -->
             <Label fx:id="lessonTitleLabel" styleClass="page-title" text="Loading Lesson Title..." />
+
+            <!-- ScrollPane to contain the content VBox -->
+            <!-- fx:id verified -->
             <ScrollPane fx:id="contentScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS">
-                <VBox fx:id="contentVBox" spacing="10.0">
-                    <padding><Insets bottom="5.0" left="5.0" right="5.0" top="5.0" /></padding>
-                    <Label text="Loading content..."/>
+                <!-- VBox inside ScrollPane to hold the Text node (added programmatically) -->
+                <!-- fx:id verified -->
+                <VBox fx:id="contentVBox" spacing="10.0" style="-fx-padding: 5;">
+                    <!-- Content Text node is added here by the controller -->
+                    <!-- Removed placeholder Label -->
                 </VBox>
             </ScrollPane>
+
+            <VBox.margin><Insets top="15.0"/></VBox.margin> <!-- Spacing before buttons -->
+
             <HBox alignment="CENTER_RIGHT" spacing="20.0">
-                <Button fx:id="markCompleteButton" onAction="#markLessonComplete" styleClass="button-secondary" text="Mark as Complete" />
+                <!-- fx:id and onAction verified -->
+                <Button fx:id="markCompleteButton" onAction="#markLessonCompleteAction" styleClass="button-secondary" text="Mark as Complete" />
                 <Button fx:id="goToQuizButton" onAction="#goToQuiz" text="Go to Quiz" />
             </HBox>
         </VBox>

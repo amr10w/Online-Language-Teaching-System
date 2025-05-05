@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<!-- Controller: controllers.MainSceneController -->
 <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainSceneController">
     <left>
         <VBox prefWidth="200.0" styleClass="side-menu">
@@ -25,25 +26,27 @@
                 <Separator />
             </VBox>
             <VBox><padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding></VBox>
-            <Button disable="true" styleClass="menu-item, menu-item-selected" text="Home" />
-            <Button fx:id="navigateToLogin" onAction="#navigateToLogin"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="Login" />
-            <Button fx:id="navigateToSignup" onAction="#navigateToSignup"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="Signup" />
-            <Button fx:id="navigateToAbout" onAction="#navigateToAbout"  prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="About" />
+            <!-- Side Menu Buttons -->
+            <Button disable="true" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item, menu-item-selected" text="Home" />
+            <Button fx:id="navigateToLogin" onAction="#navigateToLogin" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Login" />
+            <Button fx:id="navigateToSignup" onAction="#navigateToSignup" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Signup" />
+            <Button fx:id="navigateToAbout" onAction="#navigateToAbout" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="About" />
             <VBox VBox.vgrow="ALWAYS" />
         </VBox>
     </left>
     <center>
         <StackPane>
-            <VBox alignment="CENTER" spacing="20.0" styleClass="content-area">
+            <VBox alignment="CENTER" spacing="30.0" styleClass="content-area"> <!-- Increased spacing -->
                 <padding><Insets bottom="40.0" left="40.0" right="40.0" top="40.0" /></padding>
                 <Label styleClass="page-title" text="Welcome to LinguaLearn!" />
                 <ImageView fitHeight="200.0" fitWidth="200.0" preserveRatio="true">
                     <Image url="@../images/lovebird.png" />
                 </ImageView>
-                <Label text="Start your language learning journey today! Learn languages in a fun and interactive way with our comprehensive lessons and quizzes." textAlignment="CENTER" wrapText="true" />
-                <HBox alignment="CENTER" spacing="10.0">
-                    <Button fx:id="getStartedButton" onAction="#handleGetStarted" text="Get Started" />
-                    <Button fx:id="learnMoreButton" onAction="#handleLearnMore" styleClass="button-secondary" text="Learn More" />
+                <Label style="-fx-font-size: 16px; -fx-text-alignment: center;" text="Start your language learning journey today! Learn languages in a fun and interactive way with our comprehensive lessons and quizzes." textAlignment="CENTER" wrapText="true" maxWidth="500"/>
+                <HBox alignment="CENTER" spacing="20.0"> <!-- Increased spacing -->
+                    <!-- Center Buttons: fx:id and onAction verified -->
+                    <Button fx:id="getStartedButton" onAction="#handleGetStarted" text="Get Started" style="-fx-font-size: 14px;"/>
+                    <Button fx:id="learnMoreButton" onAction="#handleLearnMore" styleClass="button-secondary" text="Learn More" style="-fx-font-size: 14px;"/>
                 </HBox>
             </VBox>
         </StackPane>

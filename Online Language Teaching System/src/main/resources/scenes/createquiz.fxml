@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<!-- Controller: controllers.CreateQuizController -->
 <BorderPane prefHeight="700.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateQuizController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
@@ -24,9 +25,10 @@
                 <Image url="@../images/lovebird.png" />
             </ImageView>
             <Label styleClass="app-name" style="-fx-text-fill: #000000;" text="LinguaLearn" />
-            <Label fx:id="associatedLessonLabel" styleClass="welcome-text" style="-fx-text-fill: #000000;" text="Quiz for: [Lesson]" />
-            <Button onAction="#backToDashboard" text="Back to Dashboard" />
-            <HBox HBox.hgrow="ALWAYS" />
+            <Label fx:id="associatedLessonLabel" style="-fx-text-fill: #000000; -fx-font-style: italic; -fx-padding: 0 0 0 10;" text="Create New Quiz" />
+            <HBox HBox.hgrow="ALWAYS" /> <!-- Spacer -->
+            <!-- Added fx:id -->
+            <Button fx:id="backButton" onAction="#backToDashboard" text="Back to Dashboard" />
         </HBox>
     </top>
     <center>
@@ -39,153 +41,140 @@
                     <Label styleClass="page-title" text="Quiz Title:" />
                     <TextField fx:id="quizTitleField" promptText="Enter Quiz Title" HBox.hgrow="ALWAYS" />
                 </HBox>
-                <Label styleClass="page-title" text="Create Quiz Questions" />
+                <Label styleClass="page-title" text="Create Quiz Questions (4 Required)" />
+
                 <!-- Question 1 -->
-                <TitledPane expanded="true" text="Question 1">
-                    <VBox spacing="15.0">
+                <!-- Added fx:id to TitledPane -->
+                <TitledPane fx:id="question1Pane" expanded="true" text="Question 1">
+                    <VBox spacing="15.0" style="-fx-padding: 15;">
                         <GridPane hgap="15.0" vgap="15.0">
-                            <columnConstraints>
-                                <ColumnConstraints minWidth="100.0" prefWidth="150.0" />
-                                <ColumnConstraints hgrow="ALWAYS" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints />
-                            </rowConstraints>
+                            <columnConstraints><ColumnConstraints minWidth="100.0" prefWidth="150.0" /><ColumnConstraints hgrow="ALWAYS" /></columnConstraints>
+                            <rowConstraints><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /></rowConstraints>
                             <Label text="Question:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                             <TextField fx:id="q1Text" promptText="Enter question 1" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                             <Label text="Option A:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                 <TextField fx:id="q1OptA" promptText="Enter option A" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q1CorrectA" />
+                                <RadioButton fx:id="q1CorrectA" text="Correct"/>
                             </HBox>
                             <Label text="Option B:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                 <TextField fx:id="q1OptB" promptText="Enter option B" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q1CorrectB" />
+                                <RadioButton fx:id="q1CorrectB" text="Correct"/>
                             </HBox>
                             <Label text="Option C:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                 <TextField fx:id="q1OptC" promptText="Enter option C" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q1CorrectC" />
+                                <RadioButton fx:id="q1CorrectC" text="Correct"/>
                             </HBox>
                             <Label text="Option D:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                 <TextField fx:id="q1OptD" promptText="Enter option D" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q1CorrectD" />
+                                <RadioButton fx:id="q1CorrectD" text="Correct"/>
                             </HBox>
                         </GridPane>
                     </VBox>
                 </TitledPane>
+
                 <!-- Question 2 -->
-                <TitledPane expanded="true" text="Question 2">
-                    <VBox spacing="15.0">
+                <TitledPane fx:id="question2Pane" expanded="false" text="Question 2">
+                    <VBox spacing="15.0" style="-fx-padding: 15;">
                         <GridPane hgap="15.0" vgap="15.0">
-                            <columnConstraints>
-                                <ColumnConstraints minWidth="100.0" prefWidth="150.0" />
-                                <ColumnConstraints hgrow="ALWAYS" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints />
-                            </rowConstraints>
+                            <columnConstraints><ColumnConstraints minWidth="100.0" prefWidth="150.0" /><ColumnConstraints hgrow="ALWAYS" /></columnConstraints>
+                            <rowConstraints><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /></rowConstraints>
                             <Label text="Question:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                             <TextField fx:id="q2Text" promptText="Enter question 2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                             <Label text="Option A:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                 <TextField fx:id="q2OptA" promptText="Enter option A" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q2CorrectA" />
+                                <RadioButton fx:id="q2CorrectA" text="Correct"/>
                             </HBox>
                             <Label text="Option B:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                 <TextField fx:id="q2OptB" promptText="Enter option B" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q2CorrectB" />
+                                <RadioButton fx:id="q2CorrectB" text="Correct"/>
                             </HBox>
                             <Label text="Option C:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                 <TextField fx:id="q2OptC" promptText="Enter option C" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q2CorrectC" />
+                                <RadioButton fx:id="q2CorrectC" text="Correct"/>
                             </HBox>
                             <Label text="Option D:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                 <TextField fx:id="q2OptD" promptText="Enter option D" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q2CorrectD" />
+                                <RadioButton fx:id="q2CorrectD" text="Correct"/>
                             </HBox>
                         </GridPane>
                     </VBox>
                 </TitledPane>
+
                 <!-- Question 3 -->
-                <TitledPane expanded="false" text="Question 3">
-                    <VBox spacing="15.0">
+                <TitledPane fx:id="question3Pane" expanded="false" text="Question 3">
+                    <VBox spacing="15.0" style="-fx-padding: 15;">
                         <GridPane hgap="15.0" vgap="15.0">
-                            <columnConstraints>
-                                <ColumnConstraints minWidth="100.0" prefWidth="150.0" />
-                                <ColumnConstraints hgrow="ALWAYS" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints />
-                            </rowConstraints>
+                            <columnConstraints><ColumnConstraints minWidth="100.0" prefWidth="150.0" /><ColumnConstraints hgrow="ALWAYS" /></columnConstraints>
+                            <rowConstraints><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /></rowConstraints>
                             <Label text="Question:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                             <TextField fx:id="q3Text" promptText="Enter question 3" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                             <Label text="Option A:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                 <TextField fx:id="q3OptA" promptText="Enter option A" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q3CorrectA" />
+                                <RadioButton fx:id="q3CorrectA" text="Correct"/>
                             </HBox>
                             <Label text="Option B:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                 <TextField fx:id="q3OptB" promptText="Enter option B" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q3CorrectB" />
+                                <RadioButton fx:id="q3CorrectB" text="Correct"/>
                             </HBox>
                             <Label text="Option C:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                 <TextField fx:id="q3OptC" promptText="Enter option C" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q3CorrectC" />
+                                <RadioButton fx:id="q3CorrectC" text="Correct"/>
                             </HBox>
                             <Label text="Option D:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                 <TextField fx:id="q3OptD" promptText="Enter option D" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q3CorrectD" />
+                                <RadioButton fx:id="q3CorrectD" text="Correct"/>
                             </HBox>
                         </GridPane>
                     </VBox>
                 </TitledPane>
+
                 <!-- Question 4 -->
-                <TitledPane expanded="false" text="Question 4">
-                    <VBox spacing="15.0">
+                <TitledPane fx:id="question4Pane" expanded="false" text="Question 4">
+                    <VBox spacing="15.0" style="-fx-padding: 15;">
                         <GridPane hgap="15.0" vgap="15.0">
-                            <columnConstraints>
-                                <ColumnConstraints minWidth="100.0" prefWidth="150.0" />
-                                <ColumnConstraints hgrow="ALWAYS" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints />
-                            </rowConstraints>
+                            <columnConstraints><ColumnConstraints minWidth="100.0" prefWidth="150.0" /><ColumnConstraints hgrow="ALWAYS" /></columnConstraints>
+                            <rowConstraints><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /><RowConstraints /></rowConstraints>
                             <Label text="Question:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                             <TextField fx:id="q4Text" promptText="Enter question 4" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                             <Label text="Option A:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                 <TextField fx:id="q4OptA" promptText="Enter option A" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q4CorrectA"/>
+                                <RadioButton fx:id="q4CorrectA" text="Correct"/>
                             </HBox>
                             <Label text="Option B:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                 <TextField fx:id="q4OptB" promptText="Enter option B" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q4CorrectB" />
+                                <RadioButton fx:id="q4CorrectB" text="Correct"/>
                             </HBox>
                             <Label text="Option C:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                 <TextField fx:id="q4OptC" promptText="Enter option C" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q4CorrectC" />
+                                <RadioButton fx:id="q4CorrectC" text="Correct"/>
                             </HBox>
                             <Label text="Option D:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <HBox spacing="10.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                 <TextField fx:id="q4OptD" promptText="Enter option D" HBox.hgrow="ALWAYS" />
-                                <RadioButton fx:id="q4CorrectD" />
+                                <RadioButton fx:id="q4CorrectD" text="Correct"/>
                             </HBox>
                         </GridPane>
                     </VBox>
                 </TitledPane>
+                <!-- Save Button -->
                 <HBox alignment="CENTER_RIGHT" spacing="20.0">
-                    <Button onAction="#saveQuiz" text="Save Quiz" />
+                    <!-- Added fx:id -->
+                    <Button fx:id="saveQuizButton" onAction="#saveQuiz" text="Save Quiz" />
                 </HBox>
             </VBox>
         </ScrollPane>

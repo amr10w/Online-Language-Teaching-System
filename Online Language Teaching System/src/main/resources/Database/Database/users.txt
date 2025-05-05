@@ -18,3 +18,8 @@ role:teacher
 language:English
 email:amr@gmail.com
 username:amra
+password:123123
+role:teacher
+language:English
+email:ah@gmial.com
+username:ahmed

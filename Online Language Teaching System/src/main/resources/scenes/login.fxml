@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<!-- Controller: controllers.LoginController -->
 <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
     <left>
         <VBox prefWidth="200.0" styleClass="side-menu">
@@ -31,10 +32,11 @@
                 <Separator />
             </VBox>
             <VBox><padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding></VBox>
-            <Button fx:id="navigateToHome" onAction="#navigateToHome"  prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Home" />
-            <Button disable="true" styleClass="menu-item, menu-item-selected" text="Login" />
-            <Button fx:id="navigateToSignup" onAction="#navigateToSignup" prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="Signup" />
-            <Button fx:id="navigateToAbout" onAction="#navigateToAbout" prefHeight="41.0" prefWidth="192.0"  styleClass="menu-item" text="About" />
+            <!-- Side Menu Buttons -->
+            <Button fx:id="navigateToHome" onAction="#navigateToHome" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Home" />
+            <Button disable="true" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item, menu-item-selected" text="Login" />
+            <Button fx:id="navigateToSignup" onAction="#navigateToSignup" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Signup" />
+            <Button fx:id="navigateToAbout" onAction="#navigateToAbout" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="About" />
             <VBox VBox.vgrow="ALWAYS" />
         </VBox>
     </left>
@@ -43,18 +45,23 @@
             <VBox alignment="CENTER" spacing="20.0" styleClass="content-area">
                 <padding><Insets bottom="40.0" left="40.0" right="40.0" top="40.0" /></padding>
                 <Label styleClass="page-title" text="Login to Your Account" />
-                <GridPane alignment="CENTER" hgap="15.0"  vgap="15.0">
-                    <columnConstraints><ColumnConstraints halignment="RIGHT" minWidth="100.0" prefWidth="150.0" /><ColumnConstraints prefWidth="250.0" /></columnConstraints>
-                    <rowConstraints><RowConstraints /><RowConstraints /></rowConstraints>
+                <GridPane alignment="CENTER" hgap="15.0" vgap="15.0" maxWidth="400"> <!-- Added maxWidth -->
+                    <columnConstraints><ColumnConstraints halignment="RIGHT" minWidth="80.0" prefWidth="100.0" /><ColumnConstraints hgrow="ALWAYS" minWidth="150" prefWidth="250.0" /></columnConstraints>
+                    <rowConstraints><RowConstraints minHeight="40.0" /><RowConstraints minHeight="40.0" /></rowConstraints>
+                    <!-- Username -->
                     <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                     <TextField fx:id="usernameField" promptText="Enter username" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <!-- Password -->
                     <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                     <PasswordField fx:id="passwordField" promptText="Enter password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 </GridPane>
-                <Button fx:id="loginButton" onAction="#handleLogin" text="Login" />
+                <!-- Login Button -->
+                <Button fx:id="loginButton" onAction="#handleLogin" text="Login" defaultButton="true"/> <!-- defaultButton means Enter key triggers it -->
+                <!-- Signup Link -->
                 <HBox alignment="CENTER" spacing="5.0">
                     <Label text="Don't have an account?" />
-                    <Hyperlink onAction="#navigateToSignup" text="Sign Up" />
+                    <!-- Added fx:id, onAction verified -->
+                    <Hyperlink fx:id="signupLink" onAction="#navigateToSignup" text="Sign Up" />
                 </HBox>
             </VBox>
         </StackPane>

@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<!-- Controller: controllers.AboutController -->
 <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AboutController">
     <left>
         <VBox prefWidth="200.0" styleClass="side-menu" stylesheets="@styles.css">
@@ -27,6 +28,7 @@
                 <Separator />
             </VBox>
             <VBox><padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding></VBox>
+            <!-- fx:id and onAction should match AboutController -->
             <Button fx:id="navigateToHome" onAction="#navigateToHome" prefHeight="41.0" prefWidth="192.0" styleClass="menu-item" text="Home" />
             <Button fx:id="navigateToLogin" onAction="#navigateToLogin" prefHeight="41.0" prefWidth="195.0" styleClass="menu-item" text="Login" />
             <Button fx:id="navigateToSignup" onAction="#navigateToSignup" prefHeight="41.0" prefWidth="182.0" styleClass="menu-item" text="Signup" />
@@ -61,11 +63,11 @@
                     </HBox>
                     <HBox alignment="CENTER" spacing="30.0">
                         <VBox alignment="CENTER" maxWidth="200.0" spacing="10.0">
-                            <ImageView fitHeight="100.0" fitWidth="100.0" preserveRatio="true"><Image url="@../images/person_icon.png" /></ImageView>
+                            <ImageView fitHeight="100.0" fitWidth="100.0" preserveRatio="true"><Image url="@../images/AhmedEzzat_Icon.png" /></ImageView> <!-- Assuming icon exists -->
                             <Label style="-fx-font-weight: bold;" text="Ahmed Ezzat" /><Label text="ID: 2201472" /><Label style="-fx-font-style: italic;" text="Content Creator" />
                         </VBox>
                         <VBox alignment="CENTER" maxWidth="200.0" spacing="10.0">
-                            <ImageView fitHeight="100.0" fitWidth="100.0" preserveRatio="true"><Image url="@../images/person_icon.png" /></ImageView>
+                            <ImageView fitHeight="100.0" fitWidth="100.0" preserveRatio="true"><Image url="@../images/Anas_Icon.png" /></ImageView> <!-- Assuming icon exists -->
                             <Label style="-fx-font-weight: bold;" text="Anas Elsaba" /><Label text="ID: 2200325" /><Label style="-fx-font-style: italic;" text="Content Creator" />
                         </VBox>
                     </HBox>

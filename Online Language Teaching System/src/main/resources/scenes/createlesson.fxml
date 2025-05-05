@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<!-- Controller: controllers.CreateLessonController -->
 <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateLessonController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: -fx-primary-color; -fx-padding: 10 20;">
@@ -23,8 +24,9 @@
                 <Image url="@../images/lovebird.png" />
             </ImageView>
             <Label style="-fx-text-fill: #000000;" styleClass="app-name" stylesheets="@styles.css" text="LinguaLearn" />
-            <Button onAction="#backToDashboard" text="Back to Dashboard" />
-            <HBox HBox.hgrow="ALWAYS" />
+            <HBox HBox.hgrow="ALWAYS" /> <!-- Spacer -->
+            <!-- Added fx:id and ensured onAction matches controller method -->
+            <Button fx:id="backButton" onAction="#backToDashboard" text="Back to Dashboard" />
         </HBox>
     </top>
     <center>
@@ -33,18 +35,34 @@
             <Label styleClass="page-title" stylesheets="@styles.css" text="Create New Lesson" />
             <GridPane hgap="15.0" vgap="20.0">
                 <columnConstraints><ColumnConstraints minWidth="100.0" prefWidth="150.0" /><ColumnConstraints hgrow="ALWAYS" /></columnConstraints>
-                <rowConstraints><RowConstraints /><RowConstraints /><RowConstraints /></rowConstraints>
+                <rowConstraints><RowConstraints minHeight="30.0"/><RowConstraints minHeight="200.0" vgrow="ALWAYS"/><RowConstraints minHeight="30.0"/></rowConstraints> <!-- Adjusted row constraints -->
+
+                <!-- Lesson Title -->
                 <Label stylesheets="@styles.css" text="Lesson Title:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <TextField fx:id="lessonTitleField" promptText="Enter lesson title" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <!-- Lesson Content -->
                 <Label stylesheets="@styles.css" text="Lesson Content:" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                <TextArea fx:id="lessonContentArea" prefRowCount="15" promptText="Enter lesson content here..." stylesheets="@styles.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextArea fx:id="lessonContentArea" prefRowCount="15" promptText="Enter lesson content here..." stylesheets="@styles.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" VBox.vgrow="ALWAYS"/>
+
+                <!-- Proficiency Level -->
                 <Label stylesheets="@styles.css" text="Proficiency Level:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <ComboBox fx:id="levelComboBox" prefWidth="200.0" promptText="Select Level" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <!-- Prerequisites Field (Example - Uncomment if needed) -->
+                <!--
+                <Label stylesheets="@styles.css" text="Prerequisites (IDs):" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField fx:id="prerequisitesField" promptText="e.g., L1020, L1021 (optional)" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                -->
             </GridPane>
+
+            <VBox.margin><Insets top="20.0"/></VBox.margin> <!-- Add spacing before buttons -->
+
             <HBox alignment="CENTER_RIGHT" spacing="20.0">
-                <Button onAction="#cancel" styleClass="button-secondary" text="Cancel" />
-                <Button onAction="#saveLesson" text="Save Lesson" />
-                <Button onAction="#createQuizForLesson" stylesheets="@styles.css" text="Create Quiz for Lesson" />
+                <!-- Added fx:id attributes to buttons -->
+                <Button fx:id="cancelButton" onAction="#cancel" styleClass="button-secondary" text="Cancel" />
+                <Button fx:id="saveLessonButton" onAction="#saveLesson" text="Save Lesson" />
+                <Button fx:id="createQuizButton" onAction="#createQuizForLesson" stylesheets="@styles.css" text="Create Quiz for Lesson" />
             </HBox>
         </VBox>
     </center>
