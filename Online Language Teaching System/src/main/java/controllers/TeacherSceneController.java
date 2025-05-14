@@ -1,15 +1,13 @@
 package controllers;
 
-import Main.SceneManager;
+import Main.*;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import Main.Lesson;
+
 public class TeacherSceneController {
-    
+    private Teacher teacher;
     @FXML
     private Label teacherNameLabel;
     
@@ -41,5 +39,22 @@ public class TeacherSceneController {
     @FXML
     private void logout() {
         SceneManager.switchToMainScene(6);
+    }
+
+    @FXML
+    public  void setTeacherScene(Teacher student) {
+        teacher = (Teacher) LoginManager.getSelectedUser();
+
+        if (student == null) {
+            // Handle null case safely
+            teacherNameLabel.setText("Unknown");
+            languageLabel.setText("None");
+            return;
+        }
+
+        teacherNameLabel.setText(teacher.getUsername());
+        languageLabel.setText(teacher.getLanguage());
+
+
     }
 }

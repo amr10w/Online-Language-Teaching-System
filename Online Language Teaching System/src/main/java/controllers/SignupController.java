@@ -86,7 +86,7 @@ public class SignupController {
             else
             {
                 loginManager.signup(user);
-                SceneManager.switchToMainScene(0);
+
                 Object controller = SceneManager.switchToMainScene(0);
                 if (controller instanceof StudentSceneController) {
                     ((StudentSceneController) controller).setStudentScene((Student) LoginManager.getSelectedUser());
@@ -96,8 +96,8 @@ public class SignupController {
         }
         else if(!studentRadio.isSelected()&&teacherRadio.isSelected()) {
             User user=new Teacher(usernameField.getText(),emailField.getText(),passwordField.getText(),"1",languageComboBox.getValue());
-
-            boolean check =LoginManager.checkUsername(user.getUsername());
+            LoginManager loginManager=new LoginManager();
+            boolean check =loginManager.checkUsername(user.getUsername());
             if(!check)
             {
                 AlertMessage.alertMessage("Wrong Username","This username Exist, you can't add same username");
@@ -105,7 +105,10 @@ public class SignupController {
             else
             {
                 LoginManager.signup(user);
-                SceneManager.switchToMainScene(9);
+                Object controller = SceneManager.switchToMainScene(9);
+                if (controller instanceof TeacherSceneController) {
+                    ((TeacherSceneController) controller).setTeacherScene((Teacher) LoginManager.getSelectedUser());
+                }
             }
         }
     }

@@ -70,7 +70,12 @@ public class LoginController {
                     ((StudentSceneController) controller).setStudentScene((Student) LoginManager.getSelectedUser());
                 }
             }
-            else if(status==2)   SceneManager.switchToMainScene(9);
+            else if(status==2) {
+                Object controller = SceneManager.switchToMainScene(9);
+                if (controller instanceof TeacherSceneController) {
+                    ((TeacherSceneController) controller).setTeacherScene((Teacher) LoginManager.getSelectedUser());
+                }
+            }
         }
 
     }
