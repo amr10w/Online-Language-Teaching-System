@@ -12,6 +12,7 @@ public class Lesson implements Comparable<Lesson> {
     private String content;
     private ProficiencyLevel proficiencyLevel;
     private ArrayList<String> prerequisiteLessonIds = new ArrayList<>();
+    private Quiz quiz;
 
 
     public Lesson()
@@ -24,6 +25,13 @@ public class Lesson implements Comparable<Lesson> {
         this.lessonId=title;
         this.content=title;
     }
+
+    public void setQuiz(Quiz quiz)
+    {
+        this.quiz=quiz;
+    }
+
+
 
 
     public Lesson(String filePath)

@@ -1,8 +1,6 @@
 package controllers;
 
-import Main.Question;
-import Main.Quiz;
-import Main.SceneManager;
+import Main.*;
 import javafx.animation.Interpolator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class QuizController implements Initializable {
+    private Student student;
     private Quiz quiz;
     @FXML
     private Label q1;
@@ -85,7 +84,10 @@ public class QuizController implements Initializable {
     
     @FXML
     private void backToDashboard() {
-        SceneManager.switchToMainScene(0);
+        Object controller = SceneManager.switchToMainScene(0);
+        if (controller instanceof StudentSceneController) {
+            ((StudentSceneController) controller).setStudentScene((Student) LoginManager.getSelectedUser());
+        }
     }
 
 
