@@ -26,10 +26,7 @@ public class Lesson implements Comparable<Lesson> {
         this.content=title;
     }
 
-    public void setQuiz(Quiz quiz)
-    {
-        this.quiz=quiz;
-    }
+
 
 
 
@@ -80,6 +77,16 @@ public class Lesson implements Comparable<Lesson> {
     @Override
     public int compareTo(Lesson other) {
         return this.title.compareTo(other.title);
+    }
+
+    public Quiz getQuiz()
+    {
+        return quiz;
+    }
+
+    public void setQuiz(String pathfile)
+    {
+        this.quiz=new Quiz(pathfile);
     }
 
 }

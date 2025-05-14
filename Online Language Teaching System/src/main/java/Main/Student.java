@@ -95,4 +95,9 @@ public class Student extends User implements Progress {
     public int getQuizScore(String quizId) {
         return 0;
     }
+
+    public ArrayList<Lesson> getLessons()
+    {
+        return lessons;
+    }
 }

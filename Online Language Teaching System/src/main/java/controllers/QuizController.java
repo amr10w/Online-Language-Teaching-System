@@ -91,9 +91,9 @@ public class QuizController implements Initializable {
     }
 
 
-    public void setQuiz()
+    public void setQuiz(Quiz quiz)
     {
-        quiz=Quiz.setQuiz("src/main/resources/quiz1.txt");
+        this.quiz=quiz;
         quizTitleLabel.setText(quiz.getTitle());
         q1.setText(quiz.getQuestions().get(0).getQuestion());
         Q1O1.setText(quiz.getQuestions().get(0).getOptions()[0]);
@@ -120,7 +120,7 @@ public class QuizController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setQuiz();
+
     }
 
 
