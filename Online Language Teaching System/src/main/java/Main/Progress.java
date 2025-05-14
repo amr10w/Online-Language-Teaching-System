@@ -2,9 +2,9 @@ package Main;
 
 public interface Progress {
     String getUserId();
-    int makeLessonCompleted(String title);
+    int makeLessonCompleted(int i);
     void recordQuizScore(int score);
-    boolean isLessonCompleted(String title);
+    boolean isLessonCompleted(int i);
     int getQuizScore(String quizId);
 
 }

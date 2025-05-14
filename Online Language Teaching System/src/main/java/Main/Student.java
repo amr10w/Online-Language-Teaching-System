@@ -63,14 +63,13 @@ public class Student extends User implements Progress {
     }
 
     @Override
-    public int makeLessonCompleted(String title) {
-
-        if(isLessonCompleted(title))
-        {
-            return 50;
+    public int makeLessonCompleted(int i) {
+        if (i >= 0 && i < lessons.size()) {
+            compeleteLessons.set(i, true); // Mark lesson as completed
+            updateProgress(); // Update progress when lesson is completed
+            return 1; // Success
         }
-        return 0;
-
+        return 0; // Failure (invalid index)
     }
 
     @Override
@@ -78,15 +77,9 @@ public class Student extends User implements Progress {
 
     }
 
-    @Override
-    public boolean isLessonCompleted(String title) {
-        for(int i=0;i<lessons.size();i++)
-        {
-            if(lessons.get(i).getTitle().equals(title))
-            {
-                compeleteLessons.set(i,true);
-                return true;
-            }
+    public boolean isLessonCompleted(int i) {
+        if (i >= 0 && i < compeleteLessons.size()) {
+            return compeleteLessons.get(i);
         }
         return false;
     }

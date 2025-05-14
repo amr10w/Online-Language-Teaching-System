@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 
 public class LessonController {
     private Student student;
+    private Lesson currentLesson;
+
     @FXML
     private Label lessonTitleLabel;
     
@@ -34,15 +36,17 @@ public class LessonController {
     }
 
 
-    public void setLesson()
-    {
 
-    }
 
-    @FXML
-    public void setLessonScene()
-    {
-
+    public void setLessonScene(Lesson lesson) {
+        this.currentLesson = lesson;
+        if (lesson != null) {
+            lessonTitleLabel.setText(lesson.getTitle());
+            lessonContentLabel.setText(lesson.getContent());
+        } else {
+            lessonTitleLabel.setText("No Lesson");
+            lessonContentLabel.setText("No content available");
+        }
     }
 
 }

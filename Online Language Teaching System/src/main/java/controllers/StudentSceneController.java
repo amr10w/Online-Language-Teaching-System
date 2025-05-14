@@ -1,9 +1,6 @@
 package controllers;
 
-import Main.ApplicationManager;
-import Main.LoginManager;
-import Main.SceneManager;
-import Main.Student;
+import Main.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -50,7 +47,28 @@ public class StudentSceneController {
 
     @FXML
     private void startLesson() {
-        SceneManager.switchToMainScene(4);
+        student=(Student) LoginManager.getSelectedUser();
+        /*if (student.getLessons().isEmpty()) {
+            AlertMessage.alertMessage("No Lessons Available", "There are no lessons assigned to you.\nPlease wait for lessons to be added.");
+            return;
+        }
+        int currentLessonIndex = -1;
+        for (int i = 0; i < student.getLessons().size(); i++) {
+            if (!student.isLessonCompleted(i)) {
+                currentLessonIndex = i;
+                break;
+            }
+        }
+        if (currentLessonIndex == -1) {
+            AlertMessage.alertMessage("All Lessons Completed", "You have completed all available lessons!");
+            return;
+        }*/
+
+        Object controller = SceneManager.switchToMainScene(4);
+        if (controller instanceof LessonController) {
+            //parameter should be student.getLessons().get(currentLessonIndex)
+            ((LessonController) controller).setLessonScene(new Lesson("Grammer", "0x123","Learn basic grammar rules." ,"Beginner"));
+        }
     }
     
     @FXML
@@ -82,6 +100,17 @@ public class StudentSceneController {
         pointsValue.setText(String.valueOf(student.getProgress()));
         progressValue.setText(String.valueOf(student.getProgress())+"%");
         progressBar.setProgress(student.getProgress());
+        if (!student.getLessons().isEmpty()) {
+            for (int i = 0; i < student.getLessons().size(); i++) {
+                if (student.isLessonCompleted(i)) {
+                    currentLessonTitle.setText(student.getLessons().get(i).getTitle());
+                    nextLessonTitle.setText(i + 1 < student.getLessons().size() ?
+                            student.getLessons().get(i + 1).getTitle() : "None");
+                    break;
+                }
+            }
+        }
+
 
     }
 

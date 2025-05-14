@@ -25,38 +25,32 @@ public class Lesson implements Comparable<Lesson> {
         this.lessonId=title;
         this.content=title;
     }
-
-
-
-
-
-
-    public Lesson(String filePath)
+    public Lesson(String title,String lessonId,String content,String level)
     {
-
+        this.title=title;
+        this.lessonId=title;
+        this.content=title;
+        proficiencyLevel=new ProficiencyLevel(level);
     }
 
 
-    public Lesson(String title, String content,String level, ArrayList<String> prerequisiteLessonIds,String filePath) {
-        this.title = title;
-        this.content = content;
-        this.proficiencyLevel = new ProficiencyLevel(level);
-        this.prerequisiteLessonIds = new ArrayList<>(prerequisiteLessonIds);
-        this.lessonId = String.valueOf(numberOfLessons++);
 
 
-    }
+//
+//
+//    public Lesson(String filePath)
+//    {
+//
+//    }
+
+
+
     public void setLesson(String title, String lessonId, String content)
     {
         this.title=title;
         this.lessonId=lessonId;
         this.content=content;
     }
-
-
-
-
-
 
 
 
