@@ -1,59 +1,56 @@
 package Main;
 
-import fileManager.FileManager;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginManager {
-    private FileManager fm;
 
-    private ArrayList<String> users;
-    private ArrayList<String> passwords;
+
+    private static ArrayList<String> users;
+    private static ArrayList<String> passwords;
     private static User selectedUser;
 
 
 
     public LoginManager()
     {
-        fm=new FileManager("src/main/resources/Database");
+
         users=new ArrayList<>();
         passwords=new ArrayList<>();
 
 
     }
 
-    public void signup(User user)
+    public static void signup(User user)
     {
+        addUsername(user.getUsername());
+        addPassword(user.getPassword());
 
-        HashMap<String,String> userData=new HashMap<>();
-        userData.put("username",user.getUsername());
-        userData.put("password",user.getPassword());
-        userData.put("email",user.getEmail());
+        System.out.println(users);
 
         if(user instanceof Student) {
             ApplicationManager.addStudent((Student) user);
-            userData.put("role", "student");
-            userData.put("language", ((Student) user).getLanguage());
+
 
         }
         else {
             ApplicationManager.addTeachers((Teacher) user);
-            userData.put("role", "Teacher");
-            userData.put("language", ((Teacher) user).getLanguage());
+
         }
         setSelectedUser(user);
-        fm.saveData(userData);
+
     }
-    public int login(String username,String password)
+    public static int login(String username,String password)
     {
 
-        fm.loadUsersData(users,passwords);
-
+        System.out.println(users);
         int index=users.indexOf(username);
         if(index==-1)
         {
             return -1;
+
         }
         if(!passwords.get(index).equals(password))
         {
@@ -77,9 +74,9 @@ public class LoginManager {
         return 1;
 
     }
-    public boolean checkUsername(String username)
+    public static boolean checkUsername(String username)
     {
-        fm.loadUsersData(users,passwords);
+
         if(users.contains(username))
         {
             return false;
@@ -102,4 +99,7 @@ public class LoginManager {
     {
         return selectedUser;
     }
+
+    private static void addUsername(String username){users.add(username);}
+    private static void addPassword(String password){passwords.add(password);}
 }

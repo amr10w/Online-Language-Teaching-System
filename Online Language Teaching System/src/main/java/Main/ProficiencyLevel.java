@@ -25,4 +25,6 @@ public class ProficiencyLevel {
             System.out.println("Error: class ProficiencyLevel, method setLevel, wrong set, it should be beginner or or intermediate or advanced.");
         }
     }
+
+
 }

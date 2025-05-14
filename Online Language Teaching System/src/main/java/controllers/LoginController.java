@@ -58,8 +58,8 @@ public class LoginController {
             AlertMessage.alertMessage("Password is empty", "Please enter password.");
             return;
         }
-        LoginManager loginManager=new LoginManager();
-        int status=loginManager.login(usernameField.getText(),passwordField.getText());
+
+        int status=LoginManager.login(usernameField.getText(),passwordField.getText());
         if(status==-1) AlertMessage.alertMessage("Username doesn't exist","please try again.");
         else if(status==-2) AlertMessage.alertMessage("Password is wrong","please try again.");
         else if(!usernameField.getText().isEmpty()&&!passwordField.getText().isEmpty())

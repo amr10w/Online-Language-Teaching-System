@@ -46,6 +46,9 @@ public class StudentSceneController {
     private ListView<String> activityListView;
 
     @FXML
+    private ProgressBar progressBar;
+
+    @FXML
     private void startLesson() {
         SceneManager.switchToMainScene(4);
     }
@@ -75,5 +78,12 @@ public class StudentSceneController {
 
         studentNameLabel.setText(student.getUsername());
         languageLabel.setText(student.getLanguage());
+        rankValue.setText(student.getProficiencyLevel());
+        pointsValue.setText(String.valueOf(student.getProgress()));
+        progressValue.setText(String.valueOf(student.getProgress())+"%");
+        progressBar.setProgress(student.getProgress());
+
     }
+
+
 }

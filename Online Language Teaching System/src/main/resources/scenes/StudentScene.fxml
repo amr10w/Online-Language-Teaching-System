@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,7 +11,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.ProgressBar?>
 
 <BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentSceneController">
     
@@ -20,16 +20,16 @@
         <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
             <Image url="@../images/lovebird.png" />
         </ImageView>
-        <Label styleClass="app-name" text="LinguaLearn" style="-fx-text-fill: #000000;" />
+        <Label style="-fx-text-fill: #000000;" styleClass="app-name" text="LinguaLearn" />
 
         <HBox alignment="CENTER" spacing="5">
-            <Label styleClass="welcome-text" text="Welcome," style="-fx-text-fill: #000000;" />
-            <Label fx:id="studentNameLabel" styleClass="welcome-text" text="John Doe" style="-fx-text-fill: #000000;" />
-            <Label styleClass="welcome-text" text="| Learning:" style="-fx-text-fill: #000000;" />
-            <Label fx:id="languageLabel" styleClass="welcome-text" text="German" style="-fx-text-fill: #000000;" />
+            <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="Welcome," />
+            <Label fx:id="studentNameLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="John Doe" />
+            <Label style="-fx-text-fill: #000000;" styleClass="welcome-text" text="| Learning:" />
+            <Label fx:id="languageLabel" style="-fx-text-fill: #000000;" styleClass="welcome-text" text="German" />
         </HBox>
 
-        <Button onAction="#logout" prefHeight="26.0" prefWidth="83.0" text="Logout" >
+        <Button onAction="#logout" prefHeight="26.0" prefWidth="83.0" text="Logout">
             <HBox.margin>
                <Insets left="200.0" />
             </HBox.margin>
