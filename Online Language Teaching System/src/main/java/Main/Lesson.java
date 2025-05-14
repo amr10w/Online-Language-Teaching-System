@@ -39,8 +39,8 @@ public class Lesson implements Comparable<Lesson> {
     public void setLesson(String title, String lessonId, String content)
     {
         this.title=title;
-        this.lessonId=title;
-        this.content=title;
+        this.lessonId=lessonId;
+        this.content=content;
     }
 
     public Lesson(String title, String content,String level, ArrayList<String> prerequisiteLessonIds,String filePath) {
