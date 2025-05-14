@@ -36,12 +36,6 @@ public class Lesson implements Comparable<Lesson> {
 
     }
 
-    public void setLesson(String title, String lessonId, String content)
-    {
-        this.title=title;
-        this.lessonId=lessonId;
-        this.content=content;
-    }
 
     public Lesson(String title, String content,String level, ArrayList<String> prerequisiteLessonIds,String filePath) {
         this.title = title;
@@ -52,6 +46,14 @@ public class Lesson implements Comparable<Lesson> {
 
 
     }
+    public void setLesson(String title, String lessonId, String content)
+    {
+        this.title=title;
+        this.lessonId=lessonId;
+        this.content=content;
+    }
+
+
 
 
 
@@ -87,6 +89,11 @@ public class Lesson implements Comparable<Lesson> {
     public void setQuiz(String pathfile)
     {
         this.quiz=new Quiz(pathfile);
+    }
+
+    public boolean getAllFieldsNotEmpty()
+    {
+        return !getTitle().isEmpty() | !getContent().isEmpty() | !getLessonId().isEmpty();
     }
 
 }
