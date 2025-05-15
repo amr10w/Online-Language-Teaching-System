@@ -27,6 +27,7 @@ public class Student extends User implements Progress {
         return language;
     }
 
+    @Override
     public void updateProgress() {
         this.progress += 1;
 
@@ -48,7 +49,7 @@ public class Student extends User implements Progress {
     public double getProgress() {
         return progress;
     }
-    
+
     public void setProgress(double progress){
         this.progress = progress;
     }
@@ -61,10 +62,6 @@ public class Student extends User implements Progress {
         return "Student: "+ getUsername()+" "+getPassword()+" "+getID()+" "+getEmail()+" "+getLanguage();
     }
 
-    @Override
-    public String getUserId() {
-        return super.getID();
-    }
 
     @Override
     public int makeLessonCompleted(int i) {
@@ -76,10 +73,7 @@ public class Student extends User implements Progress {
         return 0; // Failure (invalid index)
     }
 
-    @Override
-    public void recordQuizScore(int score) {
 
-    }
 
     public boolean isLessonCompleted(int i) {
         if (i >= 0 && i < compeleteLessons.size()) {
@@ -88,10 +82,7 @@ public class Student extends User implements Progress {
         return false;
     }
 
-    @Override
-    public int getQuizScore(String quizId) {
-        return 0;
-    }
+
 
     public ArrayList<Lesson> getLessons()
     {

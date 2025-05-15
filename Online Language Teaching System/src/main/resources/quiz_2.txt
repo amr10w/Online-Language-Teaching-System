@@ -1,0 +1,27 @@
+title:Hello world
+id:FRE301
+level:beginner
+question1:How to say 'Hello'?
+q1_option1:Guten Tag
+q1_option2:Danke
+q1_option3:Ja
+q1_option4:Nein
+q1_correct:Guten Tag
+question2:What is 'Thank you'?
+q2_option1:Bitte
+q2_option2:Danke
+q2_option3:Tschüss
+q2_option4:Hallo
+q2_correct:Danke
+question3:What is 'Yes'?
+q3_option1:Ja
+q3_option2:Nein
+q3_option3:Vielleicht
+q3_option4:Entschuldigung
+q3_correct:Ja
+question4:What is 'Goodbye'?
+q4_option1:Auf Wiedersehen
+q4_option2:Guten Morgen
+q4_option3:Hallo
+q4_option4:Tschüss
+q4_correct:Tschüss

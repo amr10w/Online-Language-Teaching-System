@@ -1,32 +1,46 @@
 package Main;
+
+import java.util.ArrayList;
+
 public class Teacher extends User{
     private String language;
     private double balance;
     private int numberOfCreatedLessons=0;
+    private ArrayList<Lesson> createdLessons;
+    private static int numberOfTeachers = 0;
 //    private ArrayList<Question> questions = new ArrayList<>();
 
-    public Teacher(String name, String email, String password, String ID,String language){
 
-        super(name,email,password,ID);
-        this.language = language;
+    public Teacher(String name, String email, String password, String ID, String language) {
+        super(name, email, password, ID);
+        createdLessons=new ArrayList<>();
+        if (language == null || language.trim().isEmpty()) {
+            System.out.println("Warning: Teacher language is empty for user " + name + ", Defaulting to 'English'.");
+            this.language = "English";
+        } else {
+            this.language = language.trim();
+        }
+        this.balance = 0.0;
+        numberOfTeachers++;
 
     }
 
+    public Lesson createLesson(String title,String lessonId,String content,String level) {
+        Lesson lesson =new Lesson(title,lessonId,content,level);
+        createdLessons.add(lesson);
+        numberOfCreatedLessons++;
+        return lesson;
+    }
 
-    public void createLesson(){
-        numberOfCreatedLessons+=1;
+    public void addLesson(Lesson lesson)
+    {
+        createdLessons.add(lesson);
+        numberOfCreatedLessons++;
     }
-//    public void createQuestion(String question,String [] options ,String correctAnswer){
-//        Question Q = new Question (String question,String [] options ,String correctAnswer);
-//        questions.add(Q);
-//        //each teacher can have multiple questions created, they can be accessed via the array list named questions
-//    }
-    public void editLesson(Lesson lesson){
-//the editLesson method is not found in the Lesson class, waiting until it get implemented...
+    public static int getNumberOfTeachers() {
+        return numberOfTeachers;
     }
-    public void editQuiz(Quiz quiz){
-//the editQuiz method is not found in the Quiz class, waiting until it get implemented...
-    }
+
     public String getLanguage() {
         return language;
     }
@@ -36,7 +50,10 @@ public class Teacher extends User{
 
     public int getNumberOfCreatedLessons() {
         return numberOfCreatedLessons;
+
     }
+
+    public ArrayList<Lesson> getCreatedLessonIds() { return createdLessons;}
 
 
     @Override
