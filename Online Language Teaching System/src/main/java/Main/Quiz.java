@@ -9,7 +9,7 @@ public class Quiz implements Comparable<Quiz>{
 
     private String title;
     private String quizId;
-    private ArrayList<Question> questions;
+    public ArrayList<Question> questions;
     private ProficiencyLevel proficiencyLevel;
     private FileManager fm;
 

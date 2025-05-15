@@ -1,6 +1,7 @@
 package controllers;
 
 import Main.*;
+import static java.lang.Math.round;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class StudentSceneController {
+public class StudentSceneController extends QuizToDashController {
     private  Student student;
     @FXML
     private  Label studentNameLabel;
@@ -97,9 +98,9 @@ public class StudentSceneController {
         studentNameLabel.setText(student.getUsername());
         languageLabel.setText(student.getLanguage());
         rankValue.setText(student.getProficiencyLevel());
-        pointsValue.setText(String.valueOf(student.getProgress()));
-        progressValue.setText(String.valueOf(student.getProgress())+"%");
-        progressBar.setProgress(student.getProgress());
+        pointsValue.setText(String.valueOf((int)( currentProgress*100)));
+        progressValue.setText(String.valueOf((int) (currentProgress*10))+"%");
+        progressBar.setProgress(currentProgress);
         if (!student.getLessons().isEmpty()) {
             for (int i = 0; i < student.getLessons().size(); i++) {
                 if (student.isLessonCompleted(i)) {

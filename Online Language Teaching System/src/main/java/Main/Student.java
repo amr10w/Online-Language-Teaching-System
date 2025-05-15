@@ -48,6 +48,10 @@ public class Student extends User implements Progress {
     public double getProgress() {
         return progress;
     }
+    
+    public void setProgress(double progress){
+        this.progress = progress;
+    }
 
 
 
