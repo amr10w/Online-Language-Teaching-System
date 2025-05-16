@@ -22,14 +22,14 @@ public class Lesson implements Comparable<Lesson> {
     public Lesson(String title,String lessonId,String content)
     {
         this.title=title;
-        this.lessonId=title;
-        this.content=title;
+        this.lessonId=lessonId;
+        this.content=content;
     }
     public Lesson(String title,String lessonId,String content,String level)
     {
         this.title=title;
-        this.lessonId=title;
-        this.content=title;
+        this.lessonId=lessonId;
+        this.content=content;
         proficiencyLevel=new ProficiencyLevel(level);
     }
 
