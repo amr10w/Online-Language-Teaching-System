@@ -33,6 +33,7 @@ public abstract class Language
             throw new IllegalArgumentException("Quiz cannot be null");
         }
         lessons.add(lesson);
+        Collections.sort(lessons);
     }
 
     public void addQuiz(Quiz quiz) {
@@ -40,5 +41,6 @@ public abstract class Language
             throw new IllegalArgumentException("Quiz cannot be null");
         }
         quizzes.add(quiz);
+
     }
 }

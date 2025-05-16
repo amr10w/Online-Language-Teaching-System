@@ -36,12 +36,6 @@ public class Lesson implements Comparable<Lesson> {
 
 
 
-//
-//
-//    public Lesson(String filePath)
-//    {
-//
-//    }
 
 
 

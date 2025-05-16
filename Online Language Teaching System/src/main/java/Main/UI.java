@@ -10,12 +10,14 @@ import java.util.Scanner;
 public class UI {
     private static ArrayList<Student> allStudents = new ArrayList<>();
     private static ArrayList<Teacher> allTeachers = new ArrayList<>();
+    private static ArrayList<User> allUsers = new ArrayList<>();
     private static HashMap<String, Language> languages = new HashMap<>();
     private static User currentUser = null;
     private static Scanner scanner = new Scanner(System.in);
 
     private static void initializeLanguagesAndContent() {
         // Initialize languages and content
+        //for testing
         English english = new English();
         Lesson engLesson1 = new Lesson("English Introduction", "ENG101_ID_IGNORED", "Content_IGNORED_English_Intro", "beginner");
         engLesson1.setQuiz("english_quiz1.txt");
@@ -47,9 +49,11 @@ public class UI {
             }
         }
         allStudents.add(testStudent);
+        allUsers.add(testStudent);
 
         Teacher testTeacher = new Teacher("Test Teacher", "teacher@test.com", "pass", "T001", "German");
         allTeachers.add(testTeacher);
+        allUsers.add(testTeacher);
         German.addTeachers(testTeacher);
     }
 
@@ -183,11 +187,13 @@ public class UI {
                 }
             }
             allStudents.add(newStudent);
+            allUsers.add(newStudent);
             if (chosenLanguageName.equals("German")) German.addStudents(newStudent);
             System.out.println("Student registration successful! Please login.");
         } else if (type == 2) {
             Teacher newTeacher = new Teacher(name, email, password, id, chosenLanguageName);
             allTeachers.add(newTeacher);
+            allUsers.add(newTeacher);
             if (chosenLanguageName.equals("German")) German.addTeachers(newTeacher);
             System.out.println("Teacher registration successful! Please login.");
         } else {
@@ -197,11 +203,14 @@ public class UI {
 
     private static void showStudentDashboard(Student student) {
         // Display student dashboard
-        System.out.println("\n--- Student Dashboard: " + student.getUsername() + " ---");
-        System.out.println("Email: " + student.getEmail());
-        System.out.println("ID: " + student.getID());
-        System.out.println("Language: " + student.getLanguage());
-        System.out.println("Proficiency: " + student.getProficiencyLevel());
+//        System.out.println("\n--- Student Dashboard: " + student.getUsername() + " ---");
+//        System.out.println("Email: " + student.getEmail());
+//        System.out.println("ID: " + student.getID());
+//        System.out.println("Language: " + student.getLanguage());
+//        System.out.println("Proficiency: " + student.getProficiencyLevel());
+//
+        System.out.println("\n"+student.toString()+"\n");
+
         int totalLessonsInList = student.getLessons().size();
         double completedLessonsCount = student.getProgress();
         double progressPercentage = (totalLessonsInList > 0) ? (completedLessonsCount / totalLessonsInList) * 100 : 0;
@@ -418,11 +427,17 @@ public class UI {
         System.out.println("Teaches: " + teacher.getLanguage());
         System.out.println("Number of Lessons Created (this session via UI): " + teacher.getNumberOfCreatedLessons());
         System.out.println("Balance: $" + teacher.getBalance());
+
+        System.out.println("\n"+teacher.toString()+"\n");
+
         System.out.println("\nOptions:");
         System.out.println("1. Create a New Lesson");
         System.out.println("2. View Lessons for My Language");
         System.out.println("3. Logout");
         System.out.print("Choose an option: ");
+
+
+
         int choice = getIntInput();
         scanner.nextLine();
         switch (choice) {

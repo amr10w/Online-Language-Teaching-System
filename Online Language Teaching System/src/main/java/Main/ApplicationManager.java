@@ -15,8 +15,6 @@ public class ApplicationManager {
 
     private void loadUsers() {
 
-
-
     }
 
     public static void addStudent(Student student) {
