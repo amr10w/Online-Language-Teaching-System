@@ -109,13 +109,8 @@ To run the LinguaLearn application, follow these steps:
 ### Demo Overview
 A video demonstration showcasing the LinguaLearn UI and its features is available. This demo highlights the language selection, interactive lessons, quizzes, and progress tracking functionalities.
 
-- **Steps to View**: 
-  1. Visit the provided link or insert the video file path here.
-  2. Watch the demo to explore the user experience and capabilities of LinguaLearn.
-- **Note**: Ensure you have a compatible media player to view the demo.
+https://github.com/user-attachments/assets/0d078e6e-90c2-4782-a08f-f99f45b4034d
 
-
----
 ## Team Members
 - Hamza Eldafrawy
 - Amr Ahmed Wahidi
